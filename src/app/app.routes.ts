@@ -37,8 +37,11 @@ export const routes: Routes = [
 		path: 'tvaryny',
 		data: {
 			meta: {
-				title: 'Animals catalog',
-				description: 'Explore the Park Arden animals catalog.',
+				title: 'Тварини парку «АРДЕН» − ведмеді, леви, тигри, вовки, примати та птахи',
+				description:
+					'Познайомтесь із мешканцями Парку диких тварин «АРДЕН»: ведмеді, великі коти, вовки, примати, олені, муфлони, лані та хижі птахи.',
+				// TODO: Replace with wide image collage or strong animal portrait from Park Arden. Best ratio: 1200x630 for Open Graph.
+				image: 'logo.png',
 			},
 		},
 		loadComponent: () =>

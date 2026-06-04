@@ -1,0 +1,180 @@
+<main class="animals-page">
+	<section class="animals-section animals-hero">
+		<div
+			class="animals-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.82fr)] lg:items-center"
+		>
+			<div>
+				<p class="animals-eyebrow">Тварини парку</p>
+				<h1 class="animals-title">Познайомтесь із мешканцями «АРДЕНУ»</h1>
+				<p class="animals-lead">
+					У парку живуть понад 160 тварин: ведмеді, великі коти, вовки, примати, олені,
+					муфлони, лані, хижі птахи та інші мешканці дикої природи. У кожного з них є своя
+					історія, характер і шлях до безпечного життя.
+				</p>
+				<div class="animals-actions">
+					<a class="animals-button animals-button--primary" routerLink="/ekskursii">
+						Записатись на екскурсію
+					</a>
+					<a class="animals-button animals-button--secondary" routerLink="/pidtrymaty">
+						Підтримати тварин
+					</a>
+				</div>
+			</div>
+			<img
+				class="animals-image animals-image--hero"
+				[ngSrc]="heroImage"
+				width="1024"
+				height="1024"
+				alt=""
+				priority
+			/>
+		</div>
+	</section>
+
+	<section class="animals-section">
+		<div class="animals-container">
+			<h2 class="animals-heading">Тварини, які знайшли прихисток</h2>
+			<p class="animals-text">
+				«АРДЕН» став домом для тварин, які потребували простору, догляду та спокою. Частина
+				мешканців була врятована з неволі, тісних кліток, цирків, приватних садиб або
+				небезпечних територій.
+			</p>
+			<p class="animals-text">
+				Під час екскурсії відвідувачі можуть побачити тварин у наближених до природних
+				умовах і дізнатись більше про їхнє життя, звички, характер та історії порятунку.
+			</p>
+		</div>
+	</section>
+
+	<section class="animals-section">
+		<div class="animals-container">
+			<h2 class="animals-heading">Обрати категорію</h2>
+			<div class="animals-filter-panel">
+				<div class="animals-filter-buttons" aria-label="Обрати категорію">
+					@for (filter of filters; track filter) {
+						<button class="animals-filter" type="button">{{ filter }}</button>
+					}
+				</div>
+				<div class="animals-controls">
+					<label class="animals-control">
+						<span class="animals-control-label">Пошук тварини</span>
+						<input class="animals-input" type="search" placeholder="Пошук тварини" />
+					</label>
+					<label class="animals-control">
+						<span class="animals-control-label">За назвою</span>
+						<select class="animals-input">
+							@for (option of sortOptions; track option) {
+								<option>{{ option }}</option>
+							}
+						</select>
+					</label>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="animals-section">
+		<div class="animals-container">
+			<h2 class="animals-heading">Основні групи тварин</h2>
+			<div class="animals-grid">
+				@for (group of groupCards; track group.title) {
+					<article class="animals-card animals-card--media">
+						<img
+							class="animals-card-image"
+							[ngSrc]="group.image"
+							width="560"
+							height="360"
+							alt=""
+						/>
+						<div>
+							<h3 class="animals-card-title">{{ group.title }}</h3>
+							<p class="animals-card-text">{{ group.text }}</p>
+						</div>
+					</article>
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="animals-section">
+		<div class="animals-container">
+			<h2 class="animals-heading">Каталог тварин</h2>
+			<p class="animals-text animals-text--intro">
+				Нижче − попередній каталог мешканців парку. Фото та детальні історії потрібно буде
+				оновити після отримання матеріалів від замовника.
+			</p>
+			<div class="animals-grid">
+				@for (animal of animalCards; track animal.slug) {
+					<a
+						class="animals-card animals-card--media animals-link-card"
+						[routerLink]="['/tvaryny', animal.slug]"
+					>
+						<img
+							class="animals-card-image"
+							[ngSrc]="animal.image"
+							width="560"
+							height="360"
+							alt=""
+						/>
+						<div>
+							<p class="animals-category">{{ animal.category }}</p>
+							<h3 class="animals-card-title">{{ animal.name }}</h3>
+							<p class="animals-card-text">{{ animal.text }}</p>
+						</div>
+					</a>
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="animals-section">
+		<div
+			class="animals-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-center"
+		>
+			<div>
+				<h2 class="animals-heading">Кожна тварина має свою історію</h2>
+				<p class="animals-text">
+					Частина мешканців парку була врятована з неприйнятних умов, небезпечних
+					територій або місць, де тварини не мали достатнього простору й догляду. У
+					«АРДЕНІ» вони отримують безпечне середовище, харчування, ветеринарну підтримку
+					та щоденну турботу.
+				</p>
+				<div class="animals-actions">
+					@for (button of rescueCtaButtons; track button.label) {
+						<a
+							class="animals-button"
+							[class.animals-button--primary]="button.style === 'primary'"
+							[class.animals-button--secondary]="button.style === 'secondary'"
+							[routerLink]="button.path"
+						>
+							{{ button.label }}
+						</a>
+					}
+				</div>
+			</div>
+			<img class="animals-image" [ngSrc]="rescueCtaImage" width="1024" height="1024" alt="" />
+		</div>
+	</section>
+
+	<section class="animals-section">
+		<div class="animals-container">
+			<h2 class="animals-heading">Побачте мешканців парку наживо</h2>
+			<p class="animals-text">
+				Найкращий спосіб познайомитись із тваринами − приїхати на екскурсію, пройти
+				маршрутом парку та почути історії від екскурсовода.
+			</p>
+			<div class="animals-actions">
+				@for (button of finalCtaButtons; track button.label) {
+					<a
+						class="animals-button"
+						[class.animals-button--primary]="button.style === 'primary'"
+						[class.animals-button--secondary]="button.style === 'secondary'"
+						[routerLink]="button.path"
+					>
+						{{ button.label }}
+					</a>
+				}
+			</div>
+		</div>
+	</section>
+</main>
