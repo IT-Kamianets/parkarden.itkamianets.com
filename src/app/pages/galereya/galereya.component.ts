@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-	template: '',
+	templateUrl: './galereya.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GalereyaComponent {}

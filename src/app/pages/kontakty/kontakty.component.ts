@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-	template: '',
+	templateUrl: './kontakty.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KontaktyComponent {}

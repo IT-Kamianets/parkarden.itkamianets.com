@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-	template: '',
+	templateUrl: './four-seasons.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FourSeasonsComponent {}

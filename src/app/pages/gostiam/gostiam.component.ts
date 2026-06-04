@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-	template: '',
+	templateUrl: './gostiam.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GostiamComponent {}
