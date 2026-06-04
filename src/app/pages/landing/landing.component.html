@@ -1,91 +1,384 @@
-<section class="relative overflow-hidden">
-	<div class="landing-mesh" aria-hidden="true"></div>
-	<div class="landing-orb landing-orb--primary" aria-hidden="true"></div>
-	<div class="landing-orb landing-orb--secondary" aria-hidden="true"></div>
-
-	<div class="relative mx-auto max-w-[var(--container)] px-4 py-8 sm:px-6 sm:py-12">
-		<section
-			class="overflow-hidden rounded-[calc(var(--radius-card)*2.4)] border border-[color:color-mix(in_srgb,var(--c-border)_72%,transparent)] bg-[color:color-mix(in_srgb,var(--c-bg-secondary)_84%,transparent)] p-6 shadow-[var(--shadow-md)] backdrop-blur-xl sm:p-8 lg:p-10"
+<main class="home-page">
+	<section class="home-section home-hero">
+		<div
+			class="home-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.82fr)] lg:items-center"
 		>
-			<p
-				class="inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_srgb,var(--c-border)_72%,transparent)] bg-[color:color-mix(in_srgb,var(--c-bg-primary)_76%,transparent)] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--c-text-muted)]"
-			>
-				<span
-					class="h-2 w-2 rounded-full bg-[var(--c-primary)] shadow-[0_0_0_6px_color-mix(in_srgb,var(--c-primary)_14%,transparent)]"
-					aria-hidden="true"
-				></span>
-				<span translate>Bootstrap, company, language</span>
-			</p>
-
-			<div class="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
-				<div class="max-w-3xl">
-					<h1
-						class="text-4xl font-semibold tracking-[-0.04em] text-[var(--c-text-strong)] sm:text-5xl lg:text-6xl"
-					>
-						@if (company().name) {
-							{{ company().name }}
-						} @else {
-							<span translate>Company profile is ready for bootstrap data.</span>
-						}
-					</h1>
-
-					<p
-						class="mt-5 max-w-2xl text-base leading-8 text-[var(--c-text)] sm:text-lg"
-						translate
-					>
-						This starter now keeps only the core runtime pieces: app bootstrap, company state, and multilingual switching. The rest of the demo feature surface has been removed.
-					</p>
-
-					<div class="mt-8 flex flex-wrap gap-3">
-						<span
-							class="inline-flex min-h-12 items-center rounded-full bg-[var(--c-primary)] px-5 py-3 text-sm font-semibold text-white"
-						>
-							<span translate>SSR-safe bootstrap</span>
-						</span>
-						<span
-							class="inline-flex min-h-12 items-center rounded-full border border-[var(--c-border)] bg-[color:color-mix(in_srgb,var(--c-bg-primary)_78%,transparent)] px-5 py-3 text-sm font-semibold text-[var(--c-text-strong)]"
-						>
-							<span translate>Company signal state</span>
-						</span>
-						<span
-							class="inline-flex min-h-12 items-center rounded-full border border-[var(--c-border)] bg-[color:color-mix(in_srgb,var(--c-bg-primary)_78%,transparent)] px-5 py-3 text-sm font-semibold text-[var(--c-text-strong)]"
-						>
-							<span translate>Language switching</span>
-						</span>
-					</div>
+			<div>
+				<p class="home-eyebrow">Парк диких тварин «АРДЕН»</p>
+				<h1 class="home-title">Захоплива мандрівка світом дикої природи</h1>
+				<p class="home-lead">
+					Відкрийте для себе один із найбільших сучасних парків диких тварин в Україні. У
+					серці Національного природного парку «Подільські Товтри» на понад 32 гектарах
+					живуть ведмеді, великі коти, вовки, примати, олені, птахи та інші мешканці
+					дикого лісу.
+				</p>
+				<div class="home-actions">
+					<a class="home-button home-button--primary" routerLink="/ekskursii">
+						Записатись на екскурсію
+					</a>
+					<a class="home-button home-button--secondary" routerLink="/pidtrymaty">
+						Підтримати парк
+					</a>
 				</div>
+				<p class="home-note">Групові екскурсії проводяться за попереднім записом.</p>
+			</div>
 
-				<div
-					class="rounded-[calc(var(--radius-card)*2)] border border-[color:color-mix(in_srgb,var(--c-border)_72%,transparent)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--c-bg-secondary)_96%,transparent),color-mix(in_srgb,var(--c-bg-primary)_92%,transparent))] p-5 shadow-[var(--shadow-sm)]"
-				>
-					<p class="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--c-text-muted)]">
-						<span translate>Company bootstrap state</span>
-					</p>
+			<img
+				class="home-image home-image--hero"
+				[ngSrc]="heroImage"
+				width="1024"
+				height="1024"
+				alt=""
+				priority
+			/>
+		</div>
+	</section>
 
-					<div class="mt-5 space-y-4">
-						<div class="rounded-[calc(var(--radius-card)*1.4)] bg-[var(--c-bg-primary)] p-4">
-							<p class="text-sm text-[var(--c-text-muted)]" translate>Company name</p>
-							<p class="mt-2 text-lg font-semibold text-[var(--c-text-strong)]">
-								@if (company().name) {
-									{{ company().name }}
-								} @else {
-									<span translate>Using environment fallback</span>
-								}
-							</p>
+	<section class="home-section">
+		<div class="home-container">
+			<h2 class="home-heading">Арден у цифрах</h2>
+			<div class="home-grid home-grid--facts">
+				@for (fact of facts; track fact) {
+					<p class="home-card home-card--fact">{{ fact }}</p>
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div
+			class="home-container grid gap-8 lg:grid-cols-[minmax(16rem,0.82fr)_minmax(0,1fr)] lg:items-center"
+		>
+			<img class="home-image" [ngSrc]="aboutImage" width="1024" height="1024" alt="" />
+			<div>
+				<h2 class="home-heading">Простір, де природа і тварини живуть у гармонії</h2>
+				<p class="home-text">
+					Парк диких тварин «АРДЕН» розташований серед густого мішаного лісу, де ростуть
+					граби й могутні дуби, а повітря наповнене тишею, чистотою та звуками природи.
+				</p>
+				<p class="home-text">
+					Парк створений для збереження популяцій тварин, порятунку з неволі, розвитку
+					екоосвіти та відповідального ставлення до хижаків. Багато тварин потрапили сюди
+					після складного минулого, а тепер мають простір, догляд і безпечні умови для
+					життя.
+				</p>
+				<a class="home-button home-button--secondary" routerLink="/pro-park">
+					Дізнатись більше про парк
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div class="home-container">
+			<h2 class="home-heading">Що чекає на відвідувачів</h2>
+			<div class="home-grid">
+				@for (item of experienceItems; track item.title) {
+					<article class="home-card">
+						<h3 class="home-card-title">{{ item.title }}</h3>
+						<p class="home-card-text">{{ item.text }}</p>
+					</article>
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div class="home-container">
+			<h2 class="home-heading">Познайомтесь з мешканцями парку</h2>
+			<p class="home-text home-text--intro">
+				У «АРДЕНІ» живуть тварини з різними характерами, історіями та шляхом до нового
+				безпечного життя.
+			</p>
+			<div class="home-grid">
+				@for (animal of animalCategories; track animal.title) {
+					<article class="home-card home-card--media">
+						<img
+							class="home-card-image"
+							[ngSrc]="animal.image"
+							width="560"
+							height="360"
+							alt=""
+						/>
+						<div>
+							<h3 class="home-card-title">{{ animal.title }}</h3>
+							<p class="home-card-text">{{ animal.text }}</p>
 						</div>
+					</article>
+				}
+			</div>
+			<a class="home-button home-button--secondary" routerLink="/tvaryny"
+				>Перейти до тварин</a
+			>
+		</div>
+	</section>
 
-						<div
-							class="rounded-[calc(var(--radius-card)*1.4)] border border-[color:color-mix(in_srgb,var(--c-border)_70%,transparent)] bg-[color:color-mix(in_srgb,var(--c-bg-primary)_82%,transparent)] p-4 text-sm leading-7 text-[var(--c-text)]"
-						>
-							@if (company().description) {
-								{{ company().description }}
-							} @else {
-								<span translate>Company description is available from bootstrap state.</span>
-							}
+	<section class="home-section">
+		<div
+			class="home-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-center"
+		>
+			<div>
+				<h2 class="home-heading">Гордість парку − ведмежа колекція</h2>
+				<p class="home-text">
+					У природних лісових вольєрах парку живуть 45 ведмедів. Серед них − бурі
+					європейські, гімалайські та рідкісний бурий камчатський ведмідь.
+				</p>
+				<p class="home-text">
+					Багато ведмедів були врятовані з цирків, пересувних шоу, приватних садиб або
+					тісних кліток. У «АРДЕНІ» вони поступово відновлюються завдяки простору,
+					якісному харчуванню, ветеринарному догляду та щоденній турботі працівників.
+				</p>
+				<ul class="home-list home-list--columns">
+					@for (name of bearNames; track name) {
+						<li>{{ name }}</li>
+					}
+				</ul>
+				<a class="home-button home-button--secondary" routerLink="/tvaryny">
+					Познайомитись з тваринами
+				</a>
+			</div>
+			<img class="home-image" [ngSrc]="bearsImage" width="760" height="520" alt="" />
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div
+			class="home-container grid gap-8 lg:grid-cols-[minmax(16rem,0.82fr)_minmax(0,1fr)] lg:items-center"
+		>
+			<img class="home-image" [ngSrc]="bridgeGalleryImage" width="760" height="520" alt="" />
+			<div>
+				<h2 class="home-heading">Єдиний лісовий міст-галерея</h2>
+				<p class="home-text">
+					Оглядовий лісовий міст-галерея протяжністю близько 1 км проходить у кронах дерев
+					і дозволяє зручно та безпечно спостерігати за ландшафтами й дикими тваринами.
+				</p>
+				<p class="home-text">
+					Такий маршрут допомагає мінімізувати вплив людини на лісову екосистему та
+					створює особливе відчуття подорожі над диким лісом.
+				</p>
+				<a class="home-button home-button--secondary" routerLink="/ekskursii">
+					Дізнатись про екскурсії
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div
+			class="home-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-start"
+		>
+			<div>
+				<h2 class="home-heading">Екскурсії парком</h2>
+				<p class="home-text">
+					Екскурсія парком хижаків «АРДЕН» − це не просто знайомство з тваринами. Це
+					подорож у світ природи, можливість побачити диких звірів у наближених до
+					природних умовах, дізнатись їхні історії та зрозуміти, як важливо берегти кожне
+					життя.
+				</p>
+				<div class="home-list-grid">
+					<ul class="home-list">
+						@for (detail of excursionDetails; track detail) {
+							<li>{{ detail }}</li>
+						}
+					</ul>
+					<ul class="home-list">
+						@for (item of excursionSchedule; track item) {
+							<li>{{ item }}</li>
+						}
+					</ul>
+					<ul class="home-list">
+						@for (price of excursionPrices; track price) {
+							<li>{{ price }}</li>
+						}
+					</ul>
+				</div>
+				<p class="home-notice">
+					Вхід на територію парку дозволений тільки в складі групи, яку очолює
+					екскурсовод. Самостійний вхід на територію парку заборонено.
+				</p>
+				<a class="home-button home-button--primary" routerLink="/ekskursii">
+					Записатись на екскурсію
+				</a>
+			</div>
+			<img class="home-image" [ngSrc]="excursionsImage" width="760" height="520" alt="" />
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div class="home-container">
+			<h2 class="home-heading">4 сезони в «АРДЕНІ»</h2>
+			<p class="home-text home-text--intro">
+				Парк змінюється протягом року, і кожен сезон відкриває дику природу по-новому.
+				Весняне пробудження, літня зелень, осінні барви та зимова тиша створюють різну
+				атмосферу для спостереження за тваринами.
+			</p>
+			<div class="home-grid home-grid--four">
+				@for (season of seasons; track season.title) {
+					<article class="home-card home-card--media">
+						<img
+							class="home-card-image"
+							[ngSrc]="season.image"
+							width="560"
+							height="360"
+							alt=""
+						/>
+						<div>
+							<h3 class="home-card-title">{{ season.title }}</h3>
+							<p class="home-card-text">{{ season.text }}</p>
 						</div>
-					</div>
+					</article>
+				}
+			</div>
+			<a class="home-button home-button--secondary" routerLink="/4-sezony">
+				Переглянути 4 сезони
+			</a>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div
+			class="home-container grid gap-8 lg:grid-cols-[minmax(16rem,0.82fr)_minmax(0,1fr)] lg:items-center"
+		>
+			<img class="home-image" [ngSrc]="rescueStoriesImage" width="760" height="520" alt="" />
+			<div>
+				<h2 class="home-heading">Історії порятунку</h2>
+				<p class="home-text">
+					Парк «АРДЕН» став прихистком для багатьох тварин, зокрема тих, що були врятовані
+					з небезпечних територій, наближених до бойових дій, або з неприйнятних умов
+					утримання.
+				</p>
+				<p class="home-text">
+					Для багатьох із них парк став домом, де вони вперше відчули безпеку, тепло,
+					турботу та затишок.
+				</p>
+				<a class="home-button home-button--secondary" routerLink="/pidtrymaty">
+					Підтримати тварин
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div class="home-container">
+			<h2 class="home-heading">Інформація для гостей</h2>
+			<p class="home-text home-text--intro">
+				Парк диких тварин «АРДЕН» − це освітньо-відпочинковий простір для дітей і дорослих.
+				Тут можна побачити врятованих тварин, пройти екскурсійний маршрут, відвідати піцерію
+				та провести час із родиною або друзями.
+			</p>
+			<ul class="home-list home-list--columns">
+				@for (item of guestItems; track item) {
+					<li>{{ item }}</li>
+				}
+			</ul>
+			<a class="home-button home-button--secondary" routerLink="/gostiam">
+				Інформація для гостей
+			</a>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div class="home-container">
+			<h2 class="home-heading">Атмосфера парку</h2>
+			<p class="home-text home-text--intro">
+				Фото тварин, природні маршрути, міст-галерея, ліс, сезонні кадри та моменти з життя
+				парку.
+			</p>
+			<div class="home-grid">
+				@for (card of galleryCards; track card.title) {
+					<article class="home-card home-card--media">
+						<img
+							class="home-card-image"
+							[ngSrc]="card.image"
+							width="560"
+							height="360"
+							alt=""
+						/>
+						<h3 class="home-card-title">{{ card.title }}</h3>
+					</article>
+				}
+			</div>
+			<a class="home-button home-button--secondary" routerLink="/galereya"
+				>Дивитись галерею</a
+			>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div
+			class="home-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-center"
+		>
+			<div>
+				<h2 class="home-heading">Ви можете підтримати парк</h2>
+				<p class="home-text">
+					Підтримати «АРДЕН» можна матеріально, купуючи їжу для звірів або сувеніри у
+					лавці. Кожен внесок допомагає забезпечувати тварин кормом, доглядом, лікуванням
+					і комфортними умовами.
+				</p>
+				<ul class="home-list home-list--columns">
+					@for (option of supportOptions; track option) {
+						<li>{{ option }}</li>
+					}
+				</ul>
+				<a class="home-button home-button--primary" routerLink="/pidtrymaty">
+					Підтримати проєкт
+				</a>
+			</div>
+			<img class="home-image" [ngSrc]="supportImage" width="760" height="520" alt="" />
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div class="home-container">
+			<h2 class="home-heading">Новини та історії</h2>
+			<p class="home-text home-text--intro">
+				Читайте про життя парку, нових мешканців, події, екскурсії та історії порятунку
+				тварин.
+			</p>
+			<div class="home-grid home-grid--three">
+				@for (card of newsCards; track card.title) {
+					<article class="home-card home-card--media">
+						<img
+							class="home-card-image"
+							[ngSrc]="card.image"
+							width="560"
+							height="360"
+							alt=""
+						/>
+						<div>
+							<h3 class="home-card-title">{{ card.title }}</h3>
+							<p class="home-card-text">{{ card.text }}</p>
+						</div>
+					</article>
+				}
+			</div>
+			<a class="home-button home-button--secondary" routerLink="/novyny">Читати новини</a>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div
+			class="home-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-start"
+		>
+			<div>
+				<h2 class="home-heading">Плануйте свій візит</h2>
+				<p class="home-text">
+					Парк диких тварин «АРДЕН» розташований у смт Сатанів, Хмельницька область. Перед
+					візитом обов’язково зареєструйтесь на екскурсію.
+				</p>
+				<ul class="home-list">
+					@for (item of contactItems; track item) {
+						<li>{{ item }}</li>
+					}
+				</ul>
+				<div class="home-actions">
+					<a class="home-button home-button--primary" routerLink="/kontakty">Контакти</a>
+					<a class="home-button home-button--secondary" routerLink="/kontakty"
+						>Як дістатись</a
+					>
 				</div>
 			</div>
-		</section>
-	</div>
-</section>
+			<img class="home-image" [ngSrc]="contactsImage" width="760" height="520" alt="" />
+		</div>
+	</section>
+</main>

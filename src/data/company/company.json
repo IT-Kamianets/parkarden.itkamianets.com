@@ -1,8 +1,38 @@
 {
-  "_id": "",
-  "name": "IT Kamianets",
-  "title": "IT Kamianets",
-  "description": "Web and mobile app development, IT education, internships, and digital solutions for businesses.",
-  "image": "https://ngx.itkamianets.com/logo.png",
-	"siteUrl": "https://ngx.itkamianets.com"
+	"_id": "parkarden",
+	"name": "Park Arden",
+	"title": "Парк диких тварин “АРДЕН”",
+	"description": "Modern informational, booking, and donation website for Park Arden, a warm family-friendly wildlife park experience.",
+	"image": "logo.png",
+	"siteUrl": "https://parkarden.itkamianets.com",
+	"lang": "uk",
+	"locale": "uk_UA",
+	"defaultSeo": {
+		"title": "Park Arden",
+		"description": "Парк диких тварин “АРДЕН” - сучасний інформаційний сайт з бронюванням візитів і можливістю підтримати парк донатом.",
+		"keywords": [
+			"Park Arden",
+			"Парк АРДЕН",
+			"парк диких тварин",
+			"бронювання квитків",
+			"донати для парку",
+			"сімейний відпочинок"
+		],
+		"author": "Парк диких тварин “АРДЕН”",
+		"image": "logo.png"
+	},
+	"structuredData": {
+		"type": "TouristAttraction",
+		"addressCountry": "UA",
+		"sameAs": [
+			"https://parkarden.com.ua"
+		]
+	},
+	"custom": {
+		"client": "Парк диких тварин “АРДЕН”",
+		"currentWebsite": "https://parkarden.com.ua",
+		"temporaryDevDomain": "https://parkarden.itkamianets.com",
+		"websiteType": "modern informational + booking + donation website",
+		"style": "light, juicy, natural, warm green, family-friendly"
+	}
 }
