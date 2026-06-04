@@ -1,0 +1,289 @@
+<main class="excursions-page">
+	<section class="excursions-section excursions-hero">
+		<div
+			class="excursions-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.82fr)] lg:items-center"
+		>
+			<div>
+				<p class="excursions-eyebrow">Екскурсії</p>
+				<h1 class="excursions-title">Побачте дику природу зблизька</h1>
+				<p class="excursions-lead">
+					Екскурсія парком «АРДЕН» − це подорож у світ диких тварин, лісу та реальних
+					історій порятунку. Разом з екскурсоводом ви пройдете маршрутом парку, побачите
+					мешканців у природному середовищі та дізнаєтесь більше про їхнє життя.
+				</p>
+				<div class="excursions-actions">
+					<a class="excursions-button excursions-button--primary" routerLink="/ekskursii">
+						Записатись на екскурсію
+					</a>
+					<a class="excursions-button excursions-button--secondary" routerLink="/gostiam">
+						Інформація для гостей
+					</a>
+				</div>
+				<p class="excursions-note">
+					Вхід на територію парку дозволений тільки в складі групи з екскурсоводом.
+				</p>
+			</div>
+			<img
+				class="excursions-image excursions-image--hero"
+				[ngSrc]="heroImage"
+				width="1024"
+				height="1024"
+				alt=""
+				priority
+			/>
+		</div>
+	</section>
+
+	<section class="excursions-section">
+		<div
+			class="excursions-container grid gap-8 lg:grid-cols-[minmax(16rem,0.82fr)_minmax(0,1fr)] lg:items-center"
+		>
+			<img class="excursions-image" [ngSrc]="introImage" width="1024" height="1024" alt="" />
+			<div>
+				<h2 class="excursions-heading">Що входить в екскурсію</h2>
+				<p class="excursions-text">
+					Під час екскурсії ви познайомитесь із мешканцями парку, дізнаєтесь про їхнє
+					походження, звички, харчування, характер і історії порятунку.
+				</p>
+				<p class="excursions-text">
+					Маршрут проходить серед природного ландшафту Сатанівського лісу та включає
+					оглядовий лісовий міст-галерею, з якого зручно спостерігати за тваринами та
+					краєвидами.
+				</p>
+			</div>
+		</div>
+		<div class="excursions-container">
+			<div class="excursions-grid">
+				@for (item of includedItems; track item.title) {
+					<article class="excursions-card">
+						<h3 class="excursions-card-title">{{ item.title }}</h3>
+						<p class="excursions-card-text">{{ item.text }}</p>
+					</article>
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="excursions-section">
+		<div class="excursions-container">
+			<h2 class="excursions-heading">Основна інформація</h2>
+			<ul class="excursions-list excursions-list--columns">
+				@for (detail of details; track detail) {
+					<li>{{ detail }}</li>
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="excursions-section">
+		<div class="excursions-container">
+			<h2 class="excursions-heading">Графік екскурсій</h2>
+			<p class="excursions-text">
+				Екскурсії проводяться в усі календарні дні. Для групового відвідування рекомендуємо
+				попередньо записатися.
+			</p>
+			<div class="excursions-grid excursions-grid--two">
+				@for (card of scheduleCards; track card.title) {
+					<article class="excursions-card">
+						<h3 class="excursions-card-title">{{ card.title }}</h3>
+						<p class="excursions-card-text">{{ card.time }}</p>
+					</article>
+				}
+			</div>
+			<p class="excursions-notice">Потрібна попередня реєстрація за 1 день.</p>
+		</div>
+	</section>
+
+	<section class="excursions-section">
+		<div class="excursions-container">
+			<h2 class="excursions-heading">Вартість квитків</h2>
+			<div class="excursions-grid excursions-grid--three">
+				@for (card of priceCards; track card.title) {
+					<article class="excursions-card">
+						<h3 class="excursions-card-title">{{ card.title }}</h3>
+						<p class="excursions-price">{{ card.price }}</p>
+						<p class="excursions-card-text">{{ card.text }}</p>
+					</article>
+				}
+			</div>
+			<p class="excursions-note">Діти відвідують парк лише у супроводі дорослих.</p>
+		</div>
+	</section>
+
+	<section class="excursions-section">
+		<div
+			class="excursions-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-center"
+		>
+			<div>
+				<h2 class="excursions-heading">Екскурсії для груп</h2>
+				<p class="excursions-text">
+					Якщо ви плануєте завітати групою 15–25 осіб з однокласниками, колегами, друзями
+					або родиною, можна записатися на групову екскурсію без очікування в черзі та в
+					супроводі окремого екскурсовода.
+				</p>
+				<ul class="excursions-list">
+					@for (benefit of groupBenefits; track benefit) {
+						<li>{{ benefit }}</li>
+					}
+				</ul>
+				<a class="excursions-button excursions-button--primary" routerLink="/ekskursii">
+					Записати групу
+				</a>
+			</div>
+			<img class="excursions-image" [ngSrc]="groupImage" width="1024" height="1024" alt="" />
+		</div>
+	</section>
+
+	<section class="excursions-section">
+		<div class="excursions-container">
+			<h2 class="excursions-heading">Записатись на екскурсію</h2>
+			<p class="excursions-text">
+				Заповніть форму, і адміністратор парку зв’яжеться з вами для підтвердження дати,
+				часу та деталей відвідування.
+			</p>
+			<form class="excursions-form" (submit)="submitForm(); $event.preventDefault()">
+				@for (field of formFields; track field.key) {
+					<label class="excursions-field">
+						<span class="excursions-field-label">{{ field.label }}</span>
+						@if (field.key === 'comment') {
+							<textarea
+								class="excursions-input"
+								[attr.required]="field.required ? '' : null"
+								rows="4"
+							></textarea>
+						} @else {
+							<input
+								class="excursions-input"
+								[type]="fieldInputType(field)"
+								[attr.required]="field.required ? '' : null"
+								[attr.min]="isNumberField(field) ? 0 : null"
+								(input)="updateCount(field.key, $any($event.target).value)"
+							/>
+						}
+					</label>
+				}
+				<button class="excursions-button excursions-button--primary" type="submit">
+					Надіслати заявку
+				</button>
+			</form>
+			<p class="excursions-note">
+				Форма запису має показувати попередній розрахунок вартості в реальному часі.
+			</p>
+		</div>
+	</section>
+
+	<section class="excursions-section">
+		<div class="excursions-container">
+			<h2 class="excursions-heading">Попередній розрахунок</h2>
+			<div class="excursions-calculator">
+				<label class="excursions-field">
+					<span class="excursions-field-label">Дорослі</span>
+					<input
+						class="excursions-input"
+						type="number"
+						min="0"
+						[value]="adults()"
+						(input)="updateCount('adults', $any($event.target).value)"
+					/>
+				</label>
+				<label class="excursions-field">
+					<span class="excursions-field-label">Діти 6–14 років</span>
+					<input
+						class="excursions-input"
+						type="number"
+						min="0"
+						[value]="children()"
+						(input)="updateCount('children', $any($event.target).value)"
+					/>
+				</label>
+				<label class="excursions-field">
+					<span class="excursions-field-label">Діти до 6 років</span>
+					<input
+						class="excursions-input"
+						type="number"
+						min="0"
+						[value]="youngChildren()"
+						(input)="updateCount('youngChildren', $any($event.target).value)"
+					/>
+				</label>
+				<div class="excursions-total">
+					<p class="excursions-field-label">Попередня сума</p>
+					<p class="excursions-price">{{ preliminaryTotal() }} грн</p>
+				</div>
+			</div>
+			<p class="excursions-note">
+				Остаточне підтвердження запису та вартості відбувається після дзвінка
+				адміністратора.
+			</p>
+		</div>
+	</section>
+
+	<section class="excursions-section">
+		<div class="excursions-container">
+			<h2 class="excursions-heading">Важливо знати перед візитом</h2>
+			<ul class="excursions-list excursions-list--columns">
+				@for (rule of rules; track rule) {
+					<li>{{ rule }}</li>
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="excursions-section">
+		<div
+			class="excursions-container grid gap-8 lg:grid-cols-[minmax(16rem,0.82fr)_minmax(0,1fr)] lg:items-center"
+		>
+			<img
+				class="excursions-image"
+				[ngSrc]="phoneBookingImage"
+				width="1024"
+				height="1024"
+				alt=""
+			/>
+			<div>
+				<h2 class="excursions-heading">Маєте питання або хочете записатись телефоном?</h2>
+				<p class="excursions-text">
+					Зателефонуйте нам, щоб уточнити дату, час, кількість людей у групі та деталі
+					відвідування.
+				</p>
+				<p class="excursions-phone">+38 (067) 313-44-00</p>
+				<a class="excursions-button excursions-button--primary" href="tel:+380673134400">
+					Зателефонувати
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="excursions-section">
+		<div
+			class="excursions-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-center"
+		>
+			<div>
+				<h2 class="excursions-heading">Приїжджайте на екскурсію до «АРДЕНУ»</h2>
+				<p class="excursions-text">
+					Побачте тварин наживо, пройдіть лісовим маршрутом і дізнайтесь історії мешканців
+					парку від екскурсовода.
+				</p>
+				<div class="excursions-actions">
+					@for (button of finalButtons; track button.label) {
+						<a
+							class="excursions-button"
+							[class.excursions-button--primary]="button.style === 'primary'"
+							[class.excursions-button--secondary]="button.style === 'secondary'"
+							[routerLink]="button.path"
+						>
+							{{ button.label }}
+						</a>
+					}
+				</div>
+			</div>
+			<img
+				class="excursions-image"
+				[ngSrc]="finalCtaImage"
+				width="1024"
+				height="1024"
+				alt=""
+			/>
+		</div>
+	</section>
+</main>

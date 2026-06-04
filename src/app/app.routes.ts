@@ -66,8 +66,11 @@ export const routes: Routes = [
 		path: 'ekskursii',
 		data: {
 			meta: {
-				title: 'Excursions',
-				description: 'Excursions and guided visit options at Park Arden.',
+				title: 'Екскурсії в парк «АРДЕН» − ціни, графік та запис на відвідування',
+				description:
+					'Запишіться на екскурсію до Парку диких тварин «АРДЕН». Тривалість 60 хвилин, групи 15–25 осіб, дорослий квиток 400 грн, дитячий 300 грн, діти до 6 років безкоштовно.',
+				// TODO: Replace with wide photo of visitors on excursion, guide with group, bridge-gallery, or animals visible from the route. Best ratio: 1200x630 for Open Graph.
+				image: 'logo.png',
 			},
 		},
 		loadComponent: () =>

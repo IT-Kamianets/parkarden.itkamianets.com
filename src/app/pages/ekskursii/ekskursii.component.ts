@@ -1,7 +1,182 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+interface FormField {
+	key: string;
+	label: string;
+	type: string;
+	required: boolean;
+}
+
+const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
+const ADULT_PRICE = 400;
+const CHILD_PRICE = 300;
 
 @Component({
-	template: '',
+	imports: [NgOptimizedImage, RouterLink],
+	templateUrl: './ekskursii.component.html',
+	styleUrl: './ekskursii.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EkskursiiComponent {}
+export class EkskursiiComponent {
+	// TODO: Replace with real photo of guided excursion, visitors on bridge-gallery, or park route.
+	protected readonly heroImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	// TODO: Replace with real photo of excursion route, group of visitors, or guide near bridge-gallery.
+	protected readonly introImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	// TODO: Replace with real photo of school group, family group, or visitors on excursion.
+	protected readonly groupImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	// TODO: Replace with warm photo of park administrator, entrance, or visitors arriving at the park.
+	protected readonly phoneBookingImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	// TODO: Replace with strong closing photo of bridge-gallery, animals, or happy visitors after excursion.
+	protected readonly finalCtaImage = TEMPORARY_PLACEHOLDER_IMAGE;
+
+	protected readonly includedItems = [
+		{
+			title: 'Супровід екскурсовода',
+			text: 'Екскурсовод розповідає про тварин, їхні історії та особливості життя в парку.',
+		},
+		{
+			title: 'Огляд тварин',
+			text: 'Ведмеді, великі коти, вовки, примати, олені, птахи та інші мешканці парку.',
+		},
+		{
+			title: 'Лісовий міст-галерея',
+			text: 'Майже кілометровий оглядовий маршрут у кронах дерев.',
+		},
+		{
+			title: 'Прогулянка диким лісом',
+			text: 'Атмосфера Подільських Товтр, чисте повітря, тиша та природні краєвиди.',
+		},
+		{
+			title: 'Екоосвіта',
+			text: 'Живе знайомство з дикою природою, відповідальним ставленням до тварин і місією парку.',
+		},
+	];
+
+	protected readonly details = [
+		'Тривалість: 60 хвилин',
+		'Формат: тільки з екскурсоводом',
+		'Рекомендована група: 15–25 осіб',
+		'Реєстрація: мінімум за 1 день до візиту',
+		'Екскурсії проводяться щодня',
+		'Самостійний вхід на територію парку заборонено',
+		'З домашніми тваринами вхід на оглядовий міст-галерею заборонено',
+	];
+
+	protected readonly scheduleCards = [
+		{
+			title: 'Понеділок − п’ятниця',
+			time: 'Щогодини з 10:00 до 17:00',
+		},
+		{
+			title: 'Субота − неділя',
+			time: 'Щогодини з 10:00 до 18:00',
+		},
+	];
+
+	protected readonly priceCards = [
+		{
+			title: 'Дорослий квиток',
+			price: '400 грн',
+			text: 'Для дорослих відвідувачів.',
+		},
+		{
+			title: 'Дитячий квиток',
+			price: '300 грн',
+			text: 'Для школярів або дітей від 6 до 14 років, виключно в супроводі дорослих.',
+		},
+		{
+			title: 'Діти до 6 років',
+			price: 'Безкоштовно',
+			text: 'Виключно в супроводі дорослих.',
+		},
+	];
+
+	protected readonly groupBenefits = [
+		'Зручно для шкіл, таборів і туристичних груп',
+		'Окремий екскурсовод для групи',
+		'Більше часу для запитань',
+		'Можливість краще спланувати день',
+		'Позитивні емоції та спільні враження',
+	];
+
+	protected readonly formFields: FormField[] = [
+		// Add client-side validation for required fields. Server-side validation will be implemented later with API.
+		{ key: 'firstName', label: 'Ім’я', type: 'text', required: true },
+		{ key: 'lastName', label: 'Прізвище', type: 'text', required: true },
+		{ key: 'phone', label: 'Телефон', type: 'tel', required: true },
+		{ key: 'email', label: 'Email', type: 'email', required: true },
+		{ key: 'date', label: 'Бажана дата', type: 'date', required: true },
+		{ key: 'time', label: 'Бажаний час', type: 'time', required: true },
+		{ key: 'adults', label: 'Кількість дорослих', type: 'number', required: true },
+		{ key: 'children', label: 'Кількість дітей 6–14 років', type: 'number', required: true },
+		{
+			key: 'youngChildren',
+			label: 'Кількість дітей до 6 років',
+			type: 'number',
+			required: false,
+		},
+		{ key: 'comment', label: 'Коментар', type: 'text', required: false },
+	];
+
+	protected readonly rules = [
+		'Вхід на територію парку тільки в складі групи з екскурсоводом.',
+		'Самостійний вхід на територію парку заборонено.',
+		'Для групового відвідування потрібна попередня реєстрація за 1 день.',
+		'Рекомендований розмір групи − 15–25 осіб.',
+		'Діти відвідують парк лише у супроводі дорослих.',
+		'З домашніми тваринами вхід на оглядовий міст-галерею заборонено.',
+		'Тривалість екскурсії − 60 хвилин.',
+	];
+
+	protected readonly finalButtons = [
+		{
+			label: 'Записатись на екскурсію',
+			path: '/ekskursii',
+			style: 'primary',
+		},
+		{
+			label: 'Переглянути тварин',
+			path: '/tvaryny',
+			style: 'secondary',
+		},
+	];
+
+	protected readonly adults = signal(0);
+	protected readonly children = signal(0);
+	protected readonly youngChildren = signal(0);
+	protected readonly preliminaryTotal = computed(
+		() => this.adults() * ADULT_PRICE + this.children() * CHILD_PRICE,
+	);
+
+	protected fieldInputType(field: FormField): string {
+		return field.type;
+	}
+
+	protected isNumberField(field: FormField): boolean {
+		return ['adults', 'children', 'youngChildren'].includes(field.key);
+	}
+
+	protected updateCount(fieldKey: string, value: string): void {
+		const parsedValue = Math.max(0, Number(value) || 0);
+
+		if (fieldKey === 'adults') {
+			this.adults.set(parsedValue);
+		}
+
+		if (fieldKey === 'children') {
+			this.children.set(parsedValue);
+		}
+
+		if (fieldKey === 'youngChildren') {
+			this.youngChildren.set(parsedValue);
+		}
+	}
+
+	protected submitForm(): void {
+		// TODO: Add reCAPTCHA v3 integration later.
+		// TODO: After form submit, send notification to administrator and confirmation email to visitor later.
+		// TODO: Optional future integration with Google Calendar for excursion requests.
+	}
+}
