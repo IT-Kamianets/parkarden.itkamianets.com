@@ -23,8 +23,11 @@ export const routes: Routes = [
 		path: 'pro-park',
 		data: {
 			meta: {
-				title: 'About park',
-				description: 'Learn about Park Arden and the wildlife park experience.',
+				title: 'Про парк «АРДЕН» − парк диких тварин у серці Подільських Товтр',
+				description:
+					'Дізнайтесь більше про Парк диких тварин «АРДЕН»: понад 32 гектари лісу, 160+ тварин, ведмежа колекція, лісовий міст-галерея та місія порятунку диких тварин.',
+				// TODO: Replace with wide photo of Park Arden forest, bridge-gallery, animal in natural surroundings, or atmospheric park landscape. Best ratio: 1200x630 for Open Graph.
+				image: 'logo.png',
 			},
 		},
 		loadComponent: () =>

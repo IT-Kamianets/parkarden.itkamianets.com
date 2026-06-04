@@ -1,0 +1,309 @@
+<main class="about-page">
+	<section class="about-section about-hero">
+		<div
+			class="about-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.82fr)] lg:items-center"
+		>
+			<div>
+				<p class="about-eyebrow">Про парк</p>
+				<h1 class="about-title">«АРДЕН» − простір дикої природи, спокою та порятунку</h1>
+				<p class="about-lead">
+					Парк диких тварин «АРДЕН» розташований у серці Національного природного парку
+					«Подільські Товтри». Це один із найбільших сучасних парків диких тварин в
+					Україні, де природа й тварини живуть у спокої, гармонії та безпеці.
+				</p>
+				<div class="about-actions">
+					<a class="about-button about-button--primary" routerLink="/ekskursii">
+						Записатись на екскурсію
+					</a>
+					<a class="about-button about-button--secondary" routerLink="/pidtrymaty">
+						Підтримати парк
+					</a>
+				</div>
+			</div>
+			<img
+				class="about-image about-image--hero"
+				[ngSrc]="heroImage"
+				width="1024"
+				height="1024"
+				alt=""
+				priority
+			/>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div
+			class="about-container grid gap-8 lg:grid-cols-[minmax(16rem,0.82fr)_minmax(0,1fr)] lg:items-center"
+		>
+			<img class="about-image" [ngSrc]="introImage" width="1024" height="1024" alt="" />
+			<div>
+				<h2 class="about-heading">Місце, де дика природа має простір</h2>
+				<p class="about-text">
+					«АРДЕН» займає понад 32 гектари природної території серед густого мішаного лісу.
+					Тут височіють стрункі граби й могутні дуби, повітря наповнене чистотою та тишею,
+					а звуки природи стають частиною подорожі.
+				</p>
+				<p class="about-text">
+					Сьогодні в парку мешкає понад 160 тварин. Кожна з них має свою історію − часто
+					непросту, але тепер уже з безпечним продовженням.
+				</p>
+				<p class="about-text">
+					Парк створений для збереження популяцій тварин, порятунку з неволі,
+					популяризації знань про хижаків українських лісів, розвитку екоосвіти та
+					екотуризму.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div class="about-container">
+			<h2 class="about-heading">Наша місія</h2>
+			<p class="about-text about-text--intro">
+				Місія «АРДЕНУ» − не лише зберігати, а й рятувати. Парк допомагає тваринам, які
+				постраждали від неволі, неналежних умов або небезпечних територій, і створює для них
+				простір для відновлення.
+			</p>
+			<p class="about-text about-text--intro">
+				Ми хочемо, щоб відвідувачі бачили в тваринах не експонати, а живих істот із
+				характером, потребами та власною історією.
+			</p>
+			<div class="about-grid">
+				@for (item of missionItems; track item.title) {
+					<article class="about-card">
+						<h3 class="about-card-title">{{ item.title }}</h3>
+						<p class="about-card-text">{{ item.text }}</p>
+					</article>
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div
+			class="about-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-center"
+		>
+			<div>
+				<h2 class="about-heading">Історія створення</h2>
+				<p class="about-text">
+					Парк хижаків був створений за сприяння та безпосередньої участі голови
+					наглядової ради ПрАТ Об’єднання «Прогрес» Артура Давидовича Фрідмана.
+				</p>
+				<p class="about-text">
+					Ідея проєкту полягала в тому, щоб створити безпечний природний простір для диких
+					тварин і водночас дати людям можливість побачити хижаків у середовищі,
+					максимально наближеному до природного.
+				</p>
+				<p class="about-text">
+					З часом «АРДЕН» став великим природоохоронним, освітнім і туристичним простором,
+					де поєднуються турбота про тварин, лісова атмосфера та живі історії порятунку.
+				</p>
+			</div>
+			<img class="about-image" [ngSrc]="historyImage" width="1024" height="1024" alt="" />
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div
+			class="about-container grid gap-8 lg:grid-cols-[minmax(16rem,0.82fr)_minmax(0,1fr)] lg:items-center"
+		>
+			<img class="about-image" [ngSrc]="natureImage" width="1024" height="1024" alt="" />
+			<div>
+				<h2 class="about-heading">У серці Подільських Товтр</h2>
+				<p class="about-text">
+					Парк розташований у мальовничому природному середовищі Подільських Товтр. Тут
+					відвідувачі можуть відчути первинну неповторність фауни лісів подільського краю.
+				</p>
+				<p class="about-text">
+					Прогулянка парком − це не лише знайомство з тваринами, а й подорож диким лісом:
+					серед дерев, тиші, пташиного співу, чистого повітря та природних ландшафтів.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div
+			class="about-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-center"
+		>
+			<div>
+				<h2 class="about-heading">Єдиний лісовий міст-галерея</h2>
+				<p class="about-text">
+					Одна з головних особливостей парку − оглядовий лісовий міст-галерея протяжністю
+					близько 1 км.
+				</p>
+				<p class="about-text">
+					Міст проходить у кронах дерев і дозволяє зручно спостерігати за ландшафтами та
+					дикими тваринами. Такий формат також допомагає мінімізувати вплив людини на
+					лісову екосистему.
+				</p>
+				<ul class="about-list about-list--columns">
+					@for (fact of bridgeFacts; track fact) {
+						<li>{{ fact }}</li>
+					}
+				</ul>
+			</div>
+			<img
+				class="about-image"
+				[ngSrc]="bridgeGalleryImage"
+				width="1024"
+				height="1024"
+				alt=""
+			/>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div
+			class="about-container grid gap-8 lg:grid-cols-[minmax(16rem,0.82fr)_minmax(0,1fr)] lg:items-center"
+		>
+			<img class="about-image" [ngSrc]="bearsImage" width="1024" height="1024" alt="" />
+			<div>
+				<h2 class="about-heading">Гордість парку − ведмежа колекція</h2>
+				<p class="about-text">
+					У природних лісових вольєрах «АРДЕНУ» живуть 45 ведмедів. Серед них − бурі
+					європейські, гімалайські та рідкісний бурий камчатський ведмідь.
+				</p>
+				<p class="about-text">
+					Багато ведмедів були врятовані з небезпечних або неприйнятних умов утримання: із
+					цирків, пересувних шоу, приватних садиб і тісних кліток. У парку вони поступово
+					відновлюються завдяки великому простору, догляду, харчуванню та роботі
+					працівників.
+				</p>
+				<ul class="about-list">
+					@for (highlight of bearHighlights; track highlight) {
+						<li>{{ highlight }}</li>
+					}
+				</ul>
+				<a class="about-button about-button--secondary" routerLink="/tvaryny">
+					Перейти до тварин
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div class="about-container">
+			<h2 class="about-heading">Мешканці парку</h2>
+			<p class="about-text about-text--intro">
+				В «АРДЕНІ» можна побачити різних диких тварин − від ведмедів і великих котів до
+				приматів, вовків, оленів, птахів та інших мешканців природного середовища.
+			</p>
+			<div class="about-grid">
+				@for (group of animalGroups; track group.title) {
+					<article class="about-card about-card--media">
+						<img
+							class="about-card-image"
+							[ngSrc]="group.image"
+							width="560"
+							height="360"
+							alt=""
+						/>
+						<div>
+							<h3 class="about-card-title">{{ group.title }}</h3>
+							<p class="about-card-text">{{ group.text }}</p>
+						</div>
+					</article>
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div
+			class="about-container grid gap-8 lg:grid-cols-[minmax(16rem,0.82fr)_minmax(0,1fr)] lg:items-center"
+		>
+			<img
+				class="about-image"
+				[ngSrc]="rescueStoriesImage"
+				width="1024"
+				height="1024"
+				alt=""
+			/>
+			<div>
+				<h2 class="about-heading">Історії порятунку</h2>
+				<p class="about-text">
+					Парк «АРДЕН» став прихистком для багатьох тварин. Сюди прибули звірі, врятовані
+					з територій, наближених до бойових дій, а також тварини, які раніше жили в
+					неприйнятних умовах.
+				</p>
+				<p class="about-text">
+					Для багатьох із них парк став домом, де вони вперше відчули безпеку, тепло,
+					турботу та затишок.
+				</p>
+				<p class="about-text">
+					Історії відновлення ведмедів та інших тварин доводять: любов, простір і
+					правильний догляд здатні творити справжні дива.
+				</p>
+				<a class="about-button about-button--secondary" routerLink="/pidtrymaty">
+					Підтримати парк
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div class="about-container">
+			<h2 class="about-heading">Що відчувають відвідувачі</h2>
+			<p class="about-text about-text--intro">
+				Екскурсія парком − це не просто прогулянка. Це можливість побачити диких тварин у
+				наближених до природних умовах, дізнатися їхні історії та зрозуміти, як важливо
+				берегти кожне життя.
+			</p>
+			<div class="about-grid">
+				@for (item of experienceItems; track item.title) {
+					<article class="about-card">
+						<h3 class="about-card-title">{{ item.title }}</h3>
+						<p class="about-card-text">{{ item.text }}</p>
+					</article>
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div class="about-container">
+			<h2 class="about-heading">Для кого цей парк</h2>
+			<div class="about-grid">
+				@for (card of audienceCards; track card.title) {
+					<article class="about-card about-card--media">
+						<img
+							class="about-card-image"
+							[ngSrc]="card.image"
+							width="560"
+							height="360"
+							alt=""
+						/>
+						<div>
+							<h3 class="about-card-title">{{ card.title }}</h3>
+							<p class="about-card-text">{{ card.text }}</p>
+						</div>
+					</article>
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div
+			class="about-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-center"
+		>
+			<div>
+				<h2 class="about-heading">Приїжджайте побачити «АРДЕН» наживо</h2>
+				<p class="about-text">
+					Тут кожен маршрут, кожна тварина і кожна історія нагадують: дика природа
+					потребує простору, захисту та уважного ставлення.
+				</p>
+				<div class="about-actions">
+					<a class="about-button about-button--primary" routerLink="/ekskursii">
+						Записатись на екскурсію
+					</a>
+					<a class="about-button about-button--secondary" routerLink="/pidtrymaty">
+						Підтримати парк
+					</a>
+				</div>
+			</div>
+			<img class="about-image" [ngSrc]="finalCtaImage" width="1024" height="1024" alt="" />
+		</div>
+	</section>
+</main>
