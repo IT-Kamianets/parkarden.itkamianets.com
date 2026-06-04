@@ -51,8 +51,10 @@ export const routes: Routes = [
 		path: 'tvaryny/:slug',
 		data: {
 			meta: {
-				title: 'Animal details',
-				description: 'Animal details from the Park Arden catalog.',
+				title: 'Тварина парку «АРДЕН»',
+				description: 'Картка мешканця Парку диких тварин «АРДЕН».',
+				// TODO: Replace with real close-up photo of this animal. Best ratio: 1200x630 for Open Graph.
+				image: 'logo.png',
 			},
 		},
 		loadComponent: () =>
