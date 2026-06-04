@@ -1,221 +1,166 @@
-TASK:
-Fill only the News page `/novyny` for Park Arden website using the exact Ukrainian content below.
-Do not invent extra text.
-Do not focus on final design.
-Use clean sections, headings, cards, filters, buttons, and reusable content arrays where useful.
+<main class="bg-[#f7fbf3] text-[#1f2a1f]">
+	<section class="px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+		<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.85fr)] lg:items-center">
+			<div>
+				<p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#5f7f35]">Новини</p>
+				<h1 class="max-w-3xl text-4xl font-bold leading-tight text-[#172315] sm:text-5xl">
+					Новини та історії з життя «АРДЕНУ»
+				</h1>
+				<p class="mt-5 max-w-2xl text-lg leading-8 text-[#42513d]">
+					Тут публікуються важливі оновлення для гостей, сезонні повідомлення, історії мешканців парку, новини про екскурсії та події з життя дикої природи.
+				</p>
+				<div class="mt-7 flex flex-wrap gap-3">
+					<a class="rounded-md bg-[#5f7f35] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#4c692b]" routerLink="/ekskursii">
+						Записатись на екскурсію
+					</a>
+					<a class="rounded-md border border-[#5f7f35] px-5 py-3 text-sm font-semibold text-[#3d5f20] transition hover:bg-white" routerLink="/tvaryny">
+						Переглянути тварин
+					</a>
+				</div>
+			</div>
+			<img
+				class="aspect-[4/3] w-full rounded-lg bg-white object-contain p-6 shadow-sm"
+				[ngSrc]="heroImage"
+				width="760"
+				height="570"
+				alt=""
+				priority
+			/>
+		</div>
+	</section>
 
-PROJECT:
-Project name: Park Arden Website
-Client: Парк диких тварин «АРДЕН»
-Website type: modern informational + booking + donation website
-Style direction later: light, juicy, natural, warm green, emotional, family-friendly
+	<section class="px-4 py-12 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-4xl">
+			<h2 class="text-3xl font-bold text-[#172315]">Життя парку триває щодня</h2>
+			<div class="mt-5 space-y-4 text-lg leading-8 text-[#42513d]">
+				<p>
+					У «АРДЕНІ» постійно відбувається багато важливого: змінюється сезон, оновлюється графік екскурсій, з’являються нові історії тварин, а відвідувачі відкривають парк по-новому.
+				</p>
+				<p>
+					На цій сторінці зібрані новини, оголошення та матеріали, які допоможуть краще спланувати візит і ближче познайомитись із мешканцями парку.
+				</p>
+			</div>
+		</div>
+	</section>
 
-SEO:
-Title:
-Новини парку «АРДЕН» − події, екскурсії та історії тварин
+	<section class="px-4 py-12 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-6xl">
+			<h2 class="text-3xl font-bold text-[#172315]">Рубрики новин</h2>
+			<div class="mt-6 rounded-lg border border-[#d9e5ca] bg-white p-4 shadow-sm">
+				<div class="flex flex-wrap gap-2" aria-label="Рубрики новин">
+					@for (filter of filters; track filter) {
+						<button class="rounded-md border border-[#c9d9b7] px-4 py-2 text-sm font-semibold text-[#3d5f20] transition hover:bg-[#edf5e5]" type="button">
+							{{ filter }}
+						</button>
+					}
+				</div>
+				<label class="mt-4 block">
+					<span class="sr-only">Пошук новини</span>
+					<input
+						class="w-full rounded-md border border-[#c9d9b7] bg-[#fbfdf8] px-4 py-3 text-sm outline-none transition placeholder:text-[#829073] focus:border-[#5f7f35]"
+						type="search"
+						placeholder="Пошук новини"
+					/>
+				</label>
+			</div>
+		</div>
+	</section>
 
-Description:
-Читайте новини Парку диких тварин «АРДЕН»: оновлення графіку, ціни, екскурсії, життя мешканців, сезонні історії та події парку.
+	<section class="px-4 py-12 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-6xl">
+			<h2 class="text-3xl font-bold text-[#172315]">Важливе для гостей</h2>
+			<div class="mt-6 grid gap-5 lg:grid-cols-3">
+				@for (card of featuredCards; track card.slug) {
+					<a class="group overflow-hidden rounded-lg border border-[#d9e5ca] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" [routerLink]="['/novyny', card.slug]">
+						<img class="aspect-[4/3] w-full bg-[#f7fbf3] object-contain p-5" [ngSrc]="card.image" width="560" height="420" alt="" />
+						<div class="p-5">
+							<div class="mb-3 flex flex-wrap gap-2 text-xs font-semibold">
+								<span class="rounded bg-[#edf5e5] px-2.5 py-1 text-[#3d5f20]">{{ card.category }}</span>
+								<span class="rounded bg-[#f4efe4] px-2.5 py-1 text-[#7b5d22]">{{ card.date }}</span>
+							</div>
+							<h3 class="text-xl font-bold text-[#172315] group-hover:text-[#4c692b]">{{ card.title }}</h3>
+							<p class="mt-3 text-sm leading-6 text-[#52604d]">{{ card.text }}</p>
+							<span class="mt-5 inline-flex text-sm font-semibold text-[#3d5f20]">Читати більше</span>
+						</div>
+					</a>
+				}
+			</div>
+		</div>
+	</section>
 
-Image:
-Use the same temporary placeholder image for now.
+	<section class="px-4 py-12 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-6xl">
+			<h2 class="text-3xl font-bold text-[#172315]">Усі новини</h2>
+			<div class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+				@for (card of newsCards; track card.slug) {
+					<a class="group overflow-hidden rounded-lg border border-[#d9e5ca] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" [routerLink]="['/novyny', card.slug]">
+						<img class="aspect-[4/3] w-full bg-[#f7fbf3] object-contain p-5" [ngSrc]="card.image" width="560" height="420" alt="" />
+						<div class="p-5">
+							<div class="mb-3 flex flex-wrap gap-2 text-xs font-semibold">
+								<span class="rounded bg-[#edf5e5] px-2.5 py-1 text-[#3d5f20]">{{ card.category }}</span>
+								<span class="rounded bg-[#f4efe4] px-2.5 py-1 text-[#7b5d22]">{{ card.date }}</span>
+							</div>
+							<h3 class="text-xl font-bold text-[#172315] group-hover:text-[#4c692b]">{{ card.title }}</h3>
+							<p class="mt-3 text-sm leading-6 text-[#52604d]">{{ card.text }}</p>
+						</div>
+					</a>
+				}
+			</div>
+		</div>
+	</section>
 
-SEO image TODO:
-Replace with wide photo of Park Arden animals, visitors, bridge-gallery, or fresh park news moment. Best ratio: 1200x630 for Open Graph.
+	<section class="px-4 py-12 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-6xl">
+			<h2 class="text-3xl font-bold text-[#172315]">Про що ми пишемо</h2>
+			<div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+				@for (item of newsTypeItems; track item.title) {
+					<article class="rounded-lg border border-[#d9e5ca] bg-white p-5 shadow-sm">
+						<h3 class="text-lg font-bold text-[#172315]">{{ item.title }}</h3>
+						<p class="mt-3 text-sm leading-6 text-[#52604d]">{{ item.text }}</p>
+					</article>
+				}
+			</div>
+		</div>
+	</section>
 
-IMAGE RULE:
-For every image on this page, use the same temporary placeholder image.
-In code, add a TODO comment near every image data/object explaining what real image should replace it.
+	<section class="px-4 py-12 sm:px-6 lg:px-8">
+		<div class="mx-auto grid max-w-6xl gap-8 rounded-lg border border-[#d9e5ca] bg-white p-5 shadow-sm lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-center lg:p-8">
+			<img class="aspect-[4/3] w-full rounded-lg bg-[#f7fbf3] object-contain p-6" [ngSrc]="followImage" width="640" height="480" alt="" />
+			<div>
+				<h2 class="text-3xl font-bold text-[#172315]">Слідкуйте за життям парку</h2>
+				<p class="mt-4 text-lg leading-8 text-[#42513d]">
+					Щоб не пропустити важливі оновлення, нові фото, історії тварин та сезонні новини, стежте за «АРДЕНОМ» у соціальних мережах.
+				</p>
+				<div class="mt-6 flex flex-wrap gap-3">
+					@for (button of socialButtons; track button) {
+						<button class="rounded-md border border-[#5f7f35] px-5 py-3 text-sm font-semibold text-[#3d5f20] transition hover:bg-[#edf5e5]" type="button">
+							{{ button }}
+						</button>
+					}
+				</div>
+			</div>
+		</div>
+	</section>
 
-PAGE CONTENT:
-
-1. HERO SECTION
-
-Image TODO:
-Replace with real wide photo of park life: animal, visitors, bridge-gallery, or seasonal park atmosphere.
-
-Eyebrow:
-Новини
-
-H1:
-Новини та історії з життя «АРДЕНУ»
-
-Subtitle:
-Тут публікуються важливі оновлення для гостей, сезонні повідомлення, історії мешканців парку, новини про екскурсії та події з життя дикої природи.
-
-Primary button:
-Записатись на екскурсію
-
-Secondary button:
-Переглянути тварин
-
-2. INTRO SECTION
-
-Section title:
-Життя парку триває щодня
-
-Text:
-У «АРДЕНІ» постійно відбувається багато важливого: змінюється сезон, оновлюється графік екскурсій, з’являються нові історії тварин, а відвідувачі відкривають парк по-новому.
-
-На цій сторінці зібрані новини, оголошення та матеріали, які допоможуть краще спланувати візит і ближче познайомитись із мешканцями парку.
-
-3. FILTERS SECTION
-
-Section title:
-Рубрики новин
-
-Filters:
-- Усі новини
-- Оголошення
-- Екскурсії
-- Тварини
-- Історії порятунку
-- 4 сезони
-- Для гостей
-
-Search placeholder:
-Пошук новини
-
-4. FEATURED NEWS SECTION
-
-Section title:
-Важливе для гостей
-
-Featured cards:
-- Зміна вартості квитків
-  Slug: zmina-vartosti-kvytkiv
-  Category: Оголошення
-  Date: Оновлено з 18.05.2026
-  Image TODO: Replace with real image for ticket price update or park entrance.
-  Text: З 18.05.2026 діють оновлені ціни: дорослий квиток − 400 грн, дитячий квиток 6–14 років − 300 грн. Діти відвідують парк лише у супроводі дорослих.
-  Button: Читати більше
-
-- Працюємо кожен день
-  Slug: praczyuyemo-kozhen-den
-  Category: Екскурсії
-  Date: Актуальна інформація для гостей
-  Image TODO: Replace with real image of visitors on excursion or park entrance.
-  Text: Парк працює щодня. Екскурсії розпочинаються з 10:00 та проводяться щогодини. Тривалість екскурсії − мінімум 60 хвилин.
-  Button: Читати більше
-
-- Оновлення графіку екскурсій
-  Slug: onovlennya-grafiku-ekskursij-parku-hyzhakiv
-  Category: Екскурсії
-  Date: Архівне оголошення
-  Image TODO: Replace with real image of guide, group, or bridge-gallery route.
-  Text: Повідомлення про зміни у графіку екскурсій парку. Перед візитом завжди перевіряйте актуальний час роботи та записуйтеся заздалегідь.
-  Button: Читати більше
-
-5. NEWS LIST SECTION
-
-Section title:
-Усі новини
-
-News cards:
-- Наближається зима
-  Slug: nablyzhayetsya-zyma
-  Category: 4 сезони
-  Date: Архівна новина
-  Image TODO: Replace with real winter photo of animals or park nature.
-  Text: Зима змінює настрій парку: тварини поводяться інакше, ліс стає тихішим, а маршрути відкривають зовсім іншу атмосферу.
-
-- Мотря з ведмежатами
-  Slug: motrya-z-vedmezhatamy
-  Category: Тварини
-  Date: Архівна історія
-  Image TODO: Replace with real photo of Мотря with bear cubs.
-  Text: Історія з життя ведмежої родини, яка показує турботу, характер і особливі моменти мешканців парку.
-
-- Весняні розваги ведмежат
-  Slug: vesnyani-rozvagy-vedmezhat
-  Category: 4 сезони
-  Date: Архівна історія
-  Image TODO: Replace with real spring photo of bear cubs.
-  Text: Весна приносить більше руху, гри та активності. Ведмежата відкривають світ навколо себе по-новому.
-
-- Гімалайські ведмеді
-  Slug: himalayski-vedmedi
-  Category: Тварини
-  Date: Архівна історія
-  Image TODO: Replace with real photo of Himalayan bears.
-  Text: Гімалайські ведмеді вирізняються темним хутром, світлим комірцем і спритністю, яка особливо помітна серед дерев.
-
-- Осіннє поповнення великих котячих
-  Slug: osinnye-popovnennya-velykyh-kotyachyh
-  Category: Тварини
-  Date: Архівна новина
-  Image TODO: Replace with real photo of big cats from Park Arden.
-  Text: Поповнення секції великих котячих стало яскравою подією для парку та відвідувачів.
-
-- Хижі птахи у парку
-  Slug: hyzhi-ptahy-u-parku
-  Category: Тварини
-  Date: Матеріал про мешканців
-  Image TODO: Replace with real photo of eagle, hawk, buzzard, or other bird from the rehabilitation center.
-  Text: У парку мешкають не лише хижаки на землі, а й хижі птахи, серед яких орлан-білохвіст, канюк, яструб та інші представники дикої природи.
-
-6. NEWS TYPES SECTION
-
-Section title:
-Про що ми пишемо
-
-Items:
-- Оголошення для гостей
-  Text: Графік роботи, ціни, правила відвідування та важливі зміни перед поїздкою.
-
-- Життя тварин
-  Text: Історії мешканців парку, цікаві факти, сезонна поведінка та нові матеріали про тварин.
-
-- Історії порятунку
-  Text: Матеріали про тварин, які знайшли безпечний дім у «АРДЕНІ».
-
-- 4 сезони
-  Text: Весна, літо, осінь і зима в парку − різні настрої, фото та спостереження.
-
-- Події та екскурсії
-  Text: Новини про групові відвідування, маршрути, екскурсії та життя парку.
-
-7. SUBSCRIBE / FOLLOW SECTION
-
-Image TODO:
-Replace with real photo of visitors, animals, or social media-style park content.
-
-Section title:
-Слідкуйте за життям парку
-
-Text:
-Щоб не пропустити важливі оновлення, нові фото, історії тварин та сезонні новини, стежте за «АРДЕНОМ» у соціальних мережах.
-
-Buttons:
-- Instagram
-- Facebook
-- YouTube
-
-Social links TODO:
-Add real social media links from client materials.
-
-8. FINAL CTA SECTION
-
-Image TODO:
-Replace with strong closing photo of animal, bridge-gallery, or visitors on excursion.
-
-Section title:
-Хочете побачити все наживо?
-
-Text:
-Новини допомагають стежити за життям парку, але справжню атмосферу «АРДЕНУ» найкраще відчути під час екскурсії.
-
-Buttons:
-- Записатись на екскурсію
-- Інформація для гостей
-
-IMPORTANT:
-Use only this content.
-Do not add fake facts.
-Do not use fake final images.
-Use one shared temporary placeholder image everywhere.
-Add TODO comments near image data explaining what real image is needed.
-Use reusable arrays for filters, featured cards, news cards, news type items, social buttons, and CTA buttons.
-Each news card should have: title, slug, category, date, text, image, imageTodo.
-Cards should link to `/novyny/:slug`.
-Keep layout clean and content-first.
+	<section class="px-4 py-12 sm:px-6 lg:px-8 lg:pb-20">
+		<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.8fr)] lg:items-center">
+			<div>
+				<h2 class="text-3xl font-bold text-[#172315]">Хочете побачити все наживо?</h2>
+				<p class="mt-4 max-w-2xl text-lg leading-8 text-[#42513d]">
+					Новини допомагають стежити за життям парку, але справжню атмосферу «АРДЕНУ» найкраще відчути під час екскурсії.
+				</p>
+				<div class="mt-7 flex flex-wrap gap-3">
+					@for (button of ctaButtons; track button.label) {
+						<a
+							[class]="'rounded-md px-5 py-3 text-sm font-semibold transition ' + button.className"
+							[routerLink]="button.link"
+						>
+							{{ button.label }}
+						</a>
+					}
+				</div>
+			</div>
+			<img class="aspect-[4/3] w-full rounded-lg bg-white object-contain p-6 shadow-sm" [ngSrc]="finalCtaImage" width="640" height="480" alt="" />
+		</div>
+	</section>
+</main>

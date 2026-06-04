@@ -1,0 +1,190 @@
+:host {
+	display: block;
+	background: color-mix(in srgb, #f7f8ef 88%, var(--c-bg-primary));
+	color: var(--c-text);
+}
+
+.seasons-section {
+	padding: 4rem 0;
+}
+
+.seasons-hero {
+	padding-top: 5rem;
+}
+
+.seasons-container {
+	margin: 0 auto;
+	max-width: var(--container);
+	padding: 0 1rem;
+}
+
+.seasons-split,
+.seasons-cta {
+	display: grid;
+	gap: 2rem;
+	align-items: center;
+}
+
+.seasons-eyebrow {
+	color: var(--c-primary);
+	font-size: 0.82rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.seasons-title,
+.seasons-heading,
+.seasons-card-title {
+	color: var(--c-text-strong);
+	font-weight: 700;
+}
+
+.seasons-title {
+	margin-top: 1rem;
+	max-width: 58rem;
+	font-size: clamp(2.5rem, 7vw, 5.8rem);
+	line-height: 0.95;
+}
+
+.seasons-heading {
+	max-width: 48rem;
+	font-size: clamp(2rem, 4vw, 3.5rem);
+	line-height: 1.05;
+}
+
+.seasons-lead,
+.seasons-text,
+.seasons-card-text,
+.seasons-list,
+.seasons-checklist {
+	color: var(--c-text);
+	line-height: 1.8;
+}
+
+.seasons-lead {
+	margin-top: 1.5rem;
+	max-width: 48rem;
+	font-size: 1.12rem;
+}
+
+.seasons-text {
+	margin-top: 1rem;
+	max-width: 48rem;
+}
+
+.seasons-text--wide {
+	max-width: 62rem;
+}
+
+.seasons-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin-top: 1.75rem;
+}
+
+.seasons-button {
+	display: inline-flex;
+	min-height: 3rem;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--c-border);
+	border-radius: var(--radius-btn);
+	background: var(--c-bg-primary);
+	padding: 0.75rem 1.1rem;
+	color: var(--c-text-strong);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.seasons-button--primary {
+	border-color: var(--c-primary);
+	background: var(--c-primary);
+	color: white;
+}
+
+.seasons-image,
+.seasons-card-image {
+	width: 100%;
+	border: 1px solid var(--c-border);
+	border-radius: var(--radius-card);
+	background: var(--c-bg-secondary);
+	object-fit: cover;
+}
+
+.seasons-image {
+	aspect-ratio: 4 / 3;
+}
+
+.seasons-image--hero {
+	aspect-ratio: 1 / 1;
+}
+
+.seasons-grid,
+.seasons-gallery {
+	display: grid;
+	gap: 1rem;
+	margin-top: 2rem;
+}
+
+.seasons-card {
+	border: 1px solid var(--c-border);
+	border-radius: var(--radius-card);
+	background: var(--c-bg-primary);
+	padding: 1rem;
+}
+
+.seasons-card-image {
+	aspect-ratio: 4 / 3;
+}
+
+.seasons-card-title {
+	margin-top: 1rem;
+	font-size: 1.25rem;
+}
+
+.seasons-card-text {
+	margin-top: 0.5rem;
+}
+
+.seasons-card--compact {
+	padding-bottom: 1.25rem;
+}
+
+.seasons-list,
+.seasons-checklist {
+	margin-top: 1.25rem;
+	padding-left: 1.25rem;
+}
+
+.seasons-list li,
+.seasons-checklist li {
+	margin-top: 0.4rem;
+}
+
+.seasons-section--final {
+	padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+	.seasons-grid,
+	.seasons-gallery {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 1024px) {
+	.seasons-split,
+	.seasons-cta {
+		grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.82fr);
+	}
+
+	.seasons-grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.seasons-gallery {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}

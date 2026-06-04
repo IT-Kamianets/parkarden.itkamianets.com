@@ -80,8 +80,11 @@ export const routes: Routes = [
 		path: 'gostiam',
 		data: {
 			meta: {
-				title: 'Guest information',
-				description: 'Useful guest information for visiting Park Arden.',
+				title: 'Інформація для гостей парку «АРДЕН» − графік, ціни, правила та маршрут',
+				description:
+					'Плануйте візит до Парку диких тварин «АРДЕН»: графік роботи, ціни на квитки, правила відвідування, парковка, піцерія, сувенірна лавка, адреса та контакти.',
+				// TODO: Replace with wide photo of Park Arden entrance, visitors, bridge-gallery, parking area, or family visit atmosphere. Best ratio: 1200x630 for Open Graph.
+				image: 'logo.png',
 			},
 		},
 		loadComponent: () =>
@@ -115,8 +118,11 @@ export const routes: Routes = [
 		path: 'galereya',
 		data: {
 			meta: {
-				title: 'Gallery',
-				description: 'Photo gallery from Park Arden.',
+				title: 'Галерея парку «АРДЕН» − фото тварин, природи та мосту-галереї',
+				description:
+					'Перегляньте галерею Парку диких тварин «АРДЕН»: тварини, ведмеді, великі коти, лісовий міст-галерея, природа Подільських Товтр, екскурсії та 4 сезони парку.',
+				// TODO: Replace with wide photo collage of Park Arden animals, forest, bridge-gallery, and seasonal atmosphere. Best ratio: 1200x630 for Open Graph.
+				image: 'logo.png',
 			},
 		},
 		loadComponent: () =>
@@ -139,8 +145,11 @@ export const routes: Routes = [
 		path: 'pidtrymaty',
 		data: {
 			meta: {
-				title: 'Support',
-				description: 'Support Park Arden with a donation.',
+				title: 'Підтримати парк «АРДЕН» − допомога тваринам, донати та благодійність',
+				description:
+					'Підтримайте Парк диких тварин «АРДЕН»: благодійний внесок, допомога кормом, купівля сувенірів або підтримка конкретної тварини. Кожен внесок допомагає доглядати врятованих тварин.',
+				// TODO: Replace with emotional wide photo of rescued animal, animal care moment, bear, big cat, or park team caring for animals. Best ratio: 1200x630 for Open Graph.
+				image: 'logo.png',
 			},
 		},
 		loadComponent: () =>
@@ -150,8 +159,11 @@ export const routes: Routes = [
 		path: 'kontakty',
 		data: {
 			meta: {
-				title: 'Contacts',
-				description: 'Contact information for Park Arden.',
+				title: 'Контакти парку «АРДЕН» − адреса, телефон, карта та запис на екскурсію',
+				description:
+					'Контакти Парку диких тварин «АРДЕН»: адреса у смт Сатанів, телефон для запису на екскурсію, email, карта проїзду, графік роботи та форма зворотного зв’язку.',
+				// TODO: Replace with wide photo of Park Arden entrance, visitors arriving, sign, bridge-gallery, or atmospheric park landscape. Best ratio: 1200x630 for Open Graph.
+				image: 'logo.png',
 			},
 		},
 		loadComponent: () =>
@@ -161,8 +173,11 @@ export const routes: Routes = [
 		path: '404',
 		data: {
 			meta: {
-				title: 'Not found',
-				description: 'The requested page was not found.',
+				title: 'Сторінку не знайдено − парк «АРДЕН»',
+				description:
+					'Сторінку не знайдено. Поверніться на головну сторінку Парку диких тварин «АРДЕН» або перейдіть до тварин, екскурсій чи контактів.',
+				// TODO: Replace with friendly animal photo from Park Arden, preferably curious animal portrait or forest atmosphere. Best ratio: 1200x630 for Open Graph.
+				image: 'logo.png',
 				robots: 'noindex, follow',
 			},
 		},
@@ -173,8 +188,11 @@ export const routes: Routes = [
 		path: '**',
 		data: {
 			meta: {
-				title: 'Not found',
-				description: 'The requested page was not found.',
+				title: 'Сторінку не знайдено − парк «АРДЕН»',
+				description:
+					'Сторінку не знайдено. Поверніться на головну сторінку Парку диких тварин «АРДЕН» або перейдіть до тварин, екскурсій чи контактів.',
+				// TODO: Replace with friendly animal photo from Park Arden, preferably curious animal portrait or forest atmosphere. Best ratio: 1200x630 for Open Graph.
+				image: 'logo.png',
 				robots: 'noindex, follow',
 			},
 		},

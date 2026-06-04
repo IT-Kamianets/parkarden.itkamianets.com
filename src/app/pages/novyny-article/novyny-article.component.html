@@ -1,220 +1,124 @@
-TASK:
-Fill only the News article page `/novyny/:slug` for Park Arden website using the exact Ukrainian content below.
-Do not invent extra facts.
-Create one dynamic article page that reads news data by `slug`.
+@if (article) {
+	<main class="bg-[#f6fbf1] text-[#17351f]">
+		<section class="px-5 py-12 sm:py-16 lg:py-20">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.82fr)] lg:items-center">
+				<div>
+					<p class="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-[#5b8d3d]">
+						{{ article.category }} · {{ article.dateLabel }}
+					</p>
+					<h1 class="max-w-3xl text-4xl font-bold leading-tight sm:text-5xl">
+						{{ article.title }}
+					</h1>
+					<p class="mt-5 max-w-2xl text-lg leading-8 text-[#36543c]">
+						{{ article.excerpt }}
+					</p>
+					<a
+						class="mt-8 inline-flex rounded-full bg-[#2f6f3e] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#245832]"
+						routerLink="/novyny"
+					>
+						До всіх новин
+					</a>
+				</div>
+				<img
+					class="aspect-[4/3] w-full rounded-lg object-contain bg-white p-6 shadow-sm"
+					[ngSrc]="article.image"
+					width="960"
+					height="720"
+					alt=""
+					priority
+				/>
+			</div>
+		</section>
 
-PROJECT:
-Project name: Park Arden Website
-Client: Парк диких тварин «АРДЕН»
-Website type: modern informational + booking + donation website
-Style direction later: light, juicy, natural, warm green, emotional, family-friendly
+		<section class="bg-white px-5 py-12 sm:py-16">
+			<div class="mx-auto max-w-3xl">
+				<div class="space-y-5 text-lg leading-8 text-[#2d4933]">
+					@for (paragraph of article.paragraphs; track paragraph) {
+						<p>{{ paragraph }}</p>
+					}
+				</div>
 
-SEO RULE:
-Each article page must have dynamic SEO based on selected article.
+				@if (article.bullets.length) {
+					<ul class="mt-8 space-y-3 rounded-lg bg-[#eef7e8] p-6 text-base font-medium leading-7 text-[#24472d]">
+						@for (bullet of article.bullets; track bullet) {
+							<li class="flex gap-3">
+								<span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#7fae4f]"></span>
+								<span>{{ bullet }}</span>
+							</li>
+						}
+					</ul>
+				}
+			</div>
+		</section>
 
-SEO title pattern:
-{title} − новини парку «АРДЕН»
+		<section class="px-5 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.8fr)] lg:items-center">
+				<div>
+					<h2 class="text-3xl font-bold leading-tight">Підтримайте парк</h2>
+					<p class="mt-4 max-w-2xl text-lg leading-8 text-[#36543c]">
+						Ви можете підтримати «АРДЕН» матеріально, купуючи їжу для звірів або сувеніри у нашій лавці. Кожен внесок допомагає тваринам отримувати догляд, харчування та безпечні умови.
+					</p>
+					<a
+						class="mt-7 inline-flex rounded-full bg-[#2f6f3e] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#245832]"
+						routerLink="/pidtrymaty"
+					>
+						Підтримати проєкт
+					</a>
+				</div>
+				<img
+					class="aspect-[4/3] w-full rounded-lg object-contain bg-white p-6 shadow-sm"
+					[ngSrc]="supportImage"
+					width="960"
+					height="720"
+					alt=""
+				/>
+			</div>
+		</section>
 
-SEO description pattern:
-{excerpt}
-
-SEO image:
-Use the same temporary placeholder image for now.
-
-SEO image TODO:
-Replace with real article image. Best ratio: 1200x630 for Open Graph.
-
-IMAGE RULE:
-For every image on this page, use the same temporary placeholder image.
-In code, add a TODO comment near every image data/object explaining what real image should replace it.
-
-PAGE STRUCTURE:
-
-1. HERO SECTION
-
-Image TODO:
-Replace with real main image for selected news article.
-
-Fields:
-- Category
-- Date label
-- Article title
-- Excerpt
-- Back button
-
-Back button:
-До всіх новин
-
-2. ARTICLE CONTENT SECTION
-
-Show article paragraphs from selected article data.
-
-If article has bullets, show them after paragraphs.
-
-3. SUPPORT CTA SECTION
-
-Image TODO:
-Replace with real emotional photo of rescued animal, animal care moment, or park atmosphere.
-
-Section title:
-Підтримайте парк
-
-Text:
-Ви можете підтримати «АРДЕН» матеріально, купуючи їжу для звірів або сувеніри у нашій лавці. Кожен внесок допомагає тваринам отримувати догляд, харчування та безпечні умови.
-
-Button:
-Підтримати проєкт
-
-4. RELATED NEWS SECTION
-
-Section title:
-Інші новини
-
-Show 3 related news cards.
-Cards link to `/novyny/:slug`.
-
-NEWS ARTICLE DATA:
-
-Use this data array:
-
-- slug: zmina-vartosti-kvytkiv
-  title: Зміна вартості квитків
-  category: Оголошення
-  dateLabel: Оновлено з 18.05.2026
-  imageTodo: Replace with real image of park entrance, ticket office, or visitors arriving.
-  excerpt: З 18.05.2026 діють оновлені ціни на відвідування парку: дорослий квиток − 400 грн, дитячий квиток 6–14 років − 300 грн.
-  paragraphs:
-  - З 18.05.2026 у Парку диких тварин «АРДЕН» діють оновлені ціни на вхідні квитки.
-  - Дорослий вхідний квиток коштує 400 грн.
-  - Дитячий вхідний квиток для школярів або дітей від 6 до 14 років коштує 300 грн.
-  - Діти до 6 років відвідують парк безкоштовно, виключно у супроводі дорослих.
-  bullets:
-  - Дорослий квиток − 400 грн
-  - Дитячий квиток 6–14 років − 300 грн
-  - Діти до 6 років − безкоштовно
-  - Діти відвідують парк лише у супроводі дорослих
-
-- slug: praczyuyemo-kozhen-den
-  title: Працюємо кожен день
-  category: Для гостей
-  dateLabel: Актуальна інформація для гостей
-  imageTodo: Replace with real image of visitors at park entrance or excursion group.
-  excerpt: Парк працює щодня, екскурсії стартують з 10:00 та проводяться щогодини.
-  paragraphs:
-  - Парк диких тварин «АРДЕН» працює кожен день.
-  - У вихідні та святкові дні парк також приймає відвідувачів.
-  - Усі екскурсії розпочинаються з 10:00 та проводяться щогодини.
-  - Тривалість екскурсії − мінімум 60 хвилин.
-  - Вхід на оглядовий міст дозволений виключно у складі групи, яку очолює екскурсовод.
-  - Без екскурсовода самостійно зайти на міст не можна.
-  - За приміщенням каси знаходиться піцерія, де можна перекусити.
-  - З домашніми тваринами вхід на оглядовий міст заборонено.
-  bullets:
-  - Парк працює щодня
-  - Екскурсії стартують з 10:00
-  - Екскурсії проводяться щогодини
-  - Тривалість екскурсії − мінімум 60 хвилин
-  - Вхід на міст тільки з екскурсоводом
-
-- slug: onovlennya-grafiku-ekskursij-parku-hyzhakiv
-  title: Оновлення графіку екскурсій «Парку хижаків»
-  category: Екскурсії
-  dateLabel: Архівне оголошення
-  imageTodo: Replace with real photo of guide, group of visitors, or bridge-gallery route.
-  excerpt: Повідомлення про зміни у графіку екскурсій парку на жовтень-листопад.
-  paragraphs:
-  - Шановні відвідувачі!
-  - Звертаємо вашу увагу на зміни в графіку роботи «Парку хижаків» на жовтень та листопад.
-  - Остання екскурсія у цей період розпочинається о 17:00.
-  - Перед візитом рекомендуємо уточнювати актуальний графік та записуватись заздалегідь.
-  bullets:
-  - Оголошення стосується графіку на жовтень-листопад
-  - Остання екскурсія − о 17:00
-  - Перед поїздкою варто перевірити актуальний час роботи
-
-- slug: nablyzhayetsya-zyma
-  title: Наближається зима
-  category: 4 сезони
-  dateLabel: Сезонна новина
-  imageTodo: Replace with real winter photo of bear, forest, snow, or quiet park atmosphere.
-  excerpt: Більшість ведмедів у парку вже дрімають у барлогах, але іноді відвідувачам щастить побачити їх і взимку.
-  paragraphs:
-  - Більшість ведмедів у парку вже дрімають у барлогах.
-  - Але бувають і такі, як дорослий ведмідь Пафнутій: вийде на декілька годин, померзне, побродить і знову, позіхаючи, мерщій у барліг.
-  - Тож відвідувачам може поталанити побачити цих господарів лісу і взимку.
-  bullets:
-  - Взимку більшість ведмедів дрімає у барлогах
-  - Деякі ведмеді можуть виходити на короткий час
-  - Зимовий парк має особливу тиху атмосферу
-
-- slug: motrya-z-vedmezhatamy
-  title: Мотря з ведмежатами
-  category: Тварини
-  dateLabel: Історія з життя парку
-  imageTodo: Replace with real photo of Мотря with bear cubs.
-  excerpt: Чотиримісячні ведмежата з мамою Мотрею досліджують територію вольєра.
-  paragraphs:
-  - Вже чотиримісячні ведмежата з мамою Мотрею досліджують територію вольєра.
-  - Все треба спробувати, всюди залізти, але під пильним доглядом мами.
-  - Такі моменти показують живий характер тварин і турботу, яку можна побачити під час спостереження за мешканцями парку.
-  bullets:
-  - Ведмежата досліджують територію вольєра
-  - Мотря уважно доглядає за малюками
-  - Це одна з теплих історій з життя парку
-
-- slug: vesnyani-rozvagy-vedmezhat
-  title: Весняні розваги ведмежат
-  category: 4 сезони
-  dateLabel: Весняна історія
-  imageTodo: Replace with real spring photo of bear cubs climbing trees or eating leaves.
-  excerpt: Навесні молоді ведмежата можуть вилізти на дерево та поласувати першими зеленими листочками.
-  paragraphs:
-  - На деревах з’являються перші зелені листочки, які дуже смакують ведмедям.
-  - Старші ведмеді мусять задовольнятися гіллям, яке ламає вітер.
-  - А молоді ведмежата мають змогу вилізти та посмакувати прямо на дереві.
-  - Приїжджайте, самі побачите!
-  bullets:
-  - Весна робить ведмедів активнішими
-  - Молоді ведмежата можуть лазити по деревах
-  - Перші зелені листочки дуже смакують тваринам
-
-- slug: gimalajski-vedmedi-vzhe-potrohu-vyhodyat-z-berlogy
-  title: Гімалайські ведмеді вже потроху виходять з берлоги
-  category: Тварини
-  dateLabel: Сезонна історія
-  imageTodo: Replace with real photo of Himalayan bear Гоша near tree or forest enclosure.
-  excerpt: Гімалайський ведмідь Гоша вийшов з барлоги раніше та навіть спробував вилізти на дерево.
-  paragraphs:
-  - Цього року гімалайський ведмідь Гоша вийшов з барлоги раніше.
-  - Скоріше за все, його розбудив сусід по території Тоша.
-  - Вдалося відзняти, як Гоша силкується вилізти на дерево.
-  - У підсумку він підліз тільки на один метр.
-  - Треба ще тренуватися.
-  bullets:
-  - Гоша − гімалайський ведмідь
-  - Він вийшов з барлоги раніше
-  - Спробував вилізти на дерево
-  - Поруч на території перебуває Тоша
-
-FALLBACK ARTICLE:
-If slug is not found, show a clean not-found state:
-
-Title:
-Новину не знайдено
-
-Text:
-Можливо, сторінку було переміщено або ця новина ще готується.
-
-Button:
-Повернутись до новин
-
-IMPORTANT:
-Use only this content.
-Do not add fake dates, facts, authors, or images.
-Do not use fake final images.
-Use one shared temporary placeholder image everywhere.
-Add TODO comments near image data explaining what real image is needed.
-Use Angular v21 style.
-Use reusable arrays for article paragraphs, bullets, related news, and buttons.
-Related news should exclude the current article.
-Keep layout clean and content-first.
+		<section class="bg-white px-5 py-12 sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<h2 class="text-3xl font-bold leading-tight">Інші новини</h2>
+				<div class="mt-8 grid gap-6 md:grid-cols-3">
+					@for (news of relatedNews; track news.slug) {
+						<a
+							class="group block rounded-lg border border-[#dcebd3] bg-[#fbfdf8] p-4 transition hover:-translate-y-1 hover:shadow-md"
+							[routerLink]="['/novyny', news.slug]"
+						>
+							<img
+								class="aspect-[4/3] w-full rounded-md object-contain bg-white p-5"
+								[ngSrc]="news.image"
+								width="640"
+								height="480"
+								alt=""
+							/>
+							<p class="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-[#5b8d3d]">
+								{{ news.category }}
+							</p>
+							<h3 class="mt-2 text-xl font-bold leading-snug group-hover:text-[#2f6f3e]">
+								{{ news.title }}
+							</h3>
+							<p class="mt-3 text-sm leading-6 text-[#4f6654]">
+								{{ news.excerpt }}
+							</p>
+						</a>
+					}
+				</div>
+			</div>
+		</section>
+	</main>
+} @else {
+	<main class="bg-[#f6fbf1] px-5 py-20 text-[#17351f]">
+		<section class="mx-auto max-w-3xl rounded-lg bg-white p-8 shadow-sm">
+			<h1 class="text-4xl font-bold leading-tight">Новину не знайдено</h1>
+			<p class="mt-5 text-lg leading-8 text-[#36543c]">
+				Можливо, сторінку було переміщено або ця новина ще готується.
+			</p>
+			<a
+				class="mt-8 inline-flex rounded-full bg-[#2f6f3e] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#245832]"
+				routerLink="/novyny"
+			>
+				Повернутись до новин
+			</a>
+		</section>
+	</main>
+}
