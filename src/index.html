@@ -8,12 +8,10 @@
     <script>
       try {
         const storedMode = localStorage.getItem('app-mode');
-        const preferredMode =
-          storedMode === 'dark' || storedMode === 'light'
-            ? storedMode
-            : window.matchMedia('(prefers-color-scheme: dark)').matches
-              ? 'dark'
-              : 'light';
+        const preferredMode = storedMode === 'dark' || storedMode === 'light' ? storedMode : 'light';
+        if (!storedMode) {
+          localStorage.setItem('app-mode', 'light');
+        }
         document.documentElement.setAttribute('data-mode', preferredMode);
       } catch {}
     </script>
@@ -24,15 +22,15 @@
     />
     <meta name="author" content="Парк диких тварин “АРДЕН”" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#f7f8ef" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1f3a27" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F4EFE3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1A0D14" media="(prefers-color-scheme: dark)" />
 
     <meta itemprop="name" content="Park Arden" />
     <meta
       itemprop="description"
       content="Парк диких тварин “АРДЕН” - теплий сімейний простір природи, бронювання візитів і підтримка парку."
     />
-    <meta itemprop="image" content="https://parkarden.itkamianets.com/logo.png" />
+    <meta itemprop="image" content="https://cdn-it.webart.work/parkarden/animals_processed_03.webp" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Park Arden" />
@@ -43,7 +41,7 @@
       property="og:description"
       content="Парк диких тварин “АРДЕН” - сучасний інформаційний сайт з бронюванням візитів і можливістю підтримати парк донатом."
     />
-    <meta property="og:image" content="https://parkarden.itkamianets.com/logo.png" />
+    <meta property="og:image" content="https://cdn-it.webart.work/parkarden/animals_processed_03.webp" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Park Arden" />
@@ -51,8 +49,8 @@
       name="twitter:description"
       content="Парк диких тварин “АРДЕН” - бронювання візитів, інформація для гостей і донати для підтримки парку."
     />
-    <meta name="twitter:image" content="https://parkarden.itkamianets.com/logo.png" />
-    <meta name="twitter:image:src" content="https://parkarden.itkamianets.com/logo.png" />
+    <meta name="twitter:image" content="https://cdn-it.webart.work/parkarden/animals_processed_03.webp" />
+    <meta name="twitter:image:src" content="https://cdn-it.webart.work/parkarden/animals_processed_03.webp" />
 
     <link rel="canonical" href="https://parkarden.itkamianets.com/" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />
@@ -60,7 +58,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Crimson+Text:wght@400;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link

@@ -15,9 +15,20 @@
 							{{ button.label }}
 						</a>
 					}
+					<a class="seasons-button" href="#" (click)="openAllPhotos($event)">
+						Переглянути всі фото
+					</a>
 				</div>
 			</div>
-			<img class="seasons-image seasons-image--hero" [ngSrc]="heroImage" width="1024" height="1024" alt="" priority />
+			<img
+				class="seasons-image seasons-image--hero"
+				[ngSrc]="heroImage.src"
+				[width]="heroImage.width"
+				[height]="heroImage.height"
+				[alt]="heroImage.alt"
+				sizes="(min-width: 1024px) 40vw, 100vw"
+				priority
+			/>
 		</div>
 	</section>
 
@@ -40,7 +51,15 @@
 			<div class="seasons-grid">
 				@for (season of seasons; track season.title) {
 					<article class="seasons-card">
-						<img class="seasons-card-image" [ngSrc]="season.image" width="800" height="600" [alt]="season.title" loading="lazy" />
+						<img
+							class="seasons-card-image"
+							[ngSrc]="season.image"
+							[width]="season.imageWidth || 800"
+							[height]="season.imageHeight || 600"
+							[alt]="season.imageAlt || season.title"
+							sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+							loading="lazy"
+						/>
 						<h3 class="seasons-card-title">{{ season.title }}</h3>
 						<p class="seasons-card-text">{{ season.text }}</p>
 					</article>
@@ -49,10 +68,18 @@
 		</div>
 	</section>
 
-	@for (season of seasonDetails; track season.title) {
+	@for (season of seasonDetails; track season.title; let seasonIndex = $index) {
 		<section class="seasons-section">
 			<div class="seasons-container seasons-split">
-				<img class="seasons-image" [ngSrc]="season.image" width="1024" height="768" [alt]="season.title" loading="lazy" />
+				<img
+					class="seasons-image"
+					[ngSrc]="season.image"
+					[width]="season.imageWidth || 1024"
+					[height]="season.imageHeight || 768"
+					[alt]="season.imageAlt || season.title"
+					sizes="(min-width: 1024px) 48vw, 100vw"
+					loading="lazy"
+				/>
 				<div>
 					<h2 class="seasons-heading">{{ season.title }}</h2>
 					<p class="seasons-text">{{ season.text }}</p>
@@ -64,11 +91,26 @@
 				</div>
 			</div>
 			<div class="seasons-container seasons-gallery">
-				@for (item of season.gallery; track item.title) {
-					<article class="seasons-card seasons-card--compact">
-						<img class="seasons-card-image" [ngSrc]="item.image" width="800" height="600" [alt]="item.title" loading="lazy" />
-						<h3 class="seasons-card-title">{{ item.title }}</h3>
-					</article>
+				@for (item of seasonGallery(seasonIndex); track item.image) {
+					<a
+						class="seasons-card seasons-card--compact seasons-gallery-link"
+						[href]="item.image"
+						[attr.data-pswp-width]="item.imageWidth || 1024"
+						[attr.data-pswp-height]="item.imageHeight || 768"
+						target="_blank"
+						rel="noreferrer"
+						(click)="openPhoto(item.image, $event)"
+					>
+						<img
+							class="seasons-card-image"
+							[ngSrc]="item.image"
+							[width]="item.imageWidth || 800"
+							[height]="item.imageHeight || 600"
+							[alt]="item.imageAlt || item.title"
+							sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 80vw"
+							loading="lazy"
+						/>
+					</a>
 				}
 			</div>
 		</section>
@@ -85,7 +127,15 @@
 			<div class="seasons-grid">
 				@for (animal of animalSeasonCards; track animal.title) {
 					<article class="seasons-card">
-						<img class="seasons-card-image" [ngSrc]="animal.image" width="800" height="600" [alt]="animal.title" loading="lazy" />
+						<img
+							class="seasons-card-image"
+							[ngSrc]="animal.image"
+							[width]="animal.imageWidth || 800"
+							[height]="animal.imageHeight || 600"
+							[alt]="animal.imageAlt || animal.title"
+							sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+							loading="lazy"
+						/>
 						<h3 class="seasons-card-title">{{ animal.title }}</h3>
 						<p class="seasons-card-text">{{ animal.text }}</p>
 					</article>
@@ -111,7 +161,15 @@
 
 	<section class="seasons-section">
 		<div class="seasons-container seasons-cta">
-			<img class="seasons-image" [ngSrc]="seasonalVisitImage" width="1024" height="768" alt="" loading="lazy" />
+			<img
+				class="seasons-image"
+				[ngSrc]="seasonalVisitImage.src"
+				[width]="seasonalVisitImage.width"
+				[height]="seasonalVisitImage.height"
+				[alt]="seasonalVisitImage.alt"
+				sizes="(min-width: 1024px) 48vw, 100vw"
+				loading="lazy"
+			/>
 			<div>
 				<h2 class="seasons-heading">Коли краще приїжджати?</h2>
 				<p class="seasons-text">
@@ -146,7 +204,15 @@
 					}
 				</div>
 			</div>
-			<img class="seasons-image" [ngSrc]="finalCtaImage" width="1024" height="768" alt="" loading="lazy" />
+			<img
+				class="seasons-image"
+				[ngSrc]="finalCtaImage.src"
+				[width]="finalCtaImage.width"
+				[height]="finalCtaImage.height"
+				[alt]="finalCtaImage.alt"
+				sizes="(min-width: 1024px) 48vw, 100vw"
+				loading="lazy"
+			/>
 		</div>
 	</section>
 </main>

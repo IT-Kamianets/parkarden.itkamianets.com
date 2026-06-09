@@ -1,5 +1,6 @@
 @use 'tailwindcss';
 @use './styles/theme';
+@import 'photoswipe/dist/photoswipe.css';
 
 html,
 body {
@@ -15,6 +16,298 @@ body {
 	margin: 0;
 }
 
+h1,
+h2,
+h3 {
+	font-family: var(--ff-display);
+	letter-spacing: 0.02em;
+}
+
+main {
+	background:
+		linear-gradient(180deg, color-mix(in srgb, var(--c-bg-secondary) 58%, transparent), transparent 32rem),
+		var(--c-bg-primary) !important;
+	color: var(--c-text) !important;
+}
+
+main section {
+	position: relative;
+}
+
+main h1,
+main h2,
+main h3,
+main .text-stone-950,
+main .text-stone-900 {
+	color: var(--c-text-strong) !important;
+}
+
+main p,
+main li,
+main summary,
+main label,
+main .text-stone-800,
+main .text-stone-700 {
+	color: var(--c-text) !important;
+}
+
+main [class*='text-[#558b2f]'],
+main [class*='text-[#5f7f35]'],
+main [class*='text-[#5b8d3d]'],
+main [class*='text-[#4f7f2b]'],
+main [class*='text-green'],
+main [class*='text-[#3d5f20]'],
+main [class*='text-[#2f5f16]'] {
+	color: var(--c-primary) !important;
+}
+
+main .bg-white,
+main [class*='bg-white'],
+main [class*='bg-[#fbfdf8]'],
+main [class*='bg-[#f7fbf3]'],
+main [class*='bg-[#f7fbf4]'],
+main [class*='bg-[#f7fbf2]'],
+main [class*='bg-[#f6fbf1]'] {
+	background-color: var(--c-bg-secondary) !important;
+}
+
+main [class*='bg-[#e6f0dc]'],
+main [class*='bg-[#e6efdf]'],
+main [class*='bg-[#edf5e5]'],
+main [class*='bg-[#eef7e8]'],
+main [class*='bg-green-50'] {
+	background-color: var(--c-bg-tertiary) !important;
+}
+
+main [class*='bg-[#4f7f2b]'],
+main [class*='bg-[#5f7f35]'],
+main [class*='bg-[#2f6f3e]'],
+main [class*='bg-green-800'],
+main [class*='bg-green-900'] {
+	background: var(--c-primary) !important;
+	color: var(--c-on-primary) !important;
+}
+
+main [class*='border-[#'],
+main [class*='border-green'] {
+	border-color: var(--c-border) !important;
+}
+
+main article,
+main details,
+main form,
+main [class*='shadow-sm'],
+main [class*='shadow-md'] {
+	border-color: var(--c-border) !important;
+	box-shadow: var(--shadow-sm) !important;
+}
+
+main a,
+main button {
+	transition-duration: var(--motion-fast);
+	transition-property: background-color, border-color, box-shadow, color, opacity, transform;
+	transition-timing-function: var(--easing);
+}
+
+main a:focus-visible,
+main button:focus-visible,
+main input:focus-visible,
+main textarea:focus-visible,
+main select:focus-visible,
+.theme-focus:focus-visible {
+	outline: none;
+	box-shadow: var(--focus-ring);
+}
+
+main input,
+main textarea,
+main select {
+	border-color: var(--c-border) !important;
+	background: var(--c-bg-secondary) !important;
+	color: var(--c-text-strong) !important;
+}
+
+html[data-mode='dark'] main {
+	background:
+		radial-gradient(circle at 18% 0%, rgba(232, 184, 108, 0.11), transparent 24rem),
+		linear-gradient(180deg, color-mix(in srgb, var(--c-bg-secondary) 72%, transparent), transparent 34rem),
+		var(--c-bg-primary) !important;
+}
+
+html[data-mode='dark'] main h1,
+html[data-mode='dark'] main h2 {
+	font-style: italic;
+}
+
+:is(
+	.home-title,
+	.home-heading,
+	.about-title,
+	.about-heading,
+	.excursions-title,
+	.excursions-heading,
+	.animals-title,
+	.animals-heading,
+	.animal-title,
+	.animal-heading,
+	.seasons-title,
+	.seasons-heading
+) {
+	font-family: var(--ff-display);
+	letter-spacing: 0.02em;
+}
+
+:is(
+	.home-section,
+	.about-section,
+	.excursions-section,
+	.animals-section,
+	.animal-section,
+	.seasons-section
+) {
+	background: transparent;
+}
+
+:is(
+	.home-hero,
+	.about-hero,
+	.excursions-hero,
+	.animals-hero,
+	.animal-hero,
+	.seasons-hero
+) {
+	background:
+		linear-gradient(135deg, color-mix(in srgb, var(--c-bg-secondary) 70%, transparent), transparent 58%),
+		var(--c-bg-primary);
+}
+
+:is(
+	.home-card,
+	.about-card,
+	.excursions-card,
+	.excursions-total,
+	.animals-card,
+	.animal-card,
+	.animal-info-card,
+	.seasons-card
+) {
+	box-shadow: var(--shadow-sm);
+}
+
+:is(
+	.home-card,
+	.about-card,
+	.excursions-card,
+	.animals-card,
+	.animal-card,
+	.seasons-card
+):hover {
+	border-color: color-mix(in srgb, var(--c-primary) 42%, var(--c-border));
+	box-shadow: var(--shadow-md);
+	transform: translateY(-2px);
+}
+
+:is(
+	.home-button,
+	.about-button,
+	.excursions-button,
+	.animals-button,
+	.animal-button,
+	.seasons-button
+) {
+	box-shadow: var(--shadow-sm);
+	transition-duration: var(--motion-fast);
+	transition-property: background-color, border-color, box-shadow, color, opacity, transform;
+	transition-timing-function: var(--easing);
+}
+
+:is(
+	.home-button,
+	.about-button,
+	.excursions-button,
+	.animals-button,
+	.animal-button,
+	.seasons-button
+):hover {
+	transform: translateY(-1px);
+}
+
+:is(
+	.home-button--primary,
+	.about-button--primary,
+	.excursions-button--primary,
+	.animals-button--primary,
+	.animal-button--primary,
+	.seasons-button--primary
+):hover {
+	background: var(--c-primary-hover);
+}
+
+:is(
+	.home-image,
+	.about-image,
+	.excursions-image,
+	.animals-image,
+	.animal-image,
+	.seasons-image,
+	.home-card-image,
+	.about-card-image,
+	.animals-card-image,
+	.animal-card-image,
+	.seasons-card-image
+) {
+	box-shadow: var(--shadow-md);
+}
+
+html[data-mode='light']
+	:is(
+		.home-image,
+		.about-image,
+		.excursions-image,
+		.animals-image,
+		.animal-image,
+		.seasons-image,
+		.home-card-image,
+		.about-card-image,
+		.animals-card-image,
+		.animal-card-image,
+		.seasons-card-image
+	) {
+	filter: saturate(0.92) sepia(0.06);
+}
+
+html[data-mode='dark']
+	:is(
+		.home-hero,
+		.about-hero,
+		.excursions-hero,
+		.animals-hero,
+		.animal-hero,
+		.seasons-hero
+	) {
+	background:
+		radial-gradient(circle at 20% 20%, rgba(232, 184, 108, 0.12), transparent 22rem),
+		linear-gradient(135deg, color-mix(in srgb, var(--c-bg-secondary) 82%, transparent), transparent 62%),
+		var(--c-bg-primary);
+}
+
+html[data-mode='dark']
+	:is(
+		.home-image,
+		.about-image,
+		.excursions-image,
+		.animals-image,
+		.animal-image,
+		.seasons-image,
+		.home-card-image,
+		.about-card-image,
+		.animals-card-image,
+		.animal-card-image,
+		.seasons-card-image
+	) {
+	filter: brightness(0.82) sepia(0.16) saturate(0.82);
+}
+
 .theme-interactive {
 	transition-duration: var(--motion-fast);
 	transition-property: background-color, border-color, box-shadow, color, opacity, transform;
@@ -26,4 +319,18 @@ body {
 		outline: none;
 		box-shadow: var(--focus-ring);
 	}
+}
+
+.pswp-arden-slide {
+	display: grid;
+	width: 100%;
+	height: 100%;
+	place-items: center;
+}
+
+.pswp-arden-slide img {
+	display: block;
+	max-width: min(100%, 1600px);
+	max-height: 100%;
+	object-fit: contain;
 }

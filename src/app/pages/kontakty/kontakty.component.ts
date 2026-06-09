@@ -2,8 +2,8 @@ import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 
-const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 
 @Component({
 	imports: [FormsModule, NgOptimizedImage, RouterLink],
@@ -11,16 +11,11 @@ const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KontaktyComponent {
-	// TODO: Replace with real photo of park entrance, road to Park Arden, visitors arriving, or bridge-gallery.
-	protected readonly heroImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Use placeholder for now. Later replace with Google Maps embed or static map preview.
-	protected readonly mapImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of parking area, park entrance, or visitors arriving.
-	protected readonly parkingImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of administrator, park entrance, visitors, or warm animal photo.
-	protected readonly phoneCtaImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with strong closing photo of Park Arden entrance, animal portrait, bridge-gallery, or family visitors.
-	protected readonly finalCtaImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	protected readonly heroImage = parkardenImageForKey('src/app/pages/kontakty/kontakty.component.ts-1');
+	protected readonly mapImage = parkardenImageForKey('src/app/pages/kontakty/kontakty.component.ts-2');
+	protected readonly parkingImage = parkardenImageForKey('src/app/pages/kontakty/kontakty.component.ts-3');
+	protected readonly phoneCtaImage = parkardenImageForKey('src/app/pages/kontakty/kontakty.component.ts-4');
+	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/kontakty/kontakty.component.ts-5');
 
 	protected readonly heroButtons = [
 		{ label: 'Записатись на екскурсію', path: '/ekskursii', style: 'primary' },

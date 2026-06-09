@@ -2,6 +2,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
+import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 
 interface NewsCard {
 	title: string;
@@ -10,11 +11,9 @@ interface NewsCard {
 	date: string;
 	text: string;
 	image: string;
-	imageTodo: string;
 }
 
-const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
-const SEO_IMAGE = 'https://parkarden.itkamianets.com/logo.png';
+const SEO_IMAGE = 'https://cdn-it.webart.work/parkarden/animals_processed_03.webp';
 
 @Component({
 	imports: [NgOptimizedImage, RouterLink],
@@ -24,13 +23,9 @@ const SEO_IMAGE = 'https://parkarden.itkamianets.com/logo.png';
 export class NovynyComponent {
 	private readonly _title = inject(Title);
 	private readonly _meta = inject(Meta);
-
-	// TODO: Replace with real wide photo of park life: animal, visitors, bridge-gallery, or seasonal park atmosphere.
-	protected readonly heroImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of visitors, animals, or social media-style park content.
-	protected readonly followImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with strong closing photo of animal, bridge-gallery, or visitors on excursion.
-	protected readonly finalCtaImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	protected readonly heroImage = parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-1');
+	protected readonly followImage = parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-2');
+	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-3');
 
 	protected readonly filters = [
 		'Усі новини',
@@ -48,9 +43,7 @@ export class NovynyComponent {
 			slug: 'zmina-vartosti-kvytkiv',
 			category: 'Оголошення',
 			date: 'Оновлено з 18.05.2026',
-			// TODO: Replace with real image for ticket price update or park entrance.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real image for ticket price update or park entrance.',
+			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-4'),
 			text: 'З 18.05.2026 діють оновлені ціни: дорослий квиток − 400 грн, дитячий квиток 6–14 років − 300 грн. Діти відвідують парк лише у супроводі дорослих.',
 		},
 		{
@@ -58,9 +51,7 @@ export class NovynyComponent {
 			slug: 'praczyuyemo-kozhen-den',
 			category: 'Екскурсії',
 			date: 'Актуальна інформація для гостей',
-			// TODO: Replace with real image of visitors on excursion or park entrance.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real image of visitors on excursion or park entrance.',
+			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-5'),
 			text: 'Парк працює щодня. Екскурсії розпочинаються з 10:00 та проводяться щогодини. Тривалість екскурсії − мінімум 60 хвилин.',
 		},
 		{
@@ -68,9 +59,7 @@ export class NovynyComponent {
 			slug: 'onovlennya-grafiku-ekskursij-parku-hyzhakiv',
 			category: 'Екскурсії',
 			date: 'Архівне оголошення',
-			// TODO: Replace with real image of guide, group, or bridge-gallery route.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real image of guide, group, or bridge-gallery route.',
+			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-6'),
 			text: 'Повідомлення про зміни у графіку екскурсій парку. Перед візитом завжди перевіряйте актуальний час роботи та записуйтеся заздалегідь.',
 		},
 	];
@@ -81,9 +70,7 @@ export class NovynyComponent {
 			slug: 'nablyzhayetsya-zyma',
 			category: '4 сезони',
 			date: 'Архівна новина',
-			// TODO: Replace with real winter photo of animals or park nature.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real winter photo of animals or park nature.',
+			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-7'),
 			text: 'Зима змінює настрій парку: тварини поводяться інакше, ліс стає тихішим, а маршрути відкривають зовсім іншу атмосферу.',
 		},
 		{
@@ -91,9 +78,7 @@ export class NovynyComponent {
 			slug: 'motrya-z-vedmezhatamy',
 			category: 'Тварини',
 			date: 'Архівна історія',
-			// TODO: Replace with real photo of Мотря with bear cubs.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Мотря with bear cubs.',
+			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-8'),
 			text: 'Історія з життя ведмежої родини, яка показує турботу, характер і особливі моменти мешканців парку.',
 		},
 		{
@@ -101,9 +86,7 @@ export class NovynyComponent {
 			slug: 'vesnyani-rozvagy-vedmezhat',
 			category: '4 сезони',
 			date: 'Архівна історія',
-			// TODO: Replace with real spring photo of bear cubs.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real spring photo of bear cubs.',
+			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-9'),
 			text: 'Весна приносить більше руху, гри та активності. Ведмежата відкривають світ навколо себе по-новому.',
 		},
 		{
@@ -111,9 +94,7 @@ export class NovynyComponent {
 			slug: 'himalayski-vedmedi',
 			category: 'Тварини',
 			date: 'Архівна історія',
-			// TODO: Replace with real photo of Himalayan bears.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Himalayan bears.',
+			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-10'),
 			text: 'Гімалайські ведмеді вирізняються темним хутром, світлим комірцем і спритністю, яка особливо помітна серед дерев.',
 		},
 		{
@@ -121,9 +102,7 @@ export class NovynyComponent {
 			slug: 'osinnye-popovnennya-velykyh-kotyachyh',
 			category: 'Тварини',
 			date: 'Архівна новина',
-			// TODO: Replace with real photo of big cats from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of big cats from Park Arden.',
+			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-11'),
 			text: 'Поповнення секції великих котячих стало яскравою подією для парку та відвідувачів.',
 		},
 		{
@@ -131,10 +110,7 @@ export class NovynyComponent {
 			slug: 'hyzhi-ptahy-u-parku',
 			category: 'Тварини',
 			date: 'Матеріал про мешканців',
-			// TODO: Replace with real photo of eagle, hawk, buzzard, or other bird from the rehabilitation center.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo:
-				'Replace with real photo of eagle, hawk, buzzard, or other bird from the rehabilitation center.',
+			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-12'),
 			text: 'У парку мешкають не лише хижаки на землі, а й хижі птахи, серед яких орлан-білохвіст, канюк, яструб та інші представники дикої природи.',
 		},
 	];
@@ -187,11 +163,9 @@ export class NovynyComponent {
 		this._meta.updateTag({ name: 'description', content: description });
 		this._meta.updateTag({ property: 'og:title', content: title });
 		this._meta.updateTag({ property: 'og:description', content: description });
-		// TODO: Replace with wide photo of Park Arden animals, visitors, bridge-gallery, or fresh park news moment. Best ratio: 1200x630 for Open Graph.
 		this._meta.updateTag({ property: 'og:image', content: SEO_IMAGE });
 		this._meta.updateTag({ name: 'twitter:title', content: title });
 		this._meta.updateTag({ name: 'twitter:description', content: description });
-		// TODO: Replace with wide photo of Park Arden animals, visitors, bridge-gallery, or fresh park news moment. Best ratio: 1200x630 for Twitter.
 		this._meta.updateTag({ name: 'twitter:image', content: SEO_IMAGE });
 	}
 }

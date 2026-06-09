@@ -1,8 +1,8 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 
-const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 
 @Component({
 	imports: [NgOptimizedImage, RouterLink],
@@ -11,22 +11,14 @@ const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LandingComponent {
-	// TODO: Replace with strong hero photo or video frame: wild animal, forest, bridge-gallery, or natural Park Arden atmosphere.
-	protected readonly heroImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real wide photo of Park Arden territory, forest path, bridge-gallery, or natural landscape.
-	protected readonly aboutImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with emotional real photo of bears in Park Arden forest enclosure.
-	protected readonly bearsImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of the forest bridge-gallery.
-	protected readonly bridgeGalleryImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of visitors on excursion, guide with group, or bridge-gallery route.
-	protected readonly excursionsImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of rescued animal, care moment, or emotional animal portrait.
-	protected readonly rescueStoriesImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with emotional real photo of rescued animal or animal care moment.
-	protected readonly supportImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Use placeholder for now if map is not implemented. Later replace with Google Maps embed or map preview.
-	protected readonly contactsImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	protected readonly heroImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-1');
+	protected readonly aboutImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-2');
+	protected readonly bearsImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-3');
+	protected readonly bridgeGalleryImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-4');
+	protected readonly excursionsImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-5');
+	protected readonly rescueStoriesImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-6');
+	protected readonly supportImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-7');
+	protected readonly contactsImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-8');
 
 	protected readonly facts = [
 		'Найбільший в Україні — сучасний парк для диких тварин',
@@ -63,38 +55,32 @@ export class LandingComponent {
 	protected readonly animalCategories = [
 		{
 			title: 'Ведмеді',
-			// TODO: Replace with real bear photo from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-9'),
 			text: 'Гордість парку − велика ведмежа колекція з бурими європейськими, гімалайськими та рідкісним бурим камчатським ведмедем.',
 		},
 		{
 			title: 'Великі коти',
-			// TODO: Replace with real big cat photo from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-10'),
 			text: 'Білі леви, левенята, тигри та інші хижаки, які вражають силою, красою та характером.',
 		},
 		{
 			title: 'Примати',
-			// TODO: Replace with real primates photo from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-11'),
 			text: 'Капуцини, лемури, зелені мавпи та бабуїни − активні й цікаві мешканці парку.',
 		},
 		{
 			title: 'Вовки',
-			// TODO: Replace with real wolf photo from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-12'),
 			text: 'Вовчі зграї живуть на території парку та нагадують про справжню дику природу.',
 		},
 		{
 			title: 'Олені та копитні',
-			// TODO: Replace with real deer or hoofed animals photo from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-13'),
 			text: 'Благородні олені, муфлони, лані та інші тварини природного лісового середовища.',
 		},
 		{
 			title: 'Птахи',
-			// TODO: Replace with real bird photo from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-14'),
 			text: 'У реабілітаційному центрі можна побачити птахів родини яструбових, зокрема орлана.',
 		},
 	];
@@ -130,26 +116,22 @@ export class LandingComponent {
 	protected readonly seasons = [
 		{
 			title: 'Весна',
-			// TODO: Replace with real spring photo of animals or park nature.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-15'),
 			text: 'Природа прокидається, а тварини стають активнішими після зими.',
 		},
 		{
 			title: 'Літо',
-			// TODO: Replace with real summer photo with green nature and animals.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-16'),
 			text: 'Найсоковитіший сезон для прогулянок, фото та сімейних екскурсій.',
 		},
 		{
 			title: 'Осінь',
-			// TODO: Replace with real autumn photo with warm forest colors and animals.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-17'),
 			text: 'Теплі кольори лісу, спокійна атмосфера і красиві маршрути.',
 		},
 		{
 			title: 'Зима',
-			// TODO: Replace with real winter photo with snow, animals, or quiet park atmosphere.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-18'),
 			text: 'Особлива тиша парку, сніг і зовсім інший настрій дикої природи.',
 		},
 	];
@@ -166,33 +148,27 @@ export class LandingComponent {
 	protected readonly galleryCards = [
 		{
 			title: 'Тварини парку',
-			// TODO: Replace with real animal gallery photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-19'),
 		},
 		{
 			title: 'Міст-галерея',
-			// TODO: Replace with real bridge-gallery photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-20'),
 		},
 		{
 			title: 'Природа Подільських Товтр',
-			// TODO: Replace with real landscape photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-21'),
 		},
 		{
 			title: 'Екскурсії',
-			// TODO: Replace with real visitors/excursion photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-22'),
 		},
 		{
 			title: '4 сезони',
-			// TODO: Replace with real seasonal photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-23'),
 		},
 		{
 			title: 'Історії порятунку',
-			// TODO: Replace with real rescue story animal photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-24'),
 		},
 	];
 
@@ -206,20 +182,17 @@ export class LandingComponent {
 	protected readonly newsCards = [
 		{
 			title: 'Нова історія порятунку',
-			// TODO: Replace with real rescue story news image.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-25'),
 			text: 'Дізнайтесь, як тварини знаходять безпечний дім у парку.',
 		},
 		{
 			title: 'Сезонні екскурсії',
-			// TODO: Replace with real seasonal excursion image.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-26'),
 			text: 'Що цікавого можна побачити в парку цієї пори року.',
 		},
 		{
 			title: 'Життя мешканців',
-			// TODO: Replace with real animal life/care image.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-27'),
 			text: 'Новини про тварин, їхній догляд і щоденне життя.',
 		},
 	];

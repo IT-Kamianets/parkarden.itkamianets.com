@@ -1,6 +1,7 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 
 interface FormField {
 	key: string;
@@ -9,7 +10,6 @@ interface FormField {
 	required: boolean;
 }
 
-const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 const ADULT_PRICE = 400;
 const CHILD_PRICE = 300;
 
@@ -20,16 +20,11 @@ const CHILD_PRICE = 300;
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EkskursiiComponent {
-	// TODO: Replace with real photo of guided excursion, visitors on bridge-gallery, or park route.
-	protected readonly heroImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of excursion route, group of visitors, or guide near bridge-gallery.
-	protected readonly introImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of school group, family group, or visitors on excursion.
-	protected readonly groupImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with warm photo of park administrator, entrance, or visitors arriving at the park.
-	protected readonly phoneBookingImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with strong closing photo of bridge-gallery, animals, or happy visitors after excursion.
-	protected readonly finalCtaImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	protected readonly heroImage = parkardenImageForKey('src/app/pages/ekskursii/ekskursii.component.ts-1');
+	protected readonly introImage = parkardenImageForKey('src/app/pages/ekskursii/ekskursii.component.ts-2');
+	protected readonly groupImage = parkardenImageForKey('src/app/pages/ekskursii/ekskursii.component.ts-3');
+	protected readonly phoneBookingImage = parkardenImageForKey('src/app/pages/ekskursii/ekskursii.component.ts-4');
+	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/ekskursii/ekskursii.component.ts-5');
 
 	protected readonly includedItems = [
 		{

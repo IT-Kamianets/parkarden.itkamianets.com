@@ -1,8 +1,8 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 
-const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 
 @Component({
 	imports: [NgOptimizedImage, RouterLink],
@@ -10,8 +10,7 @@ const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotFoundComponent {
-	// TODO: Replace with friendly animal photo: bear, lion, wolf, or curious animal portrait from Park Arden.
-	protected readonly notFoundImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	protected readonly notFoundImage = parkardenImageForKey('src/app/pages/not-found/not-found.component.ts-1');
 
 	protected readonly quickLinks = [
 		{ label: 'Головна', path: '/' },

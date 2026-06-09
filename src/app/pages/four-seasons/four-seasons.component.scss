@@ -1,6 +1,6 @@
 :host {
 	display: block;
-	background: color-mix(in srgb, #f7f8ef 88%, var(--c-bg-primary));
+	background: var(--c-bg-primary);
 	color: var(--c-text);
 }
 
@@ -28,7 +28,7 @@
 .seasons-eyebrow {
 	color: var(--c-primary);
 	font-size: 0.82rem;
-	font-weight: 700;
+	font-weight: 600;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
 }
@@ -37,7 +37,7 @@
 .seasons-heading,
 .seasons-card-title {
 	color: var(--c-text-strong);
-	font-weight: 700;
+	font-weight: 600;
 }
 
 .seasons-title {
@@ -94,14 +94,14 @@
 	background: var(--c-bg-primary);
 	padding: 0.75rem 1.1rem;
 	color: var(--c-text-strong);
-	font-weight: 700;
+	font-weight: 600;
 	text-decoration: none;
 }
 
 .seasons-button--primary {
 	border-color: var(--c-primary);
 	background: var(--c-primary);
-	color: white;
+	color: var(--c-on-primary);
 }
 
 .seasons-image,
@@ -128,11 +128,42 @@
 	margin-top: 2rem;
 }
 
+.seasons-gallery {
+	grid-auto-columns: minmax(16rem, 78vw);
+	grid-auto-flow: column;
+	overflow-x: auto;
+	overscroll-behavior-inline: contain;
+	padding-bottom: 0.5rem;
+	scroll-padding-inline: 1rem;
+	scroll-snap-type: x mandatory;
+}
+
 .seasons-card {
 	border: 1px solid var(--c-border);
 	border-radius: var(--radius-card);
 	background: var(--c-bg-primary);
 	padding: 1rem;
+}
+
+.seasons-gallery-link {
+	display: block;
+	color: inherit;
+	scroll-snap-align: start;
+	text-decoration: none;
+	transition:
+		border-color var(--motion-fast) var(--easing),
+		box-shadow var(--motion-fast) var(--easing),
+		transform var(--motion-fast) var(--easing);
+}
+
+.seasons-gallery-link:hover {
+	border-color: color-mix(in srgb, var(--c-primary) 45%, var(--c-border));
+	transform: translateY(-2px);
+}
+
+.seasons-gallery-link:focus-visible {
+	outline: none;
+	box-shadow: var(--focus-ring);
 }
 
 .seasons-card-image {
@@ -149,7 +180,7 @@
 }
 
 .seasons-card--compact {
-	padding-bottom: 1.25rem;
+	padding: 0.65rem;
 }
 
 .seasons-list,
@@ -168,8 +199,7 @@
 }
 
 @media (min-width: 768px) {
-	.seasons-grid,
-	.seasons-gallery {
+	.seasons-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
@@ -185,6 +215,13 @@
 	}
 
 	.seasons-gallery {
+		grid-auto-columns: initial;
+		grid-auto-flow: row;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
+		overflow: visible;
+		padding-bottom: 0;
+		scroll-snap-type: none;
 	}
 }
+
+

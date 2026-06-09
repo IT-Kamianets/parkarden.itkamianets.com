@@ -1,6 +1,6 @@
 :host {
 	display: block;
-	background: color-mix(in srgb, #f7f8ef 88%, var(--c-bg-primary));
+	background: var(--c-bg-primary);
 	color: var(--c-text);
 }
 
@@ -27,7 +27,7 @@
 .animal-info-label {
 	color: var(--c-primary);
 	font-size: 0.82rem;
-	font-weight: 700;
+	font-weight: 600;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 }
@@ -37,7 +37,7 @@
 	max-width: 58rem;
 	color: var(--c-text-strong);
 	font-size: clamp(2.5rem, 7vw, 5.8rem);
-	font-weight: 700;
+	font-weight: 600;
 	line-height: 0.95;
 }
 
@@ -45,7 +45,7 @@
 	max-width: 48rem;
 	color: var(--c-text-strong);
 	font-size: clamp(2rem, 4vw, 3.5rem);
-	font-weight: 700;
+	font-weight: 600;
 	line-height: 1.05;
 }
 
@@ -83,7 +83,7 @@
 	margin-top: 1.5rem;
 	border-radius: var(--radius-btn);
 	padding: 0.75rem 1.1rem;
-	font-weight: 700;
+	font-weight: 600;
 	text-decoration: none;
 }
 
@@ -93,12 +93,12 @@
 
 .animal-button--primary {
 	background: var(--c-primary);
-	color: white;
+	color: var(--c-on-primary);
 }
 
 .animal-button--secondary {
 	border: 1px solid var(--c-border);
-	background: var(--c-bg-primary);
+	background: color-mix(in srgb, var(--c-bg-secondary) 72%, transparent);
 	color: var(--c-text-strong);
 }
 
@@ -131,14 +131,14 @@
 .animal-card {
 	border: 1px solid var(--c-border);
 	border-radius: var(--radius-card);
-	background: color-mix(in srgb, var(--c-bg-primary) 90%, transparent);
+	background: color-mix(in srgb, var(--c-bg-secondary) 88%, transparent);
 	padding: 1rem;
 }
 
 .animal-info-value {
 	margin-top: 0.45rem;
 	color: var(--c-text-strong);
-	font-weight: 700;
+	font-weight: 600;
 }
 
 .animal-list {
@@ -165,7 +165,7 @@
 .animal-card-title {
 	color: var(--c-text-strong);
 	font-size: 1.15rem;
-	font-weight: 700;
+	font-weight: 600;
 }
 
 .animal-card-text {
@@ -183,3 +183,5 @@
 		padding: 3rem 0;
 	}
 }
+
+

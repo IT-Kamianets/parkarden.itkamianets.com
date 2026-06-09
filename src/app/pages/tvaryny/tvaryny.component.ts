@@ -1,8 +1,8 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 
-const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 
 @Component({
 	imports: [NgOptimizedImage, RouterLink],
@@ -11,10 +11,8 @@ const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TvarynyComponent {
-	// TODO: Replace with wide photo of several Park Arden animals or strong animal portrait in forest surroundings.
-	protected readonly heroImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with emotional photo of rescued animal, animal care, or close-up portrait.
-	protected readonly rescueCtaImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	protected readonly heroImage = parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-1');
+	protected readonly rescueCtaImage = parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-2');
 
 	protected readonly filters = [
 		'Усі тварини',
@@ -32,38 +30,32 @@ export class TvarynyComponent {
 	protected readonly groupCards = [
 		{
 			title: 'Ведмеді',
-			// TODO: Replace with real bear photo from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-3'),
 			text: 'Гордість парку − велика ведмежа колекція з бурими європейськими, гімалайськими та рідкісним бурим камчатським ведмедем.',
 		},
 		{
 			title: 'Великі коти',
-			// TODO: Replace with real lion, tiger, or big cat photo from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-4'),
 			text: 'Леви, тигри та інші хижаки, які вражають силою, грацією та характером.',
 		},
 		{
 			title: 'Примати',
-			// TODO: Replace with real primates photo from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-5'),
 			text: 'Капуцини, лемури, зелені мавпи та бабуїни − активні й допитливі мешканці парку.',
 		},
 		{
 			title: 'Вовки',
-			// TODO: Replace with real wolf photo from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-6'),
 			text: 'Вовчі зграї живуть на території парку та нагадують про справжній голос дикого лісу.',
 		},
 		{
 			title: 'Олені та копитні',
-			// TODO: Replace with real deer, mouflon, or fallow deer photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-7'),
 			text: 'Благородні олені, муфлони та лані доповнюють природну атмосферу парку.',
 		},
 		{
 			title: 'Хижі птахи',
-			// TODO: Replace with real bird photo from the rehabilitation center.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-8'),
 			text: 'Орлан-білохвіст, яструб, канюк та інші хижі птахи, для яких створені комфортні умови.',
 		},
 	];
@@ -73,414 +65,322 @@ export class TvarynyComponent {
 			name: 'Тоша',
 			category: 'Ведмеді',
 			slug: 'tosha',
-			// TODO: Replace with real photo of bear Тоша.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bear Тоша.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-9'),
 			text: 'Великий бурий ведмідь, один із найвідоміших мешканців парку.',
 		},
 		{
 			name: 'Міша',
 			category: 'Ведмеді',
 			slug: 'misha',
-			// TODO: Replace with real photo of bear Міша.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bear Міша.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-10'),
 			text: 'Один із перших мешканців парку-притулку.',
 		},
 		{
 			name: 'Маша',
 			category: 'Ведмеді',
 			slug: 'masha',
-			// TODO: Replace with real photo of bear Маша.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bear Маша.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-11'),
 			text: 'Ведмедиця, яка живе поруч із Мішею та має свою історію адаптації.',
 		},
 		{
 			name: 'Гоша',
 			category: 'Ведмеді',
 			slug: 'gosha',
-			// TODO: Replace with real photo of Himalayan bear Гоша.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Himalayan bear Гоша.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-12'),
 			text: 'Гімалайський ведмідь із характерним світлим комірцем.',
 		},
 		{
 			name: 'Ірка',
 			category: 'Ведмеді',
 			slug: 'irka',
-			// TODO: Replace with real photo of bear Ірка.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bear Ірка.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-13'),
 			text: 'Гімалайська ведмедиця з чорним шовковистим хутром.',
 		},
 		{
 			name: 'Даша та Ася',
 			category: 'Ведмеді',
 			slug: 'dasha-ta-asya',
-			// TODO: Replace with real photo of bears Даша та Ася.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bears Даша та Ася.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-14'),
 			text: 'Спритні ведмедиці, які вражають умінням лазити по деревах.',
 		},
 		{
 			name: 'Бублик та Коржик',
 			category: 'Ведмеді',
 			slug: 'bublyk-ta-korzhyk',
-			// TODO: Replace with real photo of bears Бублик та Коржик.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bears Бублик та Коржик.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-15'),
 			text: 'Молоді активні ведмеді зі світлими комірцями.',
 		},
 		{
 			name: 'Ніка та ведмежа',
 			category: 'Ведмеді',
 			slug: 'nika-ta-vedmezha',
-			// TODO: Replace with real photo of Ніка та ведмежа.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Ніка та ведмежа.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-16'),
 			text: 'Ведмежа родина, яка викликає особливе захоплення у відвідувачів.',
 		},
 		{
 			name: 'Василь',
 			category: 'Ведмеді',
 			slug: 'vasyl',
-			// TODO: Replace with real photo of bear Василь.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bear Василь.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-17'),
 			text: 'Мешканець ведмежої колекції парку.',
 		},
 		{
 			name: 'Микита та Ілля',
 			category: 'Ведмеді',
 			slug: 'mykyta-ta-illya',
-			// TODO: Replace with real photo of bears Микита та Ілля.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bears Микита та Ілля.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-18'),
 			text: 'Дорослі ведмеді, що вражають силою та могутністю.',
 		},
 		{
 			name: 'Яник',
 			category: 'Ведмеді',
 			slug: 'yanyk',
-			// TODO: Replace with real photo of bear Яник.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bear Яник.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-19'),
 			text: 'Один із мешканців ведмежої частини парку.',
 		},
 		{
 			name: 'Рікі',
 			category: 'Ведмеді',
 			slug: 'riki',
-			// TODO: Replace with real photo of bear Рікі.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bear Рікі.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-20'),
 			text: 'Мешканець ведмежої колекції «АРДЕНУ».',
 		},
 		{
 			name: 'Макс та Мері',
 			category: 'Ведмеді',
 			slug: 'maks-ta-meri',
-			// TODO: Replace with real photo of bears Макс та Мері.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bears Макс та Мері.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-21'),
 			text: 'Ведмежа пара з каталогу мешканців парку.',
 		},
 		{
 			name: 'Грішка та Мішка',
 			category: 'Ведмеді',
 			slug: 'grishka-ta-mishka',
-			// TODO: Replace with real photo of bears Грішка та Мішка.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bears Грішка та Мішка.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-22'),
 			text: 'Мешканці ведмежої колекції парку.',
 		},
 		{
 			name: 'Чук та Гек',
 			category: 'Ведмеді',
 			slug: 'chuk-ta-hek',
-			// TODO: Replace with real photo of bears Чук та Гек.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bears Чук та Гек.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-23'),
 			text: 'Ведмежий дует із каталогу парку.',
 		},
 		{
 			name: 'Шарик',
 			category: 'Ведмеді',
 			slug: 'sharyk',
-			// TODO: Replace with real photo of bear Шарик.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bear Шарик.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-24'),
 			text: 'Один із ведмедів, які знайшли прихисток у парку.',
 		},
 		{
 			name: 'Потап, Джек та Джон',
 			category: 'Ведмеді',
 			slug: 'potap-dzhek-ta-dzhon',
-			// TODO: Replace with real photo of bears Потап, Джек та Джон.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bears Потап, Джек та Джон.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-25'),
 			text: 'Троє мешканців ведмежої частини парку.',
 		},
 		{
 			name: 'Максим',
 			category: 'Ведмеді',
 			slug: 'maksym',
-			// TODO: Replace with real photo of bear Максим.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bear Максим.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-26'),
 			text: 'Мешканець ведмежої колекції «АРДЕНУ».',
 		},
 		{
 			name: 'Ведмежа сім’я',
 			category: 'Ведмеді',
 			slug: 'vedmezha-simya',
-			// TODO: Replace with real photo of bear family.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of bear family.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-27'),
 			text: 'Ведмежа родина, за якою цікаво спостерігати під час екскурсії.',
 		},
 		{
 			name: 'Білий лев Зевс',
 			category: 'Великі коти',
 			slug: 'bilyy-lev-zevs',
-			// TODO: Replace with real photo of white lion Зевс.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of white lion Зевс.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-28'),
 			text: 'Білий лев, один із найефектніших великих котів парку.',
 		},
 		{
 			name: 'Франц і Петро',
 			category: 'Великі коти',
 			slug: 'frants-i-petro',
-			// TODO: Replace with real photo of lion cubs Франц і Петро.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of lion cubs Франц і Петро.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-29'),
 			text: 'Молоді левенята, які привертають увагу відвідувачів.',
 		},
 		{
 			name: 'Люся',
 			category: 'Великі коти',
 			slug: 'lyusya',
-			// TODO: Replace with real photo of Люся.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Люся.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-30'),
 			text: 'Представниця великих котів парку.',
 		},
 		{
 			name: 'Лео',
 			category: 'Великі коти',
 			slug: 'leo',
-			// TODO: Replace with real photo of Лео.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Лео.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-31'),
 			text: 'Великий кіт із каталогу мешканців «АРДЕНУ».',
 		},
 		{
 			name: 'Яся',
 			category: 'Великі коти',
 			slug: 'yasya',
-			// TODO: Replace with real photo of Яся.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Яся.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-32'),
 			text: 'Мешканка секції великих котів.',
 		},
 		{
 			name: 'Пірат',
 			category: 'Великі коти',
 			slug: 'pirat',
-			// TODO: Replace with real photo of Пірат.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Пірат.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-33'),
 			text: 'Хижак із сильним характером і виразним образом.',
 		},
 		{
 			name: 'Луна',
 			category: 'Великі коти',
 			slug: 'luna',
-			// TODO: Replace with real photo of Луна.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Луна.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-34'),
 			text: 'Мешканка секції великих котів.',
 		},
 		{
 			name: 'Одін',
 			category: 'Великі коти',
 			slug: 'odin',
-			// TODO: Replace with real photo of Одін.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Одін.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-35'),
 			text: 'Представник великих хижаків парку.',
 		},
 		{
 			name: 'Султан',
 			category: 'Великі коти',
 			slug: 'sultan',
-			// TODO: Replace with real photo of Султан.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Султан.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-36'),
 			text: 'Великий кіт із каталогу парку.',
 		},
 		{
 			name: 'Жозефіна',
 			category: 'Великі коти',
 			slug: 'zhozefina',
-			// TODO: Replace with real photo of Жозефіна.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Жозефіна.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-37'),
 			text: 'Мешканка секції великих котів.',
 		},
 		{
 			name: 'Ельза',
 			category: 'Великі коти',
 			slug: 'elza',
-			// TODO: Replace with real photo of Ельза.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Ельза.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-38'),
 			text: 'Представниця великих котів парку.',
 		},
 		{
 			name: 'Авелія',
 			category: 'Великі коти',
 			slug: 'aveliya',
-			// TODO: Replace with real photo of Авелія.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Авелія.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-39'),
 			text: 'Мешканка секції великих котів.',
 		},
 		{
 			name: 'Валєра',
 			category: 'Великі коти',
 			slug: 'valyera',
-			// TODO: Replace with real photo of Валєра.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Валєра.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-40'),
 			text: 'Великий кіт із каталогу мешканців парку.',
 		},
 		{
 			name: 'Льова',
 			category: 'Великі коти',
 			slug: 'lyova',
-			// TODO: Replace with real photo of Льова.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of Льова.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-41'),
 			text: 'Представник секції великих котів.',
 		},
 		{
 			name: 'Білий тигр',
 			category: 'Великі коти',
 			slug: 'bilyy-tyhr',
-			// TODO: Replace with real photo of white tiger.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of white tiger.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-42'),
 			text: 'Білий тигр − один із найяскравіших хижаків парку.',
 		},
 		{
 			name: 'Сімейство капуцинів',
 			category: 'Примати',
 			slug: 'simeystvo-kaputsyniv',
-			// TODO: Replace with real photo of capuchins.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of capuchins.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-43'),
 			text: 'Активні та допитливі примати, за якими цікаво спостерігати.',
 		},
 		{
 			name: 'Сімейство лемурів',
 			category: 'Примати',
 			slug: 'simeystvo-lemuriv',
-			// TODO: Replace with real photo of lemurs.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of lemurs.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-44'),
 			text: 'Лемури − яскраві й рухливі мешканці парку.',
 		},
 		{
 			name: 'Сімейство зелених мавп',
 			category: 'Примати',
 			slug: 'simeystvo-zelenyh-mavp',
-			// TODO: Replace with real photo of green monkeys.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of green monkeys.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-45'),
 			text: 'Родина зелених мавп із характерною поведінкою та активністю.',
 		},
 		{
 			name: 'Сімейство бабуїнів',
 			category: 'Примати',
 			slug: 'simeystvo-babuyiniv',
-			// TODO: Replace with real photo of baboons.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of baboons.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-46'),
 			text: 'Бабуїни − сильні соціальні примати з виразною поведінкою.',
 		},
 		{
 			name: 'Вовчі зграї',
 			category: 'Вовки',
 			slug: 'vovchi-zgrayi',
-			// TODO: Replace with real photo of wolves from Park Arden.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of wolves from Park Arden.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-47'),
 			text: 'Вовки живуть зграями та створюють особливу атмосферу дикого лісу.',
 		},
 		{
 			name: 'Благородні олені',
 			category: 'Олені та копитні',
 			slug: 'blahorodni-oleni',
-			// TODO: Replace with real photo of red deer.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of red deer.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-48'),
 			text: 'Красиві лісові мешканці з розлогими рогами.',
 		},
 		{
 			name: 'Муфлони',
 			category: 'Олені та копитні',
 			slug: 'muflony',
-			// TODO: Replace with real photo of mouflons.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of mouflons.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-49'),
 			text: 'Копитні тварини, які доповнюють природну різноманітність парку.',
 		},
 		{
 			name: 'Лані',
 			category: 'Олені та копитні',
 			slug: 'lani',
-			// TODO: Replace with real photo of fallow deer.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of fallow deer.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-50'),
 			text: 'Спокійні й граційні мешканці природного простору.',
 		},
 		{
 			name: 'Орлан-білохвіст',
 			category: 'Птахи',
 			slug: 'orlan-bilohvist',
-			// TODO: Replace with real photo of white-tailed eagle.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of white-tailed eagle.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-51'),
 			text: 'Один із найбільших пернатих хижаків Європи.',
 		},
 		{
 			name: 'Яструб',
 			category: 'Птахи',
 			slug: 'yastrub',
-			// TODO: Replace with real photo of hawk.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of hawk.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-52'),
 			text: 'Хижий птах родини яструбових.',
 		},
 		{
 			name: 'Канюк',
 			category: 'Птахи',
 			slug: 'kanyuk',
-			// TODO: Replace with real photo of buzzard.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of buzzard.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-53'),
 			text: 'Хижий птах, якого можна побачити у реабілітаційному центрі.',
 		},
 		{
 			name: 'Підорлик',
 			category: 'Птахи',
 			slug: 'pidorlyk',
-			// TODO: Replace with real photo of spotted eagle.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
-			imageTodo: 'Replace with real photo of spotted eagle.',
+			image: parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-54'),
 			text: 'Представник денних хижих птахів України.',
 		},
 	];

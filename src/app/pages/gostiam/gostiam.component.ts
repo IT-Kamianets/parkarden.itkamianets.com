@@ -1,8 +1,8 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 
-const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 
 @Component({
 	imports: [NgOptimizedImage, RouterLink],
@@ -10,14 +10,10 @@ const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GostiamComponent {
-	// TODO: Replace with real photo of park entrance, visitors arriving, bridge-gallery, or family near the route.
-	protected readonly heroImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of visitors on bridge-gallery or entrance area with rules.
-	protected readonly rulesImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Use placeholder for now. Later replace with Google Maps embed or custom map preview.
-	protected readonly mapImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with warm real photo of family visitors, bridge-gallery, or animals visible from route.
-	protected readonly finalCtaImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	protected readonly heroImage = parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-1');
+	protected readonly rulesImage = parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-2');
+	protected readonly mapImage = parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-3');
+	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-4');
 
 	protected readonly quickInfoCards = [
 		{
@@ -84,26 +80,22 @@ export class GostiamComponent {
 	protected readonly territoryItems = [
 		{
 			title: 'Власна парковка',
-			// TODO: Replace with real photo of parking area.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-5'),
 			text: 'Для гостей передбачена власна парковка на території.',
 		},
 		{
 			title: 'Піцерія',
-			// TODO: Replace with real photo of pizzeria or food area.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-6'),
 			text: 'Після прогулянки можна смачно поїсти та відпочити.',
 		},
 		{
 			title: 'Сувенірна лавка',
-			// TODO: Replace with real photo of souvenir shop.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-7'),
 			text: 'Тут можна придбати чашку з логотипом парку, фотографії тварин, магніти та інші сувеніри.',
 		},
 		{
 			title: 'Природний маршрут',
-			// TODO: Replace with real photo of forest path or bridge-gallery.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-8'),
 			text: 'Прогулянка проходить серед лісу, чистого повітря та природних краєвидів.',
 		},
 	];

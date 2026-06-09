@@ -2,6 +2,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 
 interface NewsArticle {
 	slug: string;
@@ -9,14 +10,12 @@ interface NewsArticle {
 	category: string;
 	dateLabel: string;
 	image: string;
-	imageTodo: string;
 	excerpt: string;
 	paragraphs: string[];
 	bullets: string[];
 }
 
-const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
-const SEO_IMAGE = 'https://parkarden.itkamianets.com/logo.png';
+const SEO_IMAGE = 'https://cdn-it.webart.work/parkarden/animals_processed_03.webp';
 
 const NEWS_ARTICLES: NewsArticle[] = [
 	{
@@ -24,9 +23,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		title: 'Зміна вартості квитків',
 		category: 'Оголошення',
 		dateLabel: 'Оновлено з 18.05.2026',
-		// TODO: Replace with real image of park entrance, ticket office, or visitors arriving.
-		image: TEMPORARY_PLACEHOLDER_IMAGE,
-		imageTodo: 'Replace with real image of park entrance, ticket office, or visitors arriving.',
+		image: parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-1'),
 		excerpt:
 			'З 18.05.2026 діють оновлені ціни на відвідування парку: дорослий квиток − 400 грн, дитячий квиток 6–14 років − 300 грн.',
 		paragraphs: [
@@ -47,9 +44,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		title: 'Працюємо кожен день',
 		category: 'Для гостей',
 		dateLabel: 'Актуальна інформація для гостей',
-		// TODO: Replace with real image of visitors at park entrance or excursion group.
-		image: TEMPORARY_PLACEHOLDER_IMAGE,
-		imageTodo: 'Replace with real image of visitors at park entrance or excursion group.',
+		image: parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-2'),
 		excerpt:
 			'Парк працює щодня, екскурсії стартують з 10:00 та проводяться щогодини.',
 		paragraphs: [
@@ -75,9 +70,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		title: 'Оновлення графіку екскурсій «Парку хижаків»',
 		category: 'Екскурсії',
 		dateLabel: 'Архівне оголошення',
-		// TODO: Replace with real photo of guide, group of visitors, or bridge-gallery route.
-		image: TEMPORARY_PLACEHOLDER_IMAGE,
-		imageTodo: 'Replace with real photo of guide, group of visitors, or bridge-gallery route.',
+		image: parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-3'),
 		excerpt:
 			'Повідомлення про зміни у графіку екскурсій парку на жовтень-листопад.',
 		paragraphs: [
@@ -97,9 +90,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		title: 'Наближається зима',
 		category: '4 сезони',
 		dateLabel: 'Сезонна новина',
-		// TODO: Replace with real winter photo of bear, forest, snow, or quiet park atmosphere.
-		image: TEMPORARY_PLACEHOLDER_IMAGE,
-		imageTodo: 'Replace with real winter photo of bear, forest, snow, or quiet park atmosphere.',
+		image: parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-4'),
 		excerpt:
 			'Більшість ведмедів у парку вже дрімають у барлогах, але іноді відвідувачам щастить побачити їх і взимку.',
 		paragraphs: [
@@ -118,9 +109,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		title: 'Мотря з ведмежатами',
 		category: 'Тварини',
 		dateLabel: 'Історія з життя парку',
-		// TODO: Replace with real photo of Мотря with bear cubs.
-		image: TEMPORARY_PLACEHOLDER_IMAGE,
-		imageTodo: 'Replace with real photo of Мотря with bear cubs.',
+		image: parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-5'),
 		excerpt:
 			'Чотиримісячні ведмежата з мамою Мотрею досліджують територію вольєра.',
 		paragraphs: [
@@ -139,9 +128,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		title: 'Весняні розваги ведмежат',
 		category: '4 сезони',
 		dateLabel: 'Весняна історія',
-		// TODO: Replace with real spring photo of bear cubs climbing trees or eating leaves.
-		image: TEMPORARY_PLACEHOLDER_IMAGE,
-		imageTodo: 'Replace with real spring photo of bear cubs climbing trees or eating leaves.',
+		image: parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-6'),
 		excerpt:
 			'Навесні молоді ведмежата можуть вилізти на дерево та поласувати першими зеленими листочками.',
 		paragraphs: [
@@ -161,10 +148,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		title: 'Гімалайські ведмеді вже потроху виходять з берлоги',
 		category: 'Тварини',
 		dateLabel: 'Сезонна історія',
-		// TODO: Replace with real photo of Himalayan bear Гоша near tree or forest enclosure.
-		image: TEMPORARY_PLACEHOLDER_IMAGE,
-		imageTodo:
-			'Replace with real photo of Himalayan bear Гоша near tree or forest enclosure.',
+		image: parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-7'),
 		excerpt:
 			'Гімалайський ведмідь Гоша вийшов з барлоги раніше та навіть спробував вилізти на дерево.',
 		paragraphs: [
@@ -196,8 +180,7 @@ export class NovynyArticleComponent {
 	protected readonly article = NEWS_ARTICLES.find(
 		(article) => article.slug === this._route.snapshot.paramMap.get('slug'),
 	);
-	// TODO: Replace with real emotional photo of rescued animal, animal care moment, or park atmosphere.
-	protected readonly supportImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	protected readonly supportImage = parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-8');
 	protected readonly relatedNews = this.article
 		? NEWS_ARTICLES.filter((article) => article.slug !== this.article?.slug).slice(0, 3)
 		: NEWS_ARTICLES.slice(0, 3);
@@ -224,11 +207,9 @@ export class NovynyArticleComponent {
 		this._meta.updateTag({ name: 'description', content: description });
 		this._meta.updateTag({ property: 'og:title', content: title });
 		this._meta.updateTag({ property: 'og:description', content: description });
-		// TODO: Replace with real article Open Graph image. Best ratio: 1200x630.
 		this._meta.updateTag({ property: 'og:image', content: SEO_IMAGE });
 		this._meta.updateTag({ name: 'twitter:title', content: title });
 		this._meta.updateTag({ name: 'twitter:description', content: description });
-		// TODO: Replace with real article Twitter image. Best ratio: 1200x630.
 		this._meta.updateTag({ name: 'twitter:image', content: SEO_IMAGE });
 	}
 }

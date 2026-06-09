@@ -4,13 +4,19 @@ import {
 	isMainModule,
 	writeResponseToNodeResponse,
 } from '@angular/ssr/node';
+export { AngularAppEngine } from '@angular/ssr';
 import express from 'express';
 import { join } from 'node:path';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
-const angularApp = new AngularNodeAppEngine();
+let angularApp: AngularNodeAppEngine | undefined;
+
+const getAngularApp = () => {
+	angularApp ??= new AngularNodeAppEngine();
+	return angularApp;
+};
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -39,7 +45,7 @@ app.use(
  * Handle all other requests by rendering the Angular application.
  */
 app.use((req, res, next) => {
-	angularApp
+	getAngularApp()
 		.handle(req)
 		.then((response) => (response ? writeResponseToNodeResponse(response, res) : next()))
 		.catch(next);
@@ -62,5 +68,9 @@ if (isMainModule(import.meta.url) || process.env['pm_id']) {
 
 /**
  * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
+ *
+ * In `ng serve`, Angular's Vite SSR middleware has its own app-engine manifest lifecycle.
+ * Returning no custom handler lets the internal middleware render the app in development.
  */
-export const reqHandler = createNodeRequestHandler(app);
+export const reqHandler =
+	process.env['NODE_ENV'] === 'development' ? undefined : createNodeRequestHandler(app);

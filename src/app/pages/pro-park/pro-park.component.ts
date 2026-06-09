@@ -1,8 +1,8 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 
-const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 
 @Component({
 	imports: [NgOptimizedImage, RouterLink],
@@ -11,22 +11,14 @@ const TEMPORARY_PLACEHOLDER_IMAGE = 'logo.png';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProParkComponent {
-	// TODO: Replace with atmospheric wide photo of Park Arden: forest, bridge-gallery, or wild animal in natural surroundings.
-	protected readonly heroImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of Park Arden territory, forest path, bridge-gallery, or natural landscape.
-	protected readonly introImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo connected with the creation of the park, entrance, territory, or founder-related material.
-	protected readonly historyImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of Podільські Товтри, Sатaнівський forest, park hills, trees, or walking route.
-	protected readonly natureImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of the forest bridge-gallery.
-	protected readonly bridgeGalleryImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with real photo of bears in Park Arden forest enclosures.
-	protected readonly bearsImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with emotional real photo of rescued animal, animal care moment, or close-up animal portrait.
-	protected readonly rescueStoriesImage = TEMPORARY_PLACEHOLDER_IMAGE;
-	// TODO: Replace with strong closing photo: animal portrait, bridge-gallery, family excursion, or warm park landscape.
-	protected readonly finalCtaImage = TEMPORARY_PLACEHOLDER_IMAGE;
+	protected readonly heroImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-1');
+	protected readonly introImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-2');
+	protected readonly historyImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-3');
+	protected readonly natureImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-4');
+	protected readonly bridgeGalleryImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-5');
+	protected readonly bearsImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-6');
+	protected readonly rescueStoriesImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-7');
+	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-8');
 
 	protected readonly missionItems = [
 		{
@@ -66,38 +58,32 @@ export class ProParkComponent {
 	protected readonly animalGroups = [
 		{
 			title: 'Ведмеді',
-			// TODO: Replace with real bear photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-9'),
 			text: 'Велика ведмежа колекція − одна з головних особливостей парку.',
 		},
 		{
 			title: 'Великі коти',
-			// TODO: Replace with real lion, tiger, or big cat photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-10'),
 			text: 'Білі леви, левенята, тигри та інші хижаки, які вражають силою й красою.',
 		},
 		{
 			title: 'Примати',
-			// TODO: Replace with real primates photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-11'),
 			text: 'Капуцини, лемури, зелені мавпи та бабуїни.',
 		},
 		{
 			title: 'Вовки',
-			// TODO: Replace with real wolf photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-12'),
 			text: 'Вовчі зграї нагадують про справжній характер дикого лісу.',
 		},
 		{
 			title: 'Олені та копитні',
-			// TODO: Replace with real deer, mouflon, or fallow deer photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-13'),
 			text: 'Благородні олені, муфлони, лані та інші тварини лісового простору.',
 		},
 		{
 			title: 'Птахи',
-			// TODO: Replace with real bird or rehabilitation center photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-14'),
 			text: 'У реабілітаційному центрі можна побачити хижих птахів родини яструбових.',
 		},
 	];
@@ -124,26 +110,22 @@ export class ProParkComponent {
 	protected readonly audienceCards = [
 		{
 			title: 'Родини з дітьми',
-			// TODO: Replace with real photo of family visitors.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-15'),
 			text: 'Безпечний і пізнавальний формат для спільного відпочинку.',
 		},
 		{
 			title: 'Школи та дитячі табори',
-			// TODO: Replace with real photo of school group or children on excursion.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-16'),
 			text: 'Екскурсія як частина екоосвіти та живого знайомства з природою.',
 		},
 		{
 			title: 'Туристи',
-			// TODO: Replace with real tourist route or park atmosphere photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-17'),
 			text: 'Атмосферна природна локація для тих, хто подорожує Поділлям.',
 		},
 		{
 			title: 'Меценати та партнери',
-			// TODO: Replace with real animal care, feeding, or support-related photo.
-			image: TEMPORARY_PLACEHOLDER_IMAGE,
+			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-18'),
 			text: 'Можливість підтримати важливий природоохоронний проєкт.',
 		},
 	];
