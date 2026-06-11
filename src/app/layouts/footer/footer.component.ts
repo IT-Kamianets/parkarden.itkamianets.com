@@ -21,8 +21,44 @@ export class FooterComponent {
 	protected readonly currentYear = new Date().getFullYear();
 	protected readonly pageLinks = computed<FooterPageLink[]>(() => [
 		{
-			label: 'Landing',
+			label: 'Головна',
 			path: '/',
+		},
+		{
+			label: 'Про парк',
+			path: '/pro-park',
+		},
+		{
+			label: 'Тварини',
+			path: '/tvaryny',
+		},
+		{
+			label: 'Екскурсії',
+			path: '/ekskursii',
+		},
+		{
+			label: 'Інформація для гостей',
+			path: '/gostiam',
+		},
+		{
+			label: 'Новини',
+			path: '/novyny',
+		},
+		{
+			label: 'Галерея',
+			path: '/galereya',
+		},
+		{
+			label: '4 сезони',
+			path: '/4-sezony',
+		},
+		{
+			label: 'Підтримати парк',
+			path: '/pidtrymaty',
+		},
+		{
+			label: 'Контакти',
+			path: '/kontakty',
 		},
 	]);
 	protected readonly companyImage = computed(() => this.company().image || 'logo.png');

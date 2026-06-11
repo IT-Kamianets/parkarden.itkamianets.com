@@ -1,153 +1,103 @@
-import { NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
+import {
+	AfterViewInit,
+	ChangeDetectionStrategy,
+	Component,
+	OnDestroy,
+	PLATFORM_ID,
+	computed,
+	inject,
+	signal,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { parkardenImageForKey } from '../../feature/media/parkarden-images';
+import type PhotoSwipeLightbox from 'photoswipe/lightbox';
+import { ParallaxImageDirective } from '../../feature/media/parallax-image.directive';
+import {
+	allGalleryPhotos,
+	galleryAlbums,
+	galleryFinalPhoto,
+	galleryHeroPhoto,
+	type GalleryAlbum,
+	type GalleryPhoto,
+} from './galereya.images';
 
-const ALL_FILTER = 'Усі фото';
+const ALL_ALBUMS = 'all';
 
 @Component({
-	imports: [NgOptimizedImage, RouterLink],
+	imports: [NgOptimizedImage, ParallaxImageDirective, RouterLink],
 	templateUrl: './galereya.component.html',
+	styleUrl: './galereya.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GalereyaComponent {
-	protected readonly heroImage = parkardenImageForKey('src/app/pages/galereya/galereya.component.ts-1');
-	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/galereya/galereya.component.ts-2');
+export class GalereyaComponent implements AfterViewInit, OnDestroy {
+	private readonly platformId = inject(PLATFORM_ID);
+	private lightbox?: PhotoSwipeLightbox;
+	private readonly photoIndex = new Map<string, number>(
+		allGalleryPhotos.map((photo, index) => [photo.src, index]),
+	);
+	private readonly photoSlides = allGalleryPhotos.map((photo) => ({
+		html: `<div class="pswp-arden-slide"><img src="${photo.src}" alt="${photo.alt}" loading="lazy" /></div>`,
+	}));
 
-	protected readonly selectedFilter = signal(ALL_FILTER);
-	protected readonly filters = [
-		ALL_FILTER,
-		'Тварини',
-		'Ведмеді',
-		'Великі коти',
-		'Примати',
-		'Вовки',
-		'Олені та копитні',
-		'Птахи',
-		'Міст-галерея',
-		'Природа',
-		'Екскурсії',
-		'4 сезони',
-		'Історії порятунку',
-		'Відео',
-	];
+	protected readonly allAlbumsId = ALL_ALBUMS;
+	protected readonly selectedAlbumId = signal(ALL_ALBUMS);
+	protected readonly heroPhoto = galleryHeroPhoto;
+	protected readonly finalPhoto = galleryFinalPhoto;
+	protected readonly albums = galleryAlbums;
+	protected readonly photoCount = allGalleryPhotos.length;
+	protected readonly archiveCount = 743;
 
-	protected readonly featuredCards = [
-		{
-			title: 'Тварини парку',
-			category: 'Тварини',
-			image: parkardenImageForKey('src/app/pages/galereya/galereya.component.ts-3'),
-			text: 'Фото мешканців парку: ведмеді, великі коти, вовки, примати, олені, птахи та інші тварини.',
-			alt: 'Тварини парку «АРДЕН»',
-		},
-		{
-			title: 'Міст-галерея',
-			category: 'Міст-галерея',
-			image: parkardenImageForKey('src/app/pages/galereya/galereya.component.ts-4'),
-			text: 'Оглядовий лісовий маршрут протяжністю близько 1 км у кронах дерев.',
-			alt: 'Міст-галерея у парку «АРДЕН»',
-		},
-		{
-			title: 'Природа Подільських Товтр',
-			category: 'Природа',
-			image: parkardenImageForKey('src/app/pages/galereya/galereya.component.ts-5'),
-			text: 'Ліс, пагорби, чисте повітря, природні маршрути та тиша Сатанівського лісу.',
-			alt: 'Природа Подільських Товтр у парку «АРДЕН»',
-		},
-		{
-			title: '4 сезони',
-			category: '4 сезони',
-			image: parkardenImageForKey('src/app/pages/galereya/galereya.component.ts-6'),
-			text: 'Весняне пробудження, літня зелень, осінні барви та зимова тиша парку.',
-			alt: '4 сезони у парку «АРДЕН»',
-		},
-	];
+	protected readonly featuredAlbums = galleryAlbums.slice(0, 3);
+	protected readonly visibleAlbums = computed(() => {
+		const selectedAlbumId = this.selectedAlbumId();
 
-	protected readonly galleryCards = [
-		this.galleryCard('Ведмеді у лісових вольєрах', 'Ведмеді', 'Ведмеді у лісовому вольєрі парку «АРДЕН»'),
-		this.galleryCard('Білий лев Зевс', 'Великі коти', 'Білий лев Зевс у Парку диких тварин «АРДЕН»'),
-		this.galleryCard('Тигр у парку', 'Великі коти', 'Тигр у Парку диких тварин «АРДЕН»'),
-		this.galleryCard('Вовчі зграї', 'Вовки', 'Вовки у лісовій частині парку «АРДЕН»'),
-		this.galleryCard('Примати', 'Примати', 'Примати у Парку диких тварин «АРДЕН»'),
-		this.galleryCard('Благородні олені', 'Олені та копитні', 'Благородні олені в природному просторі парку «АРДЕН»'),
-		this.galleryCard('Хижі птахи', 'Птахи', 'Хижі птахи у реабілітаційному центрі парку «АРДЕН»'),
-		this.galleryCard('Оглядовий міст-галерея', 'Міст-галерея', 'Лісовий міст-галерея у парку «АРДЕН»'),
-		this.galleryCard('Прогулянка диким лісом', 'Природа', 'Лісовий маршрут у Парку диких тварин «АРДЕН»'),
-		this.galleryCard('Екскурсія з гідом', 'Екскурсії', 'Екскурсія з гідом у парку «АРДЕН»'),
-		this.galleryCard('Весна в парку', '4 сезони', 'Весна у Парку диких тварин «АРДЕН»'),
-		this.galleryCard('Літо в парку', '4 сезони', 'Літо у Парку диких тварин «АРДЕН»'),
-		this.galleryCard('Осінь у лісі', '4 сезони', 'Осінь у Парку диких тварин «АРДЕН»'),
-		this.galleryCard('Зима в «АРДЕНІ»', '4 сезони', 'Зима у Парку диких тварин «АРДЕН»'),
-		this.galleryCard('Історія порятунку', 'Історії порятунку', 'Історія порятунку тварини у парку «АРДЕН»'),
-	];
-
-	protected readonly filteredGalleryCards = computed(() => {
-		const selectedFilter = this.selectedFilter();
-		return selectedFilter === ALL_FILTER
-			? this.galleryCards
-			: this.galleryCards.filter((card) => card.category === selectedFilter);
+		return selectedAlbumId === ALL_ALBUMS
+			? this.albums
+			: this.albums.filter((album) => album.id === selectedAlbumId);
 	});
 
-	protected readonly seasonCards = [
-		{
-			title: 'Весна',
-			image: parkardenImageForKey('src/app/pages/galereya/galereya.component.ts-7'),
-			text: 'Природа прокидається, тварини стають активнішими, а ліс наповнюється новими кольорами.',
-			alt: 'Весна у галереї парку «АРДЕН»',
-		},
-		{
-			title: 'Літо',
-			image: parkardenImageForKey('src/app/pages/galereya/galereya.component.ts-8'),
-			text: 'Найзеленіший і найсоковитіший період для сімейних екскурсій та яскравих фото.',
-			alt: 'Літо у галереї парку «АРДЕН»',
-		},
-		{
-			title: 'Осінь',
-			image: parkardenImageForKey('src/app/pages/galereya/galereya.component.ts-9'),
-			text: 'Теплі кольори лісу, м’яке світло та особлива спокійна атмосфера.',
-			alt: 'Осінь у галереї парку «АРДЕН»',
-		},
-		{
-			title: 'Зима',
-			image: parkardenImageForKey('src/app/pages/galereya/galereya.component.ts-10'),
-			text: 'Сніг, тиша, спокій і зовсім інший характер дикої природи.',
-			alt: 'Зима у галереї парку «АРДЕН»',
-		},
-	];
-
-	protected readonly videoPlaceholders = [
-		{
-			title: 'Прогулянка мостом-галереєю',
-			videoTodo: 'Replace with real YouTube video or uploaded video from Park Arden.',
-			text: 'Коротке відео маршруту в кронах дерев.',
-		},
-		{
-			title: 'Життя ведмедів',
-			videoTodo: 'Replace with real video of bears from Park Arden.',
-			text: 'Ведмеді у природних лісових вольєрах.',
-		},
-		{
-			title: 'Екскурсія парком',
-			videoTodo: 'Replace with real video of guided excursion.',
-			text: 'Атмосфера групового відвідування парку.',
-		},
-	];
-
-	protected readonly finalButtons = [
-		{ label: 'Записатись на екскурсію', path: '/ekskursii', style: 'primary' },
-		{ label: 'Інформація для гостей', path: '/gostiam', style: 'secondary' },
-	];
-
-	protected selectFilter(filter: string): void {
-		this.selectedFilter.set(filter);
+	protected selectAlbum(albumId: string): void {
+		this.selectedAlbumId.set(albumId);
 	}
 
-	private galleryCard(title: string, category: string, alt: string) {
-		return {
-			title,
-			category,
-			image: parkardenImageForKey('src/app/pages/galereya/galereya.component.ts-11'),
-			alt,
-		};
+	protected openPhoto(photo: GalleryPhoto, event: MouseEvent): void {
+		const index = this.photoIndex.get(photo.src);
+
+		if (!this.lightbox || index === undefined) {
+			return;
+		}
+
+		event.preventDefault();
+		this.lightbox.loadAndOpen(index, this.photoSlides);
+	}
+
+	protected albumTrack(_: number, album: GalleryAlbum): string {
+		return album.id;
+	}
+
+	protected photoTrack(_: number, photo: GalleryPhoto): string {
+		return photo.src;
+	}
+
+	ngAfterViewInit(): void {
+		if (!isPlatformBrowser(this.platformId)) {
+			return;
+		}
+
+		void this.initializeLightbox();
+	}
+
+	ngOnDestroy(): void {
+		this.lightbox?.destroy();
+	}
+
+	private async initializeLightbox(): Promise<void> {
+		const { default: PhotoSwipeLightbox } = await import('photoswipe/lightbox');
+
+		this.lightbox = new PhotoSwipeLightbox({
+			pswpModule: () => import('photoswipe'),
+			preload: [1, 2],
+		});
+		this.lightbox.init();
 	}
 }

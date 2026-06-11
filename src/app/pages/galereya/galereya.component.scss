@@ -1,0 +1,40 @@
+.gallery-page {
+	background: var(--c-bg-primary);
+}
+
+.gallery-image-shell,
+.gallery-card-image,
+.gallery-thumb {
+	display: block;
+	overflow: hidden;
+	border-radius: 0.5rem;
+}
+
+.gallery-image-shell {
+	box-shadow: 0 1.25rem 3rem color-mix(in srgb, var(--c-primary) 16%, transparent);
+}
+
+.gallery-card-image {
+	aspect-ratio: 4 / 3;
+	background: color-mix(in srgb, var(--c-bg-secondary) 70%, white);
+}
+
+.gallery-thumb {
+	aspect-ratio: 4 / 3;
+	background: white;
+	text-align: left;
+	box-shadow: 0 1px 2px color-mix(in srgb, black 10%, transparent);
+	transition:
+		box-shadow 180ms ease,
+		transform 180ms ease;
+}
+
+.gallery-thumb:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 0.75rem 1.8rem color-mix(in srgb, black 14%, transparent);
+}
+
+.gallery-thumb:focus-visible {
+	outline: 3px solid color-mix(in srgb, var(--c-primary) 80%, white);
+	outline-offset: 3px;
+}

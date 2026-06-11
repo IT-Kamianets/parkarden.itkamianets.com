@@ -1,230 +1,191 @@
-<main class="gallery-page bg-[#f7fbf4] text-[#1d2d20]">
-	<section class="px-4 py-12 sm:px-6 lg:px-8">
-		<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.82fr)] lg:items-center">
+<main class="gallery-page bg-[#f6faf3] text-[#1d2d20]">
+	<section class="px-4 pb-14 pt-10 sm:px-6 lg:px-8">
+		<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(20rem,1fr)] lg:items-center">
 			<div>
-				<p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#558b2f]">Галерея</p>
+				<p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#4f7f2b]">Галерея</p>
 				<h1 class="mt-4 text-4xl font-bold leading-tight sm:text-5xl">
-					Атмосфера «АРДЕНУ» в кадрах
+					Парк АРДЕН у кадрах
 				</h1>
 				<p class="mt-5 text-lg leading-8 text-[#425344]">
-					Тварини, лісові маршрути, міст-галерея, сезонні зміни та моменти з життя парку.
-					Галерея допомагає відчути настрій «АРДЕНУ» ще до візиту.
+					В архіві парку понад {{ archiveCount }} фото. Тут зібрана перша добірка для сайту:
+					ведмеді, великі коти, міст-галерея, зимовий ліс, примати, олені, вовки та хижі птахи.
 				</p>
+				<div class="mt-7 grid max-w-xl grid-cols-3 gap-3">
+					<div class="border-l border-[#b8cbae] pl-4">
+						<p class="text-2xl font-bold">{{ albums.length }}</p>
+						<p class="mt-1 text-sm text-[#516252]">альбомів</p>
+					</div>
+					<div class="border-l border-[#b8cbae] pl-4">
+						<p class="text-2xl font-bold">{{ photoCount }}</p>
+						<p class="mt-1 text-sm text-[#516252]">фото на сторінці</p>
+					</div>
+					<div class="border-l border-[#b8cbae] pl-4">
+						<p class="text-2xl font-bold">32 га</p>
+						<p class="mt-1 text-sm text-[#516252]">лісового парку</p>
+					</div>
+				</div>
 				<div class="mt-7 flex flex-wrap gap-3">
-					<a
-						class="rounded-md bg-[#4f7f2b] px-5 py-3 text-sm font-semibold text-white"
-						routerLink="/ekskursii"
-					>
+					<a class="rounded-md bg-[#4f7f2b] px-5 py-3 text-sm font-semibold text-white" routerLink="/ekskursii">
 						Записатись на екскурсію
 					</a>
-					<a
-						class="rounded-md border border-[#4f7f2b] px-5 py-3 text-sm font-semibold text-[#2f5f16]"
-						routerLink="/tvaryny"
-					>
-						Переглянути тварин
+					<a class="rounded-md border border-[#4f7f2b] px-5 py-3 text-sm font-semibold text-[#2f5f16]" routerLink="/4-sezony">
+						Дивитись 4 сезони
 					</a>
 				</div>
 			</div>
-			<img
-				class="aspect-[4/3] w-full rounded-lg object-contain bg-white p-8 shadow-sm"
-				[ngSrc]="heroImage"
-				width="1024"
-				height="768"
-				alt="Атмосфера галереї парку «АРДЕН»"
-				priority
-			/>
-		</div>
-	</section>
-
-	<section class="px-4 py-10 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-4xl">
-			<h2 class="text-3xl font-bold">Парк, який хочеться побачити наживо</h2>
-			<p class="mt-5 text-base leading-8 text-[#425344]">
-				«АРДЕН» змінюється щодня: тварини поводяться по-різному залежно від сезону, ліс
-				має свій настрій, а маршрут мостом-галереєю відкриває нові ракурси природи.
-			</p>
-			<p class="mt-4 text-base leading-8 text-[#425344]">
-				На цій сторінці зібрані фото та відео, які показують життя парку, його мешканців,
-				територію, екскурсії та сезонну красу Подільських Товтр.
-			</p>
-		</div>
-	</section>
-
-	<section class="px-4 py-10 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-6xl">
-			<h2 class="text-3xl font-bold">Рубрики галереї</h2>
-			<div class="mt-6 flex flex-wrap gap-2">
-				@for (filter of filters; track filter) {
-					<button
-						class="rounded-md border px-4 py-2 text-sm font-semibold transition"
-						[class.border-[#4f7f2b]]="selectedFilter() === filter"
-						[class.bg-[#4f7f2b]]="selectedFilter() === filter"
-						[class.text-white]="selectedFilter() === filter"
-						[class.border-[#c8d8bd]]="selectedFilter() !== filter"
-						[class.bg-white]="selectedFilter() !== filter"
-						[class.text-[#2f5f16]]="selectedFilter() !== filter"
-						type="button"
-						(click)="selectFilter(filter)"
-					>
-						{{ filter }}
-					</button>
-				}
-			</div>
-		</div>
-	</section>
-
-	<section class="px-4 py-10 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-6xl">
-			<h2 class="text-3xl font-bold">Головні фотоальбоми</h2>
-			<div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-				@for (card of featuredCards; track card.title) {
-					<article class="overflow-hidden rounded-lg bg-white shadow-sm">
-						<img
-							class="aspect-[4/3] w-full object-contain p-6"
-							[ngSrc]="card.image"
-							width="560"
-							height="420"
-							[alt]="card.alt"
-							loading="lazy"
-						/>
-						<div class="p-5">
-							<p class="text-sm font-semibold text-[#558b2f]">{{ card.category }}</p>
-							<h3 class="mt-2 text-xl font-bold">{{ card.title }}</h3>
-							<p class="mt-3 text-sm leading-6 text-[#425344]">{{ card.text }}</p>
-						</div>
-					</article>
-				}
-			</div>
-		</div>
-	</section>
-
-	<section class="px-4 py-10 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-6xl">
-			<h2 class="text-3xl font-bold">Фото з парку</h2>
-			<p class="mt-4 max-w-3xl text-base leading-8 text-[#425344]">
-				Це базова структура галереї. Реальні фото потрібно замінити після отримання
-				матеріалів від замовника.
-			</p>
-			<div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-				@for (card of filteredGalleryCards(); track card.title) {
-					<button
-						class="overflow-hidden rounded-lg bg-white text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-						type="button"
-						[attr.aria-label]="card.title"
-					>
-						<img
-							class="aspect-[4/3] w-full object-contain p-6"
-							[ngSrc]="card.image"
-							width="640"
-							height="480"
-							[alt]="card.alt"
-							loading="lazy"
-						/>
-						<span class="block p-5">
-							<span class="text-sm font-semibold text-[#558b2f]">{{ card.category }}</span>
-							<span class="mt-2 block text-xl font-bold">{{ card.title }}</span>
-						</span>
-					</button>
-				}
-			</div>
+			<figure class="gallery-image-shell aspect-[4/3] bg-white">
+				<img
+					class="h-full w-full object-cover"
+					[ngSrc]="heroPhoto.src"
+					[width]="heroPhoto.width"
+					[height]="heroPhoto.height"
+					[alt]="heroPhoto.alt"
+					priority
+				/>
+			</figure>
 		</div>
 	</section>
 
 	<section class="px-4 py-10 sm:px-6 lg:px-8">
 		<div class="mx-auto max-w-6xl">
 			<div class="max-w-3xl">
-				<h2 class="text-3xl font-bold">4 сезони в галереї</h2>
+				<h2 class="text-3xl font-bold">Головні фотоальбоми</h2>
 				<p class="mt-4 text-base leading-8 text-[#425344]">
-					Кожна пора року змінює парк. Саме тому окрема частина галереї присвячена
-					сезонним фото тварин, лісу та маршруту.
-				</p>
-			</div>
-			<div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-				@for (card of seasonCards; track card.title) {
-					<article class="overflow-hidden rounded-lg bg-white shadow-sm">
-						<img
-							class="aspect-[4/3] w-full object-contain p-6"
-							[ngSrc]="card.image"
-							width="560"
-							height="420"
-							[alt]="card.alt"
-							loading="lazy"
-						/>
-						<div class="p-5">
-							<h3 class="text-xl font-bold">{{ card.title }}</h3>
-							<p class="mt-3 text-sm leading-6 text-[#425344]">{{ card.text }}</p>
-						</div>
-					</article>
-				}
-			</div>
-			<a
-				class="mt-7 inline-flex rounded-md border border-[#4f7f2b] px-5 py-3 text-sm font-semibold text-[#2f5f16]"
-				routerLink="/4-sezony"
-			>
-				Переглянути 4 сезони
-			</a>
-		</div>
-	</section>
-
-	<section class="px-4 py-10 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-6xl">
-			<div class="max-w-3xl">
-				<h2 class="text-3xl font-bold">Відео з парку</h2>
-				<p class="mt-4 text-base leading-8 text-[#425344]">
-					Відео допомагають краще передати рух, звуки та живу атмосферу «АРДЕНУ»:
-					прогулянки мостом-галереєю, поведінку тварин, сезонні моменти та екскурсії.
+					Добірки побудовані навколо того, що гості найчастіше хочуть побачити наживо:
+					харизматичних тварин, маршрут мостом-галереєю і сезонний характер лісу.
 				</p>
 			</div>
 			<div class="mt-6 grid gap-5 md:grid-cols-3">
-				@for (video of videoPlaceholders; track video.title) {
-					<article class="rounded-lg bg-white p-5 shadow-sm">
-						<div class="flex aspect-video items-center justify-center rounded-md bg-[#e6efdf] text-sm font-semibold text-[#2f5f16]">
-							Відео
+				@for (album of featuredAlbums; track album.id) {
+					<article class="overflow-hidden rounded-lg bg-white shadow-sm">
+						<figure class="gallery-card-image">
+							<img
+								class="h-full w-full object-cover"
+								[ngSrc]="album.feature.src"
+								[width]="album.feature.width"
+								[height]="album.feature.height"
+								[alt]="album.feature.alt"
+								loading="lazy"
+							/>
+						</figure>
+						<div class="p-5">
+							<p class="text-sm font-semibold text-[#558b2f]">{{ album.kicker }}</p>
+							<h3 class="mt-2 text-xl font-bold">{{ album.title }}</h3>
+							<p class="mt-3 text-sm leading-6 text-[#425344]">{{ album.description }}</p>
 						</div>
-						<h3 class="mt-4 text-xl font-bold">{{ video.title }}</h3>
-						<p class="mt-3 text-sm leading-6 text-[#425344]">{{ video.text }}</p>
-						<p class="mt-3 text-xs leading-5 text-[#6b7b6d]">TODO: {{ video.videoTodo }}</p>
 					</article>
 				}
 			</div>
-			<p class="mt-5 text-sm text-[#6b7b6d]">
-				TODO: Add YouTube embeds when real video links are provided by client.
-			</p>
 		</div>
 	</section>
 
-	<section class="px-4 py-10 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-6xl rounded-lg bg-white p-6 shadow-sm sm:p-8">
-			<h2 class="text-3xl font-bold">Хочете побачити це наживо?</h2>
-			<p class="mt-4 max-w-3xl text-base leading-8 text-[#425344]">
-				Фото передають частину атмосфери, але справжній «АРДЕН» відкривається під час
-				прогулянки лісом, екскурсії та зустрічі з тваринами.
-			</p>
-			<div class="mt-7 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.72fr)] lg:items-center">
-				<div class="flex flex-wrap gap-3">
-					@for (button of finalButtons; track button.label) {
-						<a
-							class="rounded-md px-5 py-3 text-sm font-semibold"
-							[class.bg-[#4f7f2b]]="button.style === 'primary'"
-							[class.text-white]="button.style === 'primary'"
-							[class.border]="button.style === 'secondary'"
-							[class.border-[#4f7f2b]]="button.style === 'secondary'"
-							[class.text-[#2f5f16]]="button.style === 'secondary'"
-							[routerLink]="button.path"
-						>
-							{{ button.label }}
-						</a>
-					}
+	<section class="px-4 py-8 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-6xl">
+			<h2 class="text-3xl font-bold">Вибрати альбом</h2>
+			<div class="mt-6 flex flex-wrap gap-2">
+				<button
+					class="rounded-md border px-4 py-2 text-sm font-semibold transition"
+					[class.border-[#4f7f2b]]="selectedAlbumId() === allAlbumsId"
+					[class.bg-[#4f7f2b]]="selectedAlbumId() === allAlbumsId"
+					[class.text-white]="selectedAlbumId() === allAlbumsId"
+					[class.border-[#c8d8bd]]="selectedAlbumId() !== allAlbumsId"
+					[class.bg-white]="selectedAlbumId() !== allAlbumsId"
+					[class.text-[#2f5f16]]="selectedAlbumId() !== allAlbumsId"
+					type="button"
+					(click)="selectAlbum(allAlbumsId)"
+				>
+					Усі альбоми
+				</button>
+				@for (album of albums; track album.id) {
+					<button
+						class="rounded-md border px-4 py-2 text-sm font-semibold transition"
+						[class.border-[#4f7f2b]]="selectedAlbumId() === album.id"
+						[class.bg-[#4f7f2b]]="selectedAlbumId() === album.id"
+						[class.text-white]="selectedAlbumId() === album.id"
+						[class.border-[#c8d8bd]]="selectedAlbumId() !== album.id"
+						[class.bg-white]="selectedAlbumId() !== album.id"
+						[class.text-[#2f5f16]]="selectedAlbumId() !== album.id"
+						type="button"
+						(click)="selectAlbum(album.id)"
+					>
+						{{ album.title }}
+					</button>
+				}
+			</div>
+		</div>
+	</section>
+
+	@for (album of visibleAlbums(); track album.id; let albumIndex = $index) {
+		<section class="px-4 py-12 sm:px-6 lg:px-8">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(18rem,0.82fr)_minmax(0,1fr)] lg:items-center">
+				<div>
+					<p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#4f7f2b]">{{ album.kicker }}</p>
+					<h2 class="mt-3 text-3xl font-bold">{{ album.title }}</h2>
+					<p class="mt-4 text-base leading-8 text-[#425344]">{{ album.description }}</p>
 				</div>
+				<figure class="gallery-image-shell aspect-[16/10]">
+					<img
+						appParallaxImage
+						class="h-full w-full object-cover"
+						[appParallaxOrientation]="albumIndex % 2 === 0 ? 'up' : 'down'"
+						[appParallaxScale]="1.12"
+						[ngSrc]="album.feature.src"
+						[width]="album.feature.width"
+						[height]="album.feature.height"
+						[alt]="album.feature.alt"
+						loading="lazy"
+					/>
+				</figure>
+			</div>
+			<div class="mx-auto mt-6 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+				@for (photo of album.photos; track photo.src) {
+					<button
+						class="gallery-thumb group"
+						type="button"
+						[attr.aria-label]="photo.alt"
+						(click)="openPhoto(photo, $event)"
+					>
+						<img
+							class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+							[ngSrc]="photo.src"
+							[width]="photo.width"
+							[height]="photo.height"
+							[alt]="photo.alt"
+							loading="lazy"
+						/>
+					</button>
+				}
+			</div>
+		</section>
+	}
+
+	<section class="px-4 py-12 sm:px-6 lg:px-8">
+		<div class="mx-auto grid max-w-6xl gap-8 rounded-lg bg-white p-6 shadow-sm sm:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.68fr)] lg:items-center">
+			<div>
+				<h2 class="text-3xl font-bold">Побачити парк наживо</h2>
+				<p class="mt-4 max-w-3xl text-base leading-8 text-[#425344]">
+					Фото добре передають масштаб і настрій, але справжній АРДЕН відкривається під час прогулянки:
+					лісовий маршрут, міст-галерея, тварини, сезонне світло і живі історії порятунку.
+				</p>
+				<div class="mt-7 flex flex-wrap gap-3">
+					<a class="rounded-md bg-[#4f7f2b] px-5 py-3 text-sm font-semibold text-white" routerLink="/ekskursii">
+						Запланувати візит
+					</a>
+					<a class="rounded-md border border-[#4f7f2b] px-5 py-3 text-sm font-semibold text-[#2f5f16]" routerLink="/gostiam">
+						Інформація для гостей
+					</a>
+				</div>
+			</div>
+			<figure class="gallery-image-shell aspect-[4/3] bg-[#f6faf3]">
 				<img
-					class="aspect-[4/3] w-full rounded-lg object-contain bg-[#f7fbf4] p-8"
-					[ngSrc]="finalCtaImage"
-					width="640"
-					height="480"
-					alt="Запрошення побачити парк «АРДЕН» наживо"
+					class="h-full w-full object-cover"
+					[ngSrc]="finalPhoto.src"
+					[width]="finalPhoto.width"
+					[height]="finalPhoto.height"
+					[alt]="finalPhoto.alt"
 					loading="lazy"
 				/>
-			</div>
+			</figure>
 		</div>
 	</section>
 </main>
