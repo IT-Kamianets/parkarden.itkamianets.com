@@ -61,7 +61,7 @@ export class FooterComponent {
 			path: '/kontakty',
 		},
 	]);
-	protected readonly companyImage = computed(() => this.company().image || 'logo.png');
+	protected readonly companyImage = computed(() => this.company().logo || 'logo.png');
 	protected readonly companyImageAlt = computed(() =>
 		this.company().name ? this.company().name : 'Company image',
 	);

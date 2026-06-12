@@ -23,6 +23,19 @@ export class TopbarComponent {
 
 	protected readonly mode = computed(() => this._themeService.mode() ?? 'light');
 	protected readonly languageMenuOpen = signal(false);
+	protected readonly mobileMenuOpen = signal(false);
+
+	protected readonly navLinks = [
+		{ label: 'Про парк', path: '/pro-park' },
+		{ label: 'Тварини', path: '/tvaryny' },
+		{ label: 'Екскурсії', path: '/ekskursii' },
+		{ label: 'Інформація для гостей', path: '/gostiam' },
+		{ label: 'Новини', path: '/novyny' },
+		{ label: 'Галерея', path: '/galereya' },
+		{ label: '4 сезони', path: '/4-sezony' },
+		{ label: 'Підтримати парк', path: '/pidtrymaty' },
+		{ label: 'Контакти', path: '/kontakty' },
+	];
 	protected readonly languages = computed(() =>
 		this._languageService.languages().map((language) => _toAppLanguage(language)),
 	);
@@ -67,6 +80,10 @@ export class TopbarComponent {
 
 	protected toggleLanguageMenu() {
 		this.languageMenuOpen.update((open) => !open);
+	}
+
+	protected toggleMobileMenu() {
+		this.mobileMenuOpen.update((open) => !open);
 	}
 
 	protected async setLanguage(language: AppLanguage) {

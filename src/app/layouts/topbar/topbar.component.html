@@ -18,11 +18,22 @@
 				priority
 			/>
 			@if (company().name) {
-				<span class="hidden text-sm font-semibold tracking-[0.16em] text-[var(--c-text-strong)] sm:inline">
+				<span class="hidden text-sm font-semibold tracking-[0.16em] text-[var(--c-text-strong)] sm:inline xl:hidden">
 					{{ company().name }}
 				</span>
 			}
 		</a>
+
+		<nav class="hidden xl:flex items-center gap-1" [translate]="{ ariaLabel: 'Main navigation' }">
+			@for (link of navLinks; track link.path) {
+				<a
+					class="theme-focus rounded-md px-3 py-2 text-sm font-medium text-[var(--c-text)] transition-colors duration-150 hover:text-[var(--c-primary)]"
+					[routerLink]="link.path"
+					[translate]="link.label"
+				>
+				</a>
+			}
+		</nav>
 
 		<div class="flex items-center gap-2">
 			<div
@@ -89,6 +100,39 @@
 					{{ toggleIcon() }}
 				</span>
 			</button>
+
+			<button
+				class="theme-interactive theme-focus xl:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-text-strong)] hover:bg-[var(--c-bg-tertiary)]"
+				[attr.aria-expanded]="mobileMenuOpen()"
+				[attr.aria-label]="mobileMenuOpen() ? 'Закрити меню' : 'Відкрити меню'"
+				(click)="toggleMobileMenu()"
+				type="button"
+			>
+				<span class="material-symbols-outlined text-[22px]" aria-hidden="true">
+					{{ mobileMenuOpen() ? 'close' : 'menu' }}
+				</span>
+			</button>
 		</div>
 	</div>
+
+	@if (mobileMenuOpen()) {
+		<nav
+			class="xl:hidden border-t border-[var(--c-border)] bg-[var(--c-bg-secondary)]"
+			[translate]="{ ariaLabel: 'Mobile navigation' }"
+		>
+			<ul class="mx-auto max-w-[var(--container)] flex flex-col px-4 py-3 sm:px-6">
+				@for (link of navLinks; track link.path) {
+					<li>
+						<a
+							class="theme-focus block rounded-md px-3 py-2.5 text-sm font-medium text-[var(--c-text)] transition-colors duration-150 hover:text-[var(--c-primary)]"
+							[routerLink]="link.path"
+							[translate]="link.label"
+							(click)="toggleMobileMenu()"
+						>
+						</a>
+					</li>
+				}
+			</ul>
+		</nav>
+	}
 </header>

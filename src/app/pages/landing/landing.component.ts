@@ -1,7 +1,7 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { parkardenImageForKey } from '../../feature/media/parkarden-images';
+import { parkardenImageForAnimal, parkardenImageForKey, parkardenImages } from '../../feature/media/parkarden-images';
 
 
 @Component({
@@ -11,14 +11,14 @@ import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LandingComponent {
-	protected readonly heroImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-1');
-	protected readonly aboutImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-2');
+	protected readonly heroImage = parkardenImages.specific.bears103;
+	protected readonly aboutImage = parkardenImages.specific.bridge07;
 	protected readonly bearsImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-3');
-	protected readonly bridgeGalleryImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-4');
-	protected readonly excursionsImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-5');
+	protected readonly bridgeGalleryImage = parkardenImages.place.entrance;
+	protected readonly excursionsImage = parkardenImageForAnimal('олені копитні');
 	protected readonly rescueStoriesImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-6');
 	protected readonly supportImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-7');
-	protected readonly contactsImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-8');
+	protected readonly contactsImage = parkardenImageForAnimal('вовки');
 
 	protected readonly facts = [
 		'Найбільший в Україні — сучасний парк для диких тварин',
@@ -55,32 +55,32 @@ export class LandingComponent {
 	protected readonly animalCategories = [
 		{
 			title: 'Ведмеді',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-9'),
+			image: parkardenImageForAnimal('ведмеді'),
 			text: 'Гордість парку − велика ведмежа колекція з бурими європейськими, гімалайськими та рідкісним бурим камчатським ведмедем.',
 		},
 		{
 			title: 'Великі коти',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-10'),
+			image: parkardenImageForAnimal('тигри леви великі коти'),
 			text: 'Білі леви, левенята, тигри та інші хижаки, які вражають силою, красою та характером.',
 		},
 		{
 			title: 'Примати',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-11'),
+			image: parkardenImageForAnimal('мавпи лемури примати'),
 			text: 'Капуцини, лемури, зелені мавпи та бабуїни − активні й цікаві мешканці парку.',
 		},
 		{
 			title: 'Вовки',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-12'),
+			image: parkardenImageForAnimal('вовки'),
 			text: 'Вовчі зграї живуть на території парку та нагадують про справжню дику природу.',
 		},
 		{
 			title: 'Олені та копитні',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-13'),
+			image: parkardenImageForAnimal('олені копитні муфлони'),
 			text: 'Благородні олені, муфлони, лані та інші тварини природного лісового середовища.',
 		},
 		{
 			title: 'Птахи',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-14'),
+			image: parkardenImageForAnimal('яструб птах орлан'),
 			text: 'У реабілітаційному центрі можна побачити птахів родини яструбових, зокрема орлана.',
 		},
 	];
@@ -116,22 +116,22 @@ export class LandingComponent {
 	protected readonly seasons = [
 		{
 			title: 'Весна',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-15'),
+			image: parkardenImages.specific.deer58,
 			text: 'Природа прокидається, а тварини стають активнішими після зими.',
 		},
 		{
 			title: 'Літо',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-16'),
+			image: parkardenImages.specific.lionsTigers121,
 			text: 'Найсоковитіший сезон для прогулянок, фото та сімейних екскурсій.',
 		},
 		{
 			title: 'Осінь',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-17'),
+			image: parkardenImages.specific.bears81,
 			text: 'Теплі кольори лісу, спокійна атмосфера і красиві маршрути.',
 		},
 		{
 			title: 'Зима',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-18'),
+			image: parkardenImages.specific.winter75,
 			text: 'Особлива тиша парку, сніг і зовсім інший настрій дикої природи.',
 		},
 	];
@@ -148,27 +148,27 @@ export class LandingComponent {
 	protected readonly galleryCards = [
 		{
 			title: 'Тварини парку',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-19'),
+			image: parkardenImages.specific.bears86,
 		},
 		{
 			title: 'Міст-галерея',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-20'),
+			image: parkardenImages.place.bridge,
 		},
 		{
 			title: 'Природа Подільських Товтр',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-21'),
+			image: parkardenImages.place.map,
 		},
 		{
 			title: 'Екскурсії',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-22'),
+			image: parkardenImages.specific.wolves06,
 		},
 		{
 			title: '4 сезони',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-23'),
+			image: parkardenImages.specific.winter35,
 		},
 		{
 			title: 'Історії порятунку',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-24'),
+			image: parkardenImageForAnimal('тигри леви великі коти'),
 		},
 	];
 
@@ -187,12 +187,12 @@ export class LandingComponent {
 		},
 		{
 			title: 'Сезонні екскурсії',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-26'),
+			image: parkardenImageForAnimal('олені копитні'),
 			text: 'Що цікавого можна побачити в парку цієї пори року.',
 		},
 		{
 			title: 'Життя мешканців',
-			image: parkardenImageForKey('src/app/pages/landing/landing.component.ts-27'),
+			image: parkardenImageForAnimal('яструб птах орлан'),
 			text: 'Новини про тварин, їхній догляд і щоденне життя.',
 		},
 	];

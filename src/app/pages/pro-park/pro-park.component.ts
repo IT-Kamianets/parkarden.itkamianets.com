@@ -1,7 +1,7 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { parkardenImageForKey } from '../../feature/media/parkarden-images';
+import { parkardenImageForAnimal, parkardenImageForKey, parkardenImages } from '../../feature/media/parkarden-images';
 
 
 @Component({
@@ -11,14 +11,14 @@ import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProParkComponent {
-	protected readonly heroImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-1');
-	protected readonly introImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-2');
+	protected readonly heroImage = parkardenImages.specific.animalsProcessed01;
+	protected readonly introImage = parkardenImages.place.bridgeWide;
 	protected readonly historyImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-3');
-	protected readonly natureImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-4');
-	protected readonly bridgeGalleryImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-5');
-	protected readonly bearsImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-6');
+	protected readonly natureImage = parkardenImages.specific.lemurs11;
+	protected readonly bridgeGalleryImage = parkardenImages.place.bridge06;
+	protected readonly bearsImage = parkardenImages.specific.bears83;
 	protected readonly rescueStoriesImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-7');
-	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-8');
+	protected readonly finalCtaImage = parkardenImages.place.bridge;
 
 	protected readonly missionItems = [
 		{
@@ -58,32 +58,32 @@ export class ProParkComponent {
 	protected readonly animalGroups = [
 		{
 			title: 'Ведмеді',
-			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-9'),
+			image: parkardenImageForAnimal('ведмеді про парк'),
 			text: 'Велика ведмежа колекція − одна з головних особливостей парку.',
 		},
 		{
 			title: 'Великі коти',
-			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-10'),
+			image: parkardenImages.specific.animalsProcessed02,
 			text: 'Білі леви, левенята, тигри та інші хижаки, які вражають силою й красою.',
 		},
 		{
 			title: 'Примати',
-			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-11'),
+			image: parkardenImages.specific.animalsProcessed04,
 			text: 'Капуцини, лемури, зелені мавпи та бабуїни.',
 		},
 		{
 			title: 'Вовки',
-			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-12'),
+			image: parkardenImageForAnimal('вовчі зграї ліс 2'),
 			text: 'Вовчі зграї нагадують про справжній характер дикого лісу.',
 		},
 		{
 			title: 'Олені та копитні',
-			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-13'),
+			image: parkardenImages.specific.deer06,
 			text: 'Благородні олені, муфлони, лані та інші тварини лісового простору.',
 		},
 		{
 			title: 'Птахи',
-			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-14'),
+			image: parkardenImages.specific.eagle07,
 			text: 'У реабілітаційному центрі можна побачити хижих птахів родини яструбових.',
 		},
 	];
@@ -110,22 +110,22 @@ export class ProParkComponent {
 	protected readonly audienceCards = [
 		{
 			title: 'Родини з дітьми',
-			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-15'),
+			image: parkardenImages.specific.lemurs18,
 			text: 'Безпечний і пізнавальний формат для спільного відпочинку.',
 		},
 		{
 			title: 'Школи та дитячі табори',
-			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-16'),
+			image: parkardenImages.specific.bears57,
 			text: 'Екскурсія як частина екоосвіти та живого знайомства з природою.',
 		},
 		{
 			title: 'Туристи',
-			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-17'),
+			image: parkardenImages.place.route,
 			text: 'Атмосферна природна локація для тих, хто подорожує Поділлям.',
 		},
 		{
 			title: 'Меценати та партнери',
-			image: parkardenImageForKey('src/app/pages/pro-park/pro-park.component.ts-18'),
+			image: parkardenImages.specific.lionsTigers18,
 			text: 'Можливість підтримати важливий природоохоронний проєкт.',
 		},
 	];
