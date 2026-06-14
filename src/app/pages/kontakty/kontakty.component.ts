@@ -1,5 +1,5 @@
-import { NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+﻿import { NgOptimizedImage } from '@angular/common';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { parkardenImageForKey } from '../../feature/media/parkarden-images';
@@ -56,7 +56,7 @@ export class KontaktyComponent {
 
 	protected readonly scheduleCards = [
 		{
-			title: 'Понеділок − п’ятниця',
+			title: "Понеділок − п'ятниця",
 			time: 'Щогодини з 10:00 до 17:00',
 		},
 		{
@@ -66,10 +66,10 @@ export class KontaktyComponent {
 	];
 
 	protected readonly formFields = [
-		{ label: 'Ім’я', name: 'name', type: 'text' },
-		{ label: 'Телефон', name: 'phone', type: 'tel' },
-		{ label: 'Email', name: 'email', type: 'email' },
-		{ label: 'Тема звернення', name: 'subject', type: 'text' },
+		{ label: "Ім'я", name: 'name', type: 'text', required: true },
+		{ label: 'Телефон', name: 'phone', type: 'tel', required: true },
+		{ label: 'Email', name: 'email', type: 'email', required: false },
+		{ label: 'Тема звернення', name: 'subject', type: 'text', required: false },
 	];
 
 	protected readonly socialButtons = ['Instagram', 'Facebook', 'YouTube'];
@@ -78,4 +78,42 @@ export class KontaktyComponent {
 		{ label: 'Записатись на екскурсію', path: '/ekskursii', style: 'primary' },
 		{ label: 'Інформація для гостей', path: '/gostiam', style: 'secondary' },
 	];
+
+	protected readonly formData = signal<Record<string, string>>({});
+	protected readonly submitting = signal(false);
+	protected readonly submitStatus = signal<'idle' | 'success' | 'error'>('idle');
+
+	protected updateFormValue(name: string, value: string): void {
+		this.formData.update(data => ({ ...data, [name]: value }));
+	}
+
+	protected async submitForm(): Promise<void> {
+		const data = this.formData();
+
+		this.submitting.set(true);
+		this.submitStatus.set('idle');
+
+		const lines = [
+			`Ім'я: ${data['name'] ?? ''}`,
+			`Телефон: ${data['phone'] ?? ''}`,
+			data['email'] ? `Email: ${data['email']}` : '',
+			data['subject'] ? `Тема: ${data['subject']}` : '',
+			data['message'] ? `Повідомлення: ${data['message']}` : '',
+		].filter(Boolean);
+
+		const message = `📩 Контактна форма:\n${lines.join('\n')}`;
+
+		try {
+			const response = await fetch('https://it.webart.work/api/telegram/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ slug: 'parkarden', message }),
+			});
+			this.submitStatus.set(response.ok ? 'success' : 'error');
+		} catch {
+			this.submitStatus.set('error');
+		} finally {
+			this.submitting.set(false);
+		}
+	}
 }

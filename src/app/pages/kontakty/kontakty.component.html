@@ -104,39 +104,33 @@
 				<p class="mt-4 text-lg font-semibold text-[#1d2d20]">
 					вул. Курортна, 40/1, смт Сатанів, Хмельницька область
 				</p>
-				<button class="mt-6 rounded-md border border-[#4f7f2b] px-5 py-3 text-sm font-semibold text-[#2f5f16]" type="button">
-					Показати на карті
-				</button>
-				<!-- TODO: Add Google Maps embed or external Google Maps link after confirming final map URL with client. -->
+				<a
+					class="mt-6 inline-block rounded-md border border-[#4f7f2b] px-5 py-3 text-sm font-semibold text-[#2f5f16]"
+					href="https://maps.app.goo.gl/NMFC7bPc57y2NHB76"
+					target="_blank"
+					rel="noopener"
+				>
+					Відкрити в Google Maps
+				</a>
 			</div>
-			<img
-				class="aspect-[4/3] w-full rounded-lg bg-white object-contain p-8 shadow-sm"
-				[ngSrc]="mapImage"
-				width="1024"
-				height="768"
-				alt="Як знайти парк «АРДЕН»"
+			<iframe
+				class="aspect-[4/3] w-full rounded-lg"
+				src="https://maps.google.com/maps?q=%D0%9F%D0%B0%D1%80%D0%BA+%D0%90%D1%80%D0%B4%D0%B5%D0%BD+%D0%A1%D0%B0%D1%82%D0%B0%D0%BD%D1%96%D0%B2&output=embed&hl=uk&z=15"
 				loading="lazy"
-			/>
+				referrerpolicy="no-referrer-when-downgrade"
+				style="border: 0;"
+				title="Парк Арден на карті"
+			></iframe>
 		</div>
 	</section>
 
 	<section class="px-4 py-10 sm:px-6 lg:px-8">
-		<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(18rem,0.82fr)_minmax(0,1fr)] lg:items-center">
-			<img
-				class="aspect-[4/3] w-full rounded-lg bg-white object-contain p-8 shadow-sm"
-				[ngSrc]="parkingImage"
-				width="1024"
-				height="768"
-				alt="Парковка на території"
-				loading="lazy"
-			/>
-			<div>
-				<h2 class="text-3xl font-bold">Парковка на території</h2>
-				<p class="mt-4 text-base leading-8 text-[#425344]">
-					Для гостей передбачена власна парковка на території парку. Це зручно для родин, туристичних груп і
-					відвідувачів, які приїжджають власним транспортом.
-				</p>
-			</div>
+		<div class="mx-auto max-w-6xl">
+			<h2 class="text-3xl font-bold">Парковка на території</h2>
+			<p class="mt-4 text-base leading-8 text-[#425344]">
+				Для гостей передбачена власна парковка на території парку. Це зручно для родин, туристичних груп і
+				відвідувачів, які приїжджають власним транспортом.
+			</p>
 		</div>
 	</section>
 
@@ -151,17 +145,18 @@
 					Для термінового запису на екскурсію краще телефонувати напряму.
 				</p>
 			</div>
-			<form #contactForm="ngForm" class="rounded-lg bg-white p-6 shadow-sm" novalidate>
+			<form #contactForm="ngForm" class="rounded-lg bg-white p-6 shadow-sm" novalidate (ngSubmit)="submitForm()">
 				<div class="grid gap-4 sm:grid-cols-2">
 					@for (field of formFields; track field.name) {
 						<label class="grid gap-2 text-sm font-semibold text-[#1d2d20]">
-							{{ field.label }}
+							{{ field.label }}@if (field.required) {<span class="text-red-500"> *</span>}
 							<input
 								class="rounded-md border border-[#c9d9b7] bg-[#fbfdf8] px-4 py-3 text-sm outline-none transition focus:border-[#5f7f35]"
 								[type]="field.type"
 								[name]="field.name"
-								[ngModel]="''"
-								required
+								[ngModel]="formData()[field.name] ?? ''"
+								(ngModelChange)="updateFormValue(field.name, $event)"
+								[required]="field.required"
 							/>
 						</label>
 					}
@@ -171,19 +166,27 @@
 					<textarea
 						class="min-h-36 rounded-md border border-[#c9d9b7] bg-[#fbfdf8] px-4 py-3 text-sm outline-none transition focus:border-[#5f7f35]"
 						name="message"
-						[ngModel]="''"
-						required
+						[ngModel]="formData()['message'] ?? ''"
+						(ngModelChange)="updateFormValue('message', $event)"
 					></textarea>
 				</label>
 				<button
 					class="mt-5 rounded-md bg-[#4f7f2b] px-5 py-3 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
 					type="submit"
-					[disabled]="contactForm.invalid"
+					[disabled]="contactForm.invalid || submitting()"
 				>
-					Надіслати
+					{{ submitting() ? 'Надсилання...' : 'Надіслати' }}
 				</button>
-				<!-- TODO: Add reCAPTCHA v3 integration later. -->
-				<!-- TODO: After form submit, send notification to administrator later. -->
+				@if (submitStatus() === 'success') {
+					<p class="mt-4 rounded-md border border-green-600 bg-green-50 px-4 py-3 text-sm font-medium text-green-700">
+						Повідомлення надіслано! Адміністратор зв'яжеться з вами найближчим часом.
+					</p>
+				}
+				@if (submitStatus() === 'error') {
+					<p class="mt-4 rounded-md border border-red-400 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+						Сталася помилка. Спробуйте ще раз або зателефонуйте нам.
+					</p>
+				}
 			</form>
 		</div>
 	</section>
@@ -227,41 +230,6 @@
 				}
 			</div>
 			<!-- TODO: Add real social media links from client materials. -->
-		</div>
-	</section>
-
-	<section class="px-4 py-12 sm:px-6 lg:px-8">
-		<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.82fr)] lg:items-center">
-			<div>
-				<h2 class="text-3xl font-bold">Приїжджайте до «АРДЕНУ»</h2>
-				<p class="mt-4 text-base leading-8 text-[#425344]">
-					Заплануйте візит заздалегідь, зв’яжіться з нами та відкрийте для себе світ дикої природи в серці
-					Подільських Товтр.
-				</p>
-				<div class="mt-7 flex flex-wrap gap-3">
-					@for (button of finalCtaButtons; track button.label) {
-						<a
-							class="rounded-md px-5 py-3 text-sm font-semibold"
-							[class.bg-[#4f7f2b]]="button.style === 'primary'"
-							[class.text-white]="button.style === 'primary'"
-							[class.border]="button.style === 'secondary'"
-							[class.border-[#4f7f2b]]="button.style === 'secondary'"
-							[class.text-[#2f5f16]]="button.style === 'secondary'"
-							[routerLink]="button.path"
-						>
-							{{ button.label }}
-						</a>
-					}
-				</div>
-			</div>
-			<img
-				class="aspect-[4/3] w-full rounded-lg bg-white object-contain p-8 shadow-sm"
-				[ngSrc]="finalCtaImage"
-				width="1024"
-				height="768"
-				alt="Приїжджайте до парку «АРДЕН»"
-				loading="lazy"
-			/>
 		</div>
 	</section>
 </main>

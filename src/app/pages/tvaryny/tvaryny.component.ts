@@ -12,8 +12,6 @@ import { parkardenImageForAnimal, parkardenImageForKey, parkardenImages } from '
 })
 export class TvarynyComponent {
 	protected readonly heroImage = parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-1');
-	protected readonly rescueCtaImage = parkardenImageForKey('src/app/pages/tvaryny/tvaryny.component.ts-2');
-
 	protected readonly filters = [
 		'Усі тварини',
 		'Ведмеді',
@@ -69,40 +67,40 @@ export class TvarynyComponent {
 		const pick = (arr: readonly string[], i: number) => arr[i % arr.length]!;
 
 		return [
-			{ name: 'Тоша', category: 'Ведмеді', slug: 'tosha', image: '/images/bears/tosha.jpg', text: '32-річний бурий ведмідь з великими розмірами й чорним блискучим хутром.' },
-			{ name: 'Міша', category: 'Ведмеді', slug: 'misha', image: '/images/bears/misha.jpg', text: 'Самець темно-каштанового кольору, що не залягав взимку.' },
-			{ name: 'Маша', category: 'Ведмеді', slug: 'masha', image: '/images/bears/masha.jpg', text: 'Ведмедиця, що зробила берлогу у норі під каменем.' },
-			{ name: 'Гоша', category: 'Ведмеді', slug: 'gosha', image: '/images/bears/gosha.webp', text: '26-річний гімалайський ведмідь, що любить ховатися у кущах.' },
-			{ name: 'Ірка', category: 'Ведмеді', slug: 'irka', image: '/images/bears/irka.jpg', text: 'Гімалайська ведмедиця з чорним шовковистим хутром.' },
-			{ name: 'Даша та Ася', category: 'Ведмеді', slug: 'dasha-ta-asya', image: '/images/bears/dasha-asya.jpg', text: 'Молоді ведмеді, що лазять по деревах з вправністю гімнастів.' },
-			{ name: 'Бублик та Коржик', category: 'Ведмеді', slug: 'bublyk-ta-korzhyk', image: '/images/bears/bublyk-korzhyk.jpg', text: 'Молоді ведмеді зі світлими комірцями.' },
-			{ name: 'Ніка та ведмежа', category: 'Ведмеді', slug: 'nika-ta-vedmezha', image: '/images/bears/nika-vedmezha.jpg', text: 'Ведмедиця з малям, яка викликає особливе захоплення у відвідувачів.' },
-			{ name: 'Василь', category: 'Ведмеді', slug: 'vasyl', image: '/images/bears/vasyl.jpg', text: 'Мешканець ведмежої колекції парку.' },
-			{ name: 'Микита та Ілля', category: 'Ведмеді', slug: 'mykyta-ta-illya', image: '/images/bears/mykyta-illya.webp', text: 'Величезні дорослі ведмеді, що вражають силою та могутністю.' },
-			{ name: 'Яник', category: 'Ведмеді', slug: 'yanyk', image: '/images/bears/yanyk.jpg', text: 'Один із мешканців ведмежої частини парку.' },
-			{ name: 'Рікі', category: 'Ведмеді', slug: 'riki', image: '/images/bears/riki.jpg', text: 'Мешканець ведмежої колекції «АРДЕНУ».' },
-			{ name: 'Макс та Мері', category: 'Ведмеді', slug: 'maks-ta-meri', image: '/images/bears/maks-meri.jpg', text: 'Ведмежа пара з каталогу мешканців парку.' },
-			{ name: 'Грішка та Мішка', category: 'Ведмеді', slug: 'grishka-ta-mishka', image: '/images/bears/grishka-mishka.jpg', text: 'Мешканці ведмежої колекції парку.' },
-			{ name: 'Чук та Гек', category: 'Ведмеді', slug: 'chuk-ta-hek', image: '/images/bears/chuk-hek.jpg', text: 'Ведмежий дует із каталогу парку.' },
-			{ name: 'Шарик', category: 'Ведмеді', slug: 'sharyk', image: '/images/bears/sharyk.jpg', text: 'Один із ведмедів, які знайшли прихисток у парку.' },
-			{ name: 'Потап, Джек та Джон', category: 'Ведмеді', slug: 'potap-dzhek-ta-dzhon', image: '/images/bears/potap-dzhek-dzhon.jpg', text: 'Троє мешканців ведмежої частини парку.' },
-			{ name: 'Максим', category: 'Ведмеді', slug: 'maksym', image: '/images/bears/maksym.jpg', text: 'Мешканець ведмежої колекції «АРДЕНУ».' },
-			{ name: 'Ведмежа сімʼя', category: 'Ведмеді', slug: 'vedmezha-simya', image: '/images/bears/vedmezha-simya.webp', text: 'Ведмежа родина, за якою цікаво спостерігати під час екскурсії.' },
+			{ name: 'Тоша', category: 'Ведмеді', slug: 'tosha', image: 'https://cdn-it.webart.work/parkarden/bears_08.webp', text: '32-річний бурий ведмідь з великими розмірами й чорним блискучим хутром.' },
+			{ name: 'Міша', category: 'Ведмеді', slug: 'misha', image: 'https://cdn-it.webart.work/parkarden/bears_103.webp', text: 'Самець темно-каштанового кольору, що не залягав взимку.' },
+			{ name: 'Маша', category: 'Ведмеді', slug: 'masha', image: 'https://cdn-it.webart.work/parkarden/bears_147.webp', text: 'Ведмедиця, що зробила берлогу у норі під каменем.' },
+			{ name: 'Гоша', category: 'Ведмеді', slug: 'gosha', image: 'https://cdn-it.webart.work/parkarden/bears_03.webp', text: '26-річний гімалайський ведмідь, що любить ховатися у кущах.' },
+			{ name: 'Ірка', category: 'Ведмеді', slug: 'irka', image: 'https://cdn-it.webart.work/parkarden/bears_21.webp', text: 'Гімалайська ведмедиця з чорним шовковистим хутром.' },
+			{ name: 'Даша та Ася', category: 'Ведмеді', slug: 'dasha-ta-asya', image: 'https://cdn-it.webart.work/parkarden/bears_97.webp', text: 'Молоді ведмеді, що лазять по деревах з вправністю гімнастів.' },
+			{ name: 'Бублик та Коржик', category: 'Ведмеді', slug: 'bublyk-ta-korzhyk', image: 'https://cdn-it.webart.work/parkarden/bears_54.webp', text: 'Молоді ведмеді зі світлими комірцями.' },
+			{ name: 'Ніка та ведмежа', category: 'Ведмеді', slug: 'nika-ta-vedmezha', image: 'https://cdn-it.webart.work/parkarden/bears_113.webp', text: 'Ведмедиця з малям, яка викликає особливе захоплення у відвідувачів.' },
+			{ name: 'Василь', category: 'Ведмеді', slug: 'vasyl', image: 'https://cdn-it.webart.work/parkarden/bears_57.webp', text: 'Мешканець ведмежої колекції парку.' },
+			{ name: 'Микита та Ілля', category: 'Ведмеді', slug: 'mykyta-ta-illya', image: 'https://cdn-it.webart.work/parkarden/bears_92.webp', text: 'Величезні дорослі ведмеді, що вражають силою та могутністю.' },
+			{ name: 'Яник', category: 'Ведмеді', slug: 'yanyk', image: 'https://cdn-it.webart.work/parkarden/bears_134.webp', text: 'Один із мешканців ведмежої частини парку.' },
+			{ name: 'Рікі', category: 'Ведмеді', slug: 'riki', image: 'https://cdn-it.webart.work/parkarden/bears_130.webp', text: 'Мешканець ведмежої колекції «АРДЕНУ».' },
+			{ name: 'Макс та Мері', category: 'Ведмеді', slug: 'maks-ta-meri', image: 'https://cdn-it.webart.work/parkarden/bears_129.webp', text: 'Ведмежа пара з каталогу мешканців парку.' },
+			{ name: 'Грішка та Мішка', category: 'Ведмеді', slug: 'grishka-ta-mishka', image: 'https://cdn-it.webart.work/parkarden/bears_23.webp', text: 'Мешканці ведмежої колекції парку.' },
+			{ name: 'Чук та Гек', category: 'Ведмеді', slug: 'chuk-ta-hek', image: 'https://cdn-it.webart.work/parkarden/bears_119.webp', text: 'Ведмежий дует із каталогу парку.' },
+			{ name: 'Шарик', category: 'Ведмеді', slug: 'sharyk', image: 'https://cdn-it.webart.work/parkarden/bears_116.webp', text: 'Один із ведмедів, які знайшли прихисток у парку.' },
+			{ name: 'Потап, Джек та Джон', category: 'Ведмеді', slug: 'potap-dzhek-ta-dzhon', image: 'https://cdn-it.webart.work/parkarden/bears_46.webp', text: 'Троє мешканців ведмежої частини парку.' },
+			{ name: 'Максим', category: 'Ведмеді', slug: 'maksym', image: 'https://cdn-it.webart.work/parkarden/bears_02.webp', text: 'Мешканець ведмежої колекції «АРДЕНУ».' },
+			{ name: 'Ведмежа сімʼя', category: 'Ведмеді', slug: 'vedmezha-simya', image: 'https://cdn-it.webart.work/parkarden/bears_159.webp', text: 'Ведмежа родина, за якою цікаво спостерігати під час екскурсії.' },
 			{ name: 'Білий лев Зевс', category: 'Великі коти', slug: 'bilyy-lev-zevs', image: '/images/big-cats/zevs.jpg', text: 'Білий лев, один із найефектніших великих котів парку.' },
-			{ name: 'Франц і Петро', category: 'Великі коти', slug: 'frants-i-petro', image: '/images/big-cats/frants-petro.jpg', text: 'Молоді левенята, які привертають увагу відвідувачів.' },
-			{ name: 'Люся', category: 'Великі коти', slug: 'lyusya', image: '/images/big-cats/lyusya.jpg', text: 'Представниця великих котів парку.' },
-			{ name: 'Лео', category: 'Великі коти', slug: 'leo', image: '/images/big-cats/leo.jpg', text: 'Великий кіт із каталогу мешканців «АРДЕНУ».' },
-			{ name: 'Яся', category: 'Великі коти', slug: 'yasya', image: '/images/big-cats/yasya.jpg', text: 'Мешканка секції великих котів.' },
-			{ name: 'Пірат', category: 'Великі коти', slug: 'pirat', image: '/images/big-cats/pirat.jpg', text: 'Хижак із сильним характером і виразним образом.' },
-			{ name: 'Луна', category: 'Великі коти', slug: 'luna', image: '/images/big-cats/luna.jpg', text: 'Мешканка секції великих котів.' },
-			{ name: 'Одін', category: 'Великі коти', slug: 'odin', image: '/images/big-cats/odin.jpg', text: 'Представник великих хижаків парку.' },
-			{ name: 'Султан', category: 'Великі коти', slug: 'sultan', image: '/images/big-cats/sultan.jpg', text: 'Великий кіт із каталогу парку.' },
-			{ name: 'Жозефіна', category: 'Великі коти', slug: 'zhozefina', image: '/images/big-cats/zhozefina.jpg', text: 'Мешканка секції великих котів.' },
-			{ name: 'Ельза', category: 'Великі коти', slug: 'elza', image: '/images/big-cats/elza.jpg', text: 'Представниця великих котів парку.' },
-			{ name: 'Авелія', category: 'Великі коти', slug: 'aveliya', image: '/images/big-cats/aveliya.jpg', text: 'Мешканка секції великих котів.' },
-			{ name: 'Валєра', category: 'Великі коти', slug: 'valyera', image: '/images/big-cats/valyera.jpg', text: 'Великий кіт із каталогу мешканців парку.' },
-			{ name: 'Льова', category: 'Великі коти', slug: 'lyova', image: '/images/big-cats/lyova.jpg', text: 'Представник секції великих котів.' },
-			{ name: 'Білий тигр', category: 'Великі коти', slug: 'bilyy-tyhr', image: pick(c, 0), text: 'Білий тигр − один із найяскравіших хижаків парку.' },
+			{ name: 'Франц і Петро', category: 'Великі коти', slug: 'frants-i-petro', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_57.webp', text: 'Молоді левенята, які привертають увагу відвідувачів.' },
+			{ name: 'Люся', category: 'Великі коти', slug: 'lyusya', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_54.webp', text: 'Представниця великих котів парку.' },
+			{ name: 'Лео', category: 'Великі коти', slug: 'leo', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_06.webp', text: 'Великий кіт із каталогу мешканців «АРДЕНУ».' },
+			{ name: 'Яся', category: 'Великі коти', slug: 'yasya', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_07.webp', text: 'Мешканка секції великих котів.' },
+			{ name: 'Пірат', category: 'Великі коти', slug: 'pirat', image: 'https://cdn-it.webart.work/parkarden/animals_processed_13.webp', text: 'Хижак із сильним характером і виразним образом.' },
+			{ name: 'Луна', category: 'Великі коти', slug: 'luna', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_117.webp', text: 'Мешканка секції великих котів.' },
+			{ name: 'Одін', category: 'Великі коти', slug: 'odin', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_22.webp', text: 'Представник великих хижаків парку.' },
+			{ name: 'Султан', category: 'Великі коти', slug: 'sultan', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_71.webp', text: 'Великий кіт із каталогу парку.' },
+			{ name: 'Жозефіна', category: 'Великі коти', slug: 'zhozefina', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_84.webp', text: 'Мешканка секції великих котів.' },
+			{ name: 'Ельза', category: 'Великі коти', slug: 'elza', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_01.webp', text: 'Представниця великих котів парку.' },
+			{ name: 'Авелія', category: 'Великі коти', slug: 'aveliya', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_68.webp', text: 'Мешканка секції великих котів.' },
+			{ name: 'Валєра', category: 'Великі коти', slug: 'valyera', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_87.webp', text: 'Великий кіт із каталогу мешканців парку.' },
+			{ name: 'Льова', category: 'Великі коти', slug: 'lyova', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_121.webp', text: 'Представник секції великих котів.' },
+			{ name: 'Білий тигр', category: 'Великі коти', slug: 'bilyy-tyhr', image: 'https://cdn-it.webart.work/parkarden/lions_tigers_21.webp', text: 'Білий тигр − один із найяскравіших хижаків парку.' },
 			{ name: 'Сімейство капуцинів', category: 'Примати', slug: 'simeystvo-kaputsyniv', image: 'https://cdn-it.webart.work/parkarden/monkeys_36.webp', text: 'Активні та допитливі примати, за якими цікаво спостерігати.' },
 			{ name: 'Сімейство лемурів', category: 'Примати', slug: 'simeystvo-lemuriv', image: pick(p, 4), text: 'Лемури − яскраві й рухливі мешканці парку.' },
 			{ name: 'Сімейство зелених мавп', category: 'Примати', slug: 'simeystvo-zelenyh-mavp', image: pick(p, 1), text: 'Родина зелених мавп із характерною поведінкою та активністю.' },
@@ -117,19 +115,6 @@ export class TvarynyComponent {
 			{ name: 'Підорлик', category: 'Птахи', slug: 'pidorlyk', image: 'https://cdn-it.webart.work/parkarden/eagle_12.webp', text: 'Представник денних хижих птахів України.' },
 		];
 	})();
-
-	protected readonly rescueCtaButtons = [
-		{
-			label: 'Підтримати тварин',
-			path: '/pidtrymaty',
-			style: 'primary',
-		},
-		{
-			label: 'Дізнатись про парк',
-			path: '/pro-park',
-			style: 'secondary',
-		},
-	];
 
 	protected readonly finalCtaButtons = [
 		{

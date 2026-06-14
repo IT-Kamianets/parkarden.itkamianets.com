@@ -128,35 +128,6 @@
 	</section>
 
 	<section class="animals-section">
-		<div
-			class="animals-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-center"
-		>
-			<div>
-				<h2 class="animals-heading">Кожна тварина має свою історію</h2>
-				<p class="animals-text">
-					Частина мешканців парку була врятована з неприйнятних умов, небезпечних
-					територій або місць, де тварини не мали достатнього простору й догляду. У
-					«АРДЕНІ» вони отримують безпечне середовище, харчування, ветеринарну підтримку
-					та щоденну турботу.
-				</p>
-				<div class="animals-actions">
-					@for (button of rescueCtaButtons; track button.label) {
-						<a
-							class="animals-button"
-							[class.animals-button--primary]="button.style === 'primary'"
-							[class.animals-button--secondary]="button.style === 'secondary'"
-							[routerLink]="button.path"
-						>
-							{{ button.label }}
-						</a>
-					}
-				</div>
-			</div>
-			<img class="animals-image" [ngSrc]="rescueCtaImage" width="1024" height="1024" alt="" />
-		</div>
-	</section>
-
-	<section class="animals-section">
 		<div class="animals-container">
 			<h2 class="animals-heading">Побачте мешканців парку наживо</h2>
 			<p class="animals-text">
