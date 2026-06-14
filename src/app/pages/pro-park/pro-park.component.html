@@ -266,18 +266,9 @@
 			<h2 class="about-heading">Для кого цей парк</h2>
 			<div class="about-grid">
 				@for (card of audienceCards; track card.title) {
-					<article class="about-card about-card--media">
-						<img
-							class="about-card-image"
-							[ngSrc]="card.image"
-							width="560"
-							height="360"
-							alt=""
-						/>
-						<div>
-							<h3 class="about-card-title">{{ card.title }}</h3>
-							<p class="about-card-text">{{ card.text }}</p>
-						</div>
+					<article class="about-card">
+						<h3 class="about-card-title">{{ card.title }}</h3>
+						<p class="about-card-text">{{ card.text }}</p>
 					</article>
 				}
 			</div>

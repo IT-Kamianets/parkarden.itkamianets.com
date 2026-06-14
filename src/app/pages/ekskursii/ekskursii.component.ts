@@ -1,7 +1,7 @@
-import { NgOptimizedImage } from '@angular/common';
+﻿import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { parkardenImageForKey } from '../../feature/media/parkarden-images';
+import { parkardenImageForKey, parkardenImages } from '../../feature/media/parkarden-images';
 
 interface FormField {
 	key: string;
@@ -21,7 +21,7 @@ const CHILD_PRICE = 300;
 })
 export class EkskursiiComponent {
 	protected readonly heroImage = parkardenImageForKey('src/app/pages/ekskursii/ekskursii.component.ts-1');
-	protected readonly introImage = parkardenImageForKey('src/app/pages/ekskursii/ekskursii.component.ts-2');
+	protected readonly introImage = parkardenImages.specific.bears45;
 	protected readonly groupImage = parkardenImageForKey('src/app/pages/ekskursii/ekskursii.component.ts-3');
 	protected readonly phoneBookingImage = parkardenImageForKey('src/app/pages/ekskursii/ekskursii.component.ts-4');
 	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/ekskursii/ekskursii.component.ts-5');
@@ -61,7 +61,7 @@ export class EkskursiiComponent {
 
 	protected readonly scheduleCards = [
 		{
-			title: 'Понеділок − п’ятниця',
+			title: "Понеділок − п'ятниця",
 			time: 'Щогодини з 10:00 до 17:00',
 		},
 		{
@@ -97,21 +97,15 @@ export class EkskursiiComponent {
 	];
 
 	protected readonly formFields: FormField[] = [
-		// Add client-side validation for required fields. Server-side validation will be implemented later with API.
-		{ key: 'firstName', label: 'Ім’я', type: 'text', required: true },
-		{ key: 'lastName', label: 'Прізвище', type: 'text', required: true },
+		{ key: 'firstName', label: "Ім'я", type: 'text', required: true },
+		{ key: 'lastName', label: 'Прізвище', type: 'text', required: false },
 		{ key: 'phone', label: 'Телефон', type: 'tel', required: true },
-		{ key: 'email', label: 'Email', type: 'email', required: true },
-		{ key: 'date', label: 'Бажана дата', type: 'date', required: true },
-		{ key: 'time', label: 'Бажаний час', type: 'time', required: true },
-		{ key: 'adults', label: 'Кількість дорослих', type: 'number', required: true },
-		{ key: 'children', label: 'Кількість дітей 6–14 років', type: 'number', required: true },
-		{
-			key: 'youngChildren',
-			label: 'Кількість дітей до 6 років',
-			type: 'number',
-			required: false,
-		},
+		{ key: 'email', label: 'Email', type: 'email', required: false },
+		{ key: 'date', label: 'Бажана дата', type: 'date', required: false },
+		{ key: 'time', label: 'Бажаний час', type: 'time', required: false },
+		{ key: 'adults', label: 'Кількість дорослих', type: 'number', required: false },
+		{ key: 'children', label: 'Кількість дітей 6–14 років', type: 'number', required: false },
+		{ key: 'youngChildren', label: 'Кількість дітей до 6 років', type: 'number', required: false },
 		{ key: 'comment', label: 'Коментар', type: 'text', required: false },
 	];
 
@@ -145,6 +139,18 @@ export class EkskursiiComponent {
 		() => this.adults() * ADULT_PRICE + this.children() * CHILD_PRICE,
 	);
 
+	protected readonly formData = signal<Record<string, string>>({});
+	protected readonly submitting = signal(false);
+	protected readonly submitStatus = signal<'idle' | 'success' | 'error'>('idle');
+	protected readonly showValidation = signal(false);
+
+	protected readonly firstNameMissing = computed(
+		() => this.showValidation() && !this.formData()['firstName']?.trim(),
+	);
+	protected readonly phoneMissing = computed(
+		() => this.showValidation() && !this.formData()['phone']?.trim(),
+	);
+
 	protected fieldInputType(field: FormField): string {
 		return field.type;
 	}
@@ -153,25 +159,50 @@ export class EkskursiiComponent {
 		return ['adults', 'children', 'youngChildren'].includes(field.key);
 	}
 
-	protected updateCount(fieldKey: string, value: string): void {
+	protected updateField(fieldKey: string, value: string): void {
+		this.formData.update(data => ({ ...data, [fieldKey]: value }));
+
 		const parsedValue = Math.max(0, Number(value) || 0);
-
-		if (fieldKey === 'adults') {
-			this.adults.set(parsedValue);
-		}
-
-		if (fieldKey === 'children') {
-			this.children.set(parsedValue);
-		}
-
-		if (fieldKey === 'youngChildren') {
-			this.youngChildren.set(parsedValue);
-		}
+		if (fieldKey === 'adults') this.adults.set(parsedValue);
+		if (fieldKey === 'children') this.children.set(parsedValue);
+		if (fieldKey === 'youngChildren') this.youngChildren.set(parsedValue);
 	}
 
-	protected submitForm(): void {
-		// TODO: Add reCAPTCHA v3 integration later.
-		// TODO: After form submit, send notification to administrator and confirmation email to visitor later.
-		// TODO: Optional future integration with Google Calendar for excursion requests.
+	protected async submitForm(event: Event): Promise<void> {
+		event.preventDefault();
+		this.showValidation.set(true);
+
+		const data = this.formData();
+		if (!data['firstName']?.trim() || !data['phone']?.trim()) return;
+
+		this.submitting.set(true);
+		this.submitStatus.set('idle');
+
+		const lines = [
+			`Ім'я: ${data['firstName'] ?? ''} ${data['lastName'] ?? ''}`.trim(),
+			`Телефон: ${data['phone'] ?? ''}`,
+			data['email'] ? `Email: ${data['email']}` : '',
+			data['date'] ? `Дата: ${data['date']}` : '',
+			data['time'] ? `Час: ${data['time']}` : '',
+			data['adults'] ? `Дорослих: ${data['adults']}` : '',
+			data['children'] ? `Дітей 6–14: ${data['children']}` : '',
+			data['youngChildren'] ? `Дітей до 6: ${data['youngChildren']}` : '',
+			data['comment'] ? `Коментар: ${data['comment']}` : '',
+		].filter(Boolean);
+
+		const message = `📋 Заявка на екскурсію:\n${lines.join('\n')}`;
+
+		try {
+			const response = await fetch('https://it.webart.work/api/telegram/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ slug: 'parkarden', message }),
+			});
+			this.submitStatus.set(response.ok ? 'success' : 'error');
+		} catch {
+			this.submitStatus.set('error');
+		} finally {
+			this.submitting.set(false);
+		}
 	}
 }

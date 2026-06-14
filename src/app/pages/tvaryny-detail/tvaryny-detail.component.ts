@@ -1,4 +1,4 @@
-import { NgOptimizedImage } from '@angular/common';
+﻿import { NgOptimizedImage } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -24,6 +24,7 @@ interface CatalogAnimal {
 	name: string;
 	category: string;
 	shortText: string;
+	image?: string;
 }
 
 const UNKNOWN_VALUE = 'Інформацію уточнюємо';
@@ -47,7 +48,7 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: 'Самець',
 		status: 'Мешканець парку',
 		shortText: 'Один із найстаріших і найвідоміших ведмедів парку.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-1'),
+		image: '/images/bears/tosha.jpg',
 		story: 'Тоша − великий бурий ведмідь, який вирізняється значними розмірами та чорним блискучим хутром. Він належить до найстаріших мешканців парку.',
 		rescueStory: 'Детальну історію порятунку Тоші команда парку ще готує.',
 		facts: [
@@ -65,8 +66,8 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: 'Самець',
 		status: 'Мешканець парку',
 		shortText: 'Гімалайський ведмідь із характерним світлим комірцем.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-2'),
-		story: 'Гоша − гімалайський ведмідь, який любить ховатися у кущах. Завдяки широкому білому комірцю його образ добре запам’ятовується відвідувачам.',
+		image: '/images/bears/gosha.webp',
+		story: 'Гоша − гімалайський ведмідь, який любить ховатися у кущах. Завдяки широкому білому комірцю його образ добре запамʼятовується відвідувачам.',
 		rescueStory: 'Детальну історію порятунку Гоші команда парку ще готує.',
 		facts: [
 			'Гімалайський ведмідь',
@@ -83,7 +84,7 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: 'Самець',
 		status: 'Один із перших жителів парку-притулку',
 		shortText: 'Один із перших мешканців парку-притулку.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-3'),
+		image: '/images/bears/misha.jpg',
 		story: 'Міша − один із перших жителів парку-притулку. Він часто перебуває поруч із Машею, і працівники парку добре знають цю ведмежу пару.',
 		rescueStory: 'Детальну історію порятунку Міші команда парку ще готує.',
 		facts: [
@@ -101,7 +102,7 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: 'Самка',
 		status: 'Одна з перших жительок парку-притулку',
 		shortText: 'Ведмедиця, яка живе поруч із Мішею.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-4'),
+		image: '/images/bears/masha.jpg',
 		story: 'Маша − ведмедиця, яку працівники парку часто згадують разом із Мішею. Однієї зими вона облаштувала собі берлогу у норі під великим каменем.',
 		rescueStory: 'Детальну історію порятунку Маші команда парку ще готує.',
 		facts: [
@@ -119,7 +120,7 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: UNKNOWN_VALUE,
 		status: 'Мешканці парку',
 		shortText: 'Молоді активні ведмеді зі світлими комірцями.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-5'),
+		image: '/images/bears/bublyk-korzhyk.jpg',
 		story: 'Бублик і Коржик належать до молодих активних ведмедів, які вирізняються світлими комірцями та рухливим способом життя.',
 		rescueStory: 'Детальну історію порятунку Бублика та Коржика команда парку ще готує.',
 		facts: ['Молоді активні ведмеді', 'Мають світлі комірці', 'Люблять рух і активність'],
@@ -133,7 +134,7 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: 'Самки',
 		status: 'Мешканки парку',
 		shortText: 'Спритні ведмедиці, які вражають умінням лазити по деревах.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-6'),
+		image: '/images/bears/dasha-asya.jpg',
 		story: 'Даша та Ася − спритні ведмедиці, за якими цікаво спостерігати. Вони лазять по деревах із вправністю гімнастів і створюють яскраві моменти під час екскурсій.',
 		rescueStory: 'Детальну історію порятунку Даші та Асі команда парку ще готує.',
 		facts: ['Спритні та активні', 'Добре лазять по деревах', 'Привертають увагу відвідувачів'],
@@ -147,7 +148,7 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: 'Самка',
 		status: 'Мешканка парку',
 		shortText: 'Гімалайська ведмедиця з чорним шовковистим хутром.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-7'),
+		image: '/images/bears/irka.jpg',
 		story: 'Ірка − гімалайська ведмедиця, яка демонструє відвідувачам чорне шовковисте хутро та спокійну силу свого виду.',
 		rescueStory: 'Детальну історію порятунку Ірки команда парку ще готує.',
 		facts: [
@@ -165,7 +166,7 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: 'Самці',
 		status: 'Мешканці парку',
 		shortText: 'Дорослі ведмеді, що вражають силою та могутністю.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-8'),
+		image: '/images/bears/mykyta-illya.webp',
 		story: 'Микита та Ілля − дорослі ведмеді, які вражають відвідувачів грізним виглядом, силою та могутністю.',
 		rescueStory: 'Детальну історію порятунку Микити та Іллі команда парку ще готує.',
 		facts: ['Дорослі ведмеді', 'Вражають могутністю', 'Одні з найпомітніших ведмедів парку'],
@@ -179,7 +180,7 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: 'Самець',
 		status: 'Мешканець парку',
 		shortText: 'Білий лев, один із найефектніших великих котів парку.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-9'),
+		image: '/images/big-cats/zevs.jpg',
 		story: 'Зевс − білий лев і один із найбільш вражаючих представників великих котів у парку.',
 		rescueStory: 'Детальну історію Зевса команда парку ще готує.',
 		facts: [
@@ -197,7 +198,7 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: 'Самці',
 		status: 'Мешканці парку',
 		shortText: 'Молоді левенята, які привертають увагу відвідувачів.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-10'),
+		image: '/images/big-cats/frants-petro.jpg',
 		story: 'Франц і Петро − молоді левенята з секції великих котів. Вони додають парку особливої енергії та завжди привертають увагу гостей.',
 		rescueStory: 'Детальну історію Франца і Петра команда парку ще готує.',
 		facts: ['Молоді левенята', 'Представники великих котів', 'Активні мешканці парку'],
@@ -211,7 +212,7 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: UNKNOWN_VALUE,
 		status: 'Мешканці парку',
 		shortText: 'Вовки живуть зграями та створюють особливу атмосферу дикого лісу.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-11'),
+		image: 'https://cdn-it.webart.work/parkarden/wolves_28.webp',
 		story: 'Вовчі зграї проживають на території парку поруч із іншими мешканцями лісових вольєрів. Увечері в парку можна почути протяжне виття вовків із різних куточків лісу.',
 		rescueStory: 'Детальну історію вовчих зграй команда парку ще готує.',
 		facts: [
@@ -229,7 +230,7 @@ const FULL_ANIMAL_DETAILS: AnimalDetail[] = [
 		gender: UNKNOWN_VALUE,
 		status: 'Мешканці парку',
 		shortText: 'Красиві лісові мешканці з розлогими рогами.',
-		image: parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-12'),
+		image: 'https://cdn-it.webart.work/parkarden/deer_43.webp',
 		story: 'Благородні олені − справжні красені лісу. Вони гордовито несуть великі розлогі роги та доповнюють природну атмосферу парку.',
 		rescueStory: 'Детальну історію благородних оленів команда парку ще готує.',
 		facts: [
@@ -264,138 +265,161 @@ const CATALOG_FALLBACK_ANIMALS: CatalogAnimal[] = [
 		name: 'Ніка та ведмежа',
 		category: 'Ведмеді',
 		shortText: 'Ведмежа родина, яка викликає особливе захоплення у відвідувачів.',
+		image: '/images/bears/nika-vedmezha.jpg',
 	},
 	{
 		slug: 'vasyl',
 		name: 'Василь',
 		category: 'Ведмеді',
 		shortText: 'Мешканець ведмежої колекції парку.',
+		image: '/images/bears/vasyl.jpg',
 	},
 	{
 		slug: 'yanyk',
 		name: 'Яник',
 		category: 'Ведмеді',
 		shortText: 'Один із мешканців ведмежої частини парку.',
+		image: '/images/bears/yanyk.jpg',
 	},
 	{
 		slug: 'riki',
 		name: 'Рікі',
 		category: 'Ведмеді',
 		shortText: 'Мешканець ведмежої колекції «АРДЕНУ».',
+		image: '/images/bears/riki.jpg',
 	},
 	{
 		slug: 'maks-ta-meri',
 		name: 'Макс та Мері',
 		category: 'Ведмеді',
 		shortText: 'Ведмежа пара з каталогу мешканців парку.',
+		image: '/images/bears/maks-meri.jpg',
 	},
 	{
 		slug: 'grishka-ta-mishka',
 		name: 'Грішка та Мішка',
 		category: 'Ведмеді',
 		shortText: 'Мешканці ведмежої колекції парку.',
+		image: '/images/bears/grishka-mishka.jpg',
 	},
 	{
 		slug: 'chuk-ta-hek',
 		name: 'Чук та Гек',
 		category: 'Ведмеді',
 		shortText: 'Ведмежий дует із каталогу парку.',
+		image: '/images/bears/chuk-hek.jpg',
 	},
 	{
 		slug: 'sharyk',
 		name: 'Шарик',
 		category: 'Ведмеді',
 		shortText: 'Один із ведмедів, які знайшли прихисток у парку.',
+		image: '/images/bears/sharyk.jpg',
 	},
 	{
 		slug: 'potap-dzhek-ta-dzhon',
 		name: 'Потап, Джек та Джон',
 		category: 'Ведмеді',
 		shortText: 'Троє мешканців ведмежої частини парку.',
+		image: '/images/bears/potap-dzhek-dzhon.jpg',
 	},
 	{
 		slug: 'maksym',
 		name: 'Максим',
 		category: 'Ведмеді',
 		shortText: 'Мешканець ведмежої колекції «АРДЕНУ».',
+		image: '/images/bears/maksym.jpg',
 	},
 	{
 		slug: 'vedmezha-simya',
-		name: 'Ведмежа сім’я',
+		name: 'Ведмежа сімʼя',
 		category: 'Ведмеді',
 		shortText: 'Ведмежа родина, за якою цікаво спостерігати під час екскурсії.',
+		image: '/images/bears/vedmezha-simya.webp',
 	},
 	{
 		slug: 'lyusya',
 		name: 'Люся',
 		category: 'Великі коти',
 		shortText: 'Представниця великих котів парку.',
+		image: '/images/big-cats/lyusya.jpg',
 	},
 	{
 		slug: 'leo',
 		name: 'Лео',
 		category: 'Великі коти',
 		shortText: 'Великий кіт із каталогу мешканців «АРДЕНУ».',
+		image: '/images/big-cats/leo.jpg',
 	},
 	{
 		slug: 'yasya',
 		name: 'Яся',
 		category: 'Великі коти',
 		shortText: 'Мешканка секції великих котів.',
+		image: '/images/big-cats/yasya.jpg',
 	},
 	{
 		slug: 'pirat',
 		name: 'Пірат',
 		category: 'Великі коти',
 		shortText: 'Хижак із сильним характером і виразним образом.',
+		image: '/images/big-cats/pirat.jpg',
 	},
 	{
 		slug: 'luna',
 		name: 'Луна',
 		category: 'Великі коти',
 		shortText: 'Мешканка секції великих котів.',
+		image: '/images/big-cats/luna.jpg',
 	},
 	{
 		slug: 'odin',
 		name: 'Одін',
 		category: 'Великі коти',
 		shortText: 'Представник великих хижаків парку.',
+		image: '/images/big-cats/odin.jpg',
 	},
 	{
 		slug: 'sultan',
 		name: 'Султан',
 		category: 'Великі коти',
 		shortText: 'Великий кіт із каталогу парку.',
+		image: '/images/big-cats/sultan.jpg',
 	},
 	{
 		slug: 'zhozefina',
 		name: 'Жозефіна',
 		category: 'Великі коти',
 		shortText: 'Мешканка секції великих котів.',
+		image: '/images/big-cats/zhozefina.jpg',
 	},
 	{
 		slug: 'elza',
 		name: 'Ельза',
 		category: 'Великі коти',
 		shortText: 'Представниця великих котів парку.',
+		image: '/images/big-cats/elza.jpg',
 	},
 	{
 		slug: 'aveliya',
 		name: 'Авелія',
 		category: 'Великі коти',
 		shortText: 'Мешканка секції великих котів.',
+		image: '/images/big-cats/aveliya.jpg',
 	},
 	{
 		slug: 'valyera',
 		name: 'Валєра',
 		category: 'Великі коти',
 		shortText: 'Великий кіт із каталогу мешканців парку.',
+		image: '/images/big-cats/valyera.jpg',
 	},
 	{
 		slug: 'lyova',
 		name: 'Льова',
 		category: 'Великі коти',
 		shortText: 'Представник секції великих котів.',
+		image: '/images/big-cats/lyova.jpg',
 	},
 	{
 		slug: 'bilyy-tyhr',
@@ -408,6 +432,7 @@ const CATALOG_FALLBACK_ANIMALS: CatalogAnimal[] = [
 		name: 'Сімейство капуцинів',
 		category: 'Примати',
 		shortText: 'Активні та допитливі примати, за якими цікаво спостерігати.',
+		image: 'https://cdn-it.webart.work/parkarden/monkeys_36.webp',
 	},
 	{
 		slug: 'simeystvo-lemuriv',
@@ -426,36 +451,42 @@ const CATALOG_FALLBACK_ANIMALS: CatalogAnimal[] = [
 		name: 'Сімейство бабуїнів',
 		category: 'Примати',
 		shortText: 'Бабуїни − сильні соціальні примати з виразною поведінкою.',
+		image: 'https://cdn-it.webart.work/parkarden/monkeys_09.webp',
 	},
 	{
 		slug: 'muflony',
 		name: 'Муфлони',
 		category: 'Олені та копитні',
 		shortText: 'Копитні тварини, які доповнюють природну різноманітність парку.',
+		image: 'https://cdn-it.webart.work/parkarden/mouflons_09.webp',
 	},
 	{
 		slug: 'lani',
 		name: 'Лані',
 		category: 'Олені та копитні',
 		shortText: 'Спокійні й граційні мешканці природного простору.',
+		image: 'https://cdn-it.webart.work/parkarden/deer_01.webp',
 	},
 	{
 		slug: 'yastrub',
 		name: 'Яструб',
 		category: 'Птахи',
 		shortText: 'Хижий птах родини яструбових.',
+		image: 'https://cdn-it.webart.work/parkarden/eagle_11.webp',
 	},
 	{
 		slug: 'kanyuk',
 		name: 'Канюк',
 		category: 'Птахи',
 		shortText: 'Хижий птах, якого можна побачити у реабілітаційному центрі.',
+		image: 'https://cdn-it.webart.work/parkarden/eagle_06.webp',
 	},
 	{
 		slug: 'pidorlyk',
 		name: 'Підорлик',
 		category: 'Птахи',
 		shortText: 'Представник денних хижих птахів України.',
+		image: 'https://cdn-it.webart.work/parkarden/eagle_12.webp',
 	},
 ];
 
@@ -478,7 +509,7 @@ export class TvarynyDetailComponent implements AfterViewInit {
 	protected readonly supportImage = this.animal?.image ?? parkardenImageForKey('src/app/pages/tvaryny-detail/tvaryny-detail.component.ts-14');
 	protected readonly basicInfo = this.animal
 		? [
-				{ label: 'Ім’я', value: this.animal.name },
+				{ label: 'Імʼя', value: this.animal.name },
 				{ label: 'Категорія', value: this.animal.category },
 				{ label: 'Вид', value: this.animal.species },
 				{ label: 'Вік', value: this.animal.age },
@@ -541,7 +572,7 @@ function _createFallbackAnimal(animal: CatalogAnimal): AnimalDetail {
 		gender: UNKNOWN_VALUE,
 		status: UNKNOWN_VALUE,
 		shortText: animal.shortText,
-		image: parkardenImageForAnimal(animal.slug, animal.category),
+		image: animal.image ?? parkardenImageForAnimal(animal.slug, animal.category),
 		story: FALLBACK_STORY,
 		rescueStory: FALLBACK_RESCUE_STORY,
 		facts: FALLBACK_FACTS,

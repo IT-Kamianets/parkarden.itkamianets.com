@@ -206,6 +206,41 @@ textarea.excursions-input {
 	resize: vertical;
 }
 
+.excursions-required {
+	color: #dc2626;
+}
+
+.excursions-field-error {
+	color: #dc2626;
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+
+.excursions-success {
+	grid-column: 1 / -1;
+	border: 1px solid #16a34a;
+	border-radius: var(--radius-card);
+	background: color-mix(in srgb, #16a34a 10%, transparent);
+	padding: 0.75rem 1rem;
+	color: #15803d;
+	font-weight: 500;
+}
+
+.excursions-error {
+	grid-column: 1 / -1;
+	border: 1px solid #dc2626;
+	border-radius: var(--radius-card);
+	background: color-mix(in srgb, #dc2626 10%, transparent);
+	padding: 0.75rem 1rem;
+	color: #b91c1c;
+	font-weight: 500;
+}
+
+.excursions-button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
 @media (min-width: 640px) {
 	.excursions-container {
 		padding: 0 1.5rem;

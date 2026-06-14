@@ -12,7 +12,7 @@
 					мешканців у природному середовищі та дізнаєтесь більше про їхнє життя.
 				</p>
 				<div class="excursions-actions">
-					<a class="excursions-button excursions-button--primary" routerLink="/ekskursii">
+					<a class="excursions-button excursions-button--primary" href="#booking-form">
 						Записатись на екскурсію
 					</a>
 					<a class="excursions-button excursions-button--secondary" routerLink="/gostiam">
@@ -126,49 +126,11 @@
 						<li>{{ benefit }}</li>
 					}
 				</ul>
-				<a class="excursions-button excursions-button--primary" routerLink="/ekskursii">
+				<a class="excursions-button excursions-button--primary" href="#booking-form">
 					Записати групу
 				</a>
 			</div>
 			<img class="excursions-image" [ngSrc]="groupImage" width="1024" height="1024" alt="" />
-		</div>
-	</section>
-
-	<section class="excursions-section">
-		<div class="excursions-container">
-			<h2 class="excursions-heading">Записатись на екскурсію</h2>
-			<p class="excursions-text">
-				Заповніть форму, і адміністратор парку зв’яжеться з вами для підтвердження дати,
-				часу та деталей відвідування.
-			</p>
-			<form class="excursions-form" (submit)="submitForm(); $event.preventDefault()">
-				@for (field of formFields; track field.key) {
-					<label class="excursions-field">
-						<span class="excursions-field-label">{{ field.label }}</span>
-						@if (field.key === 'comment') {
-							<textarea
-								class="excursions-input"
-								[attr.required]="field.required ? '' : null"
-								rows="4"
-							></textarea>
-						} @else {
-							<input
-								class="excursions-input"
-								[type]="fieldInputType(field)"
-								[attr.required]="field.required ? '' : null"
-								[attr.min]="isNumberField(field) ? 0 : null"
-								(input)="updateCount(field.key, $any($event.target).value)"
-							/>
-						}
-					</label>
-				}
-				<button class="excursions-button excursions-button--primary" type="submit">
-					Надіслати заявку
-				</button>
-			</form>
-			<p class="excursions-note">
-				Форма запису має показувати попередній розрахунок вартості в реальному часі.
-			</p>
 		</div>
 	</section>
 
@@ -183,7 +145,7 @@
 						type="number"
 						min="0"
 						[value]="adults()"
-						(input)="updateCount('adults', $any($event.target).value)"
+						(input)="updateField('adults', $any($event.target).value)"
 					/>
 				</label>
 				<label class="excursions-field">
@@ -193,7 +155,7 @@
 						type="number"
 						min="0"
 						[value]="children()"
-						(input)="updateCount('children', $any($event.target).value)"
+						(input)="updateField('children', $any($event.target).value)"
 					/>
 				</label>
 				<label class="excursions-field">
@@ -203,7 +165,7 @@
 						type="number"
 						min="0"
 						[value]="youngChildren()"
-						(input)="updateCount('youngChildren', $any($event.target).value)"
+						(input)="updateField('youngChildren', $any($event.target).value)"
 					/>
 				</label>
 				<div class="excursions-total">
@@ -229,61 +191,64 @@
 		</div>
 	</section>
 
-	<section class="excursions-section">
-		<div
-			class="excursions-container grid gap-8 lg:grid-cols-[minmax(16rem,0.82fr)_minmax(0,1fr)] lg:items-center"
-		>
-			<img
-				class="excursions-image"
-				[ngSrc]="phoneBookingImage"
-				width="1024"
-				height="1024"
-				alt=""
-			/>
-			<div>
-				<h2 class="excursions-heading">Маєте питання або хочете записатись телефоном?</h2>
-				<p class="excursions-text">
-					Зателефонуйте нам, щоб уточнити дату, час, кількість людей у групі та деталі
-					відвідування.
-				</p>
-				<p class="excursions-phone">+38 (067) 313-44-00</p>
-				<a class="excursions-button excursions-button--primary" href="tel:+380673134400">
-					Зателефонувати
-				</a>
-			</div>
+
+	<section id="booking-form" class="excursions-section">
+		<div class="excursions-container">
+			<h2 class="excursions-heading">Записатись на екскурсію</h2>
+			<p class="excursions-text">
+				Заповніть форму, і адміністратор парку зв'яжеться з вами для підтвердження дати,
+				часу та деталей відвідування.
+			</p>
+			<form class="excursions-form" (submit)="submitForm($event)">
+				@for (field of formFields; track field.key) {
+					<label class="excursions-field">
+						<span class="excursions-field-label">
+							{{ field.label }}
+							@if (field.required) {<span class="excursions-required"> *</span>}
+						</span>
+						@if (field.key === 'comment') {
+							<textarea
+								class="excursions-input"
+								[attr.required]="field.required ? '' : null"
+								rows="4"
+								(input)="updateField(field.key, $any($event.target).value)"
+							></textarea>
+						} @else {
+							<input
+								class="excursions-input"
+								[type]="fieldInputType(field)"
+								[attr.required]="field.required ? '' : null"
+								[attr.min]="isNumberField(field) ? 0 : null"
+								(input)="updateField(field.key, $any($event.target).value)"
+							/>
+						}
+						@if (field.key === 'firstName' && firstNameMissing()) {
+							<span class="excursions-field-error">Це поле обов'язкове</span>
+						}
+						@if (field.key === 'phone' && phoneMissing()) {
+							<span class="excursions-field-error">Це поле обов'язкове</span>
+						}
+					</label>
+				}
+				<button
+					class="excursions-button excursions-button--primary"
+					type="submit"
+					[disabled]="submitting()"
+				>
+					{{ submitting() ? 'Надсилання...' : 'Надіслати заявку' }}
+				</button>
+				@if (submitStatus() === 'success') {
+					<p class="excursions-success">
+						Заявку надіслано! Адміністратор зв'яжеться з вами найближчим часом.
+					</p>
+				}
+				@if (submitStatus() === 'error') {
+					<p class="excursions-error">
+						Сталася помилка. Спробуйте ще раз або зателефонуйте нам.
+					</p>
+				}
+			</form>
 		</div>
 	</section>
 
-	<section class="excursions-section">
-		<div
-			class="excursions-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.82fr)] lg:items-center"
-		>
-			<div>
-				<h2 class="excursions-heading">Приїжджайте на екскурсію до «АРДЕНУ»</h2>
-				<p class="excursions-text">
-					Побачте тварин наживо, пройдіть лісовим маршрутом і дізнайтесь історії мешканців
-					парку від екскурсовода.
-				</p>
-				<div class="excursions-actions">
-					@for (button of finalButtons; track button.label) {
-						<a
-							class="excursions-button"
-							[class.excursions-button--primary]="button.style === 'primary'"
-							[class.excursions-button--secondary]="button.style === 'secondary'"
-							[routerLink]="button.path"
-						>
-							{{ button.label }}
-						</a>
-					}
-				</div>
-			</div>
-			<img
-				class="excursions-image"
-				[ngSrc]="finalCtaImage"
-				width="1024"
-				height="1024"
-				alt=""
-			/>
-		</div>
-	</section>
 </main>
