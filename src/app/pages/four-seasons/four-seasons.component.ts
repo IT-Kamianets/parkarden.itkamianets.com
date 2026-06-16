@@ -47,9 +47,6 @@ const toImageCard = (
 export class FourSeasonsComponent implements AfterViewInit, OnDestroy {
 	private readonly platformId = inject(PLATFORM_ID);
 	private lightbox?: PhotoSwipeLightbox;
-	private readonly allPhotoIndex = new Map<string, number>(
-		allParkardenPhotoSwipeImages.map((src, index) => [src, index]),
-	);
 	private readonly allPhotoSlides = allParkardenPhotoSwipeImages.map((src) => ({
 		html: `<div class="pswp-arden-slide"><img src="${src}" alt="" loading="lazy" /></div>`,
 	}));
@@ -80,37 +77,39 @@ export class FourSeasonsComponent implements AfterViewInit, OnDestroy {
 		{ label: 'Дивитись галерею', link: '/galereya', variant: 'secondary' },
 	];
 
+	protected readonly seasonIds = ['spring', 'summer', 'autumn', 'winter'];
+
 	protected readonly seasons: ImageCard[] = [
 		{
 			title: 'Весна',
-			image: fourSeasonsPhotos.seasons.spring.src,
-			imageWidth: fourSeasonsPhotos.seasons.spring.width,
-			imageHeight: fourSeasonsPhotos.seasons.spring.height,
-			imageAlt: fourSeasonsPhotos.seasons.spring.alt,
-			text: 'Природа прокидається, на деревах з’являються перші зелені листочки, а молоді тварини стають активнішими й допитливішими.',
+			image: fourSeasonsPhotos.details.spring.hero.src,
+			imageWidth: fourSeasonsPhotos.details.spring.hero.width,
+			imageHeight: fourSeasonsPhotos.details.spring.hero.height,
+			imageAlt: fourSeasonsPhotos.details.spring.hero.alt,
+			text: `Природа прокидається, на деревах з’являються перші зелені листочки, а молоді тварини стають активнішими й допитливішими.`,
 		},
 		{
 			title: 'Літо',
-			image: fourSeasonsPhotos.seasons.summer.src,
-			imageWidth: fourSeasonsPhotos.seasons.summer.width,
-			imageHeight: fourSeasonsPhotos.seasons.summer.height,
-			imageAlt: fourSeasonsPhotos.seasons.summer.alt,
+			image: fourSeasonsPhotos.details.summer.hero.src,
+			imageWidth: fourSeasonsPhotos.details.summer.hero.width,
+			imageHeight: fourSeasonsPhotos.details.summer.hero.height,
+			imageAlt: fourSeasonsPhotos.details.summer.hero.alt,
 			text: 'Найсоковитіший сезон для прогулянок, фото, сімейних екскурсій і спостереження за тваринами серед густої зелені.',
 		},
 		{
 			title: 'Осінь',
-			image: fourSeasonsPhotos.seasons.autumn.src,
-			imageWidth: fourSeasonsPhotos.seasons.autumn.width,
-			imageHeight: fourSeasonsPhotos.seasons.autumn.height,
-			imageAlt: fourSeasonsPhotos.seasons.autumn.alt,
+			image: fourSeasonsPhotos.details.autumn.hero.src,
+			imageWidth: fourSeasonsPhotos.details.autumn.hero.width,
+			imageHeight: fourSeasonsPhotos.details.autumn.hero.height,
+			imageAlt: fourSeasonsPhotos.details.autumn.hero.alt,
 			text: 'Ліс змінює кольори, маршрути стають особливо атмосферними, а парк відкривається у теплих природних відтінках.',
 		},
 		{
 			title: 'Зима',
-			image: fourSeasonsPhotos.seasons.winter.src,
-			imageWidth: fourSeasonsPhotos.seasons.winter.width,
-			imageHeight: fourSeasonsPhotos.seasons.winter.height,
-			imageAlt: fourSeasonsPhotos.seasons.winter.alt,
+			image: fourSeasonsPhotos.details.winter.hero.src,
+			imageWidth: fourSeasonsPhotos.details.winter.hero.width,
+			imageHeight: fourSeasonsPhotos.details.winter.hero.height,
+			imageAlt: fourSeasonsPhotos.details.winter.hero.alt,
 			text: 'Більшість ведмедів дрімає у барлогах, але іноді відвідувачам щастить побачити господарів лісу навіть узимку.',
 		},
 	];
@@ -300,15 +299,19 @@ export class FourSeasonsComponent implements AfterViewInit, OnDestroy {
 		}));
 	}
 
-	protected openPhoto(src: string, event: MouseEvent): void {
-		const index = this.allPhotoIndex.get(src);
-
-		if (!this.lightbox || index === undefined) {
-			return;
-		}
-
+	protected openPhoto(seasonIndex: number, src: string, event: MouseEvent): void {
+		if (!this.lightbox) return;
 		event.preventDefault();
-		this.lightbox.loadAndOpen(index, this.allPhotoSlides);
+
+		const seasonPhotos = this.seasonGalleryPhotos[seasonIndex];
+		const index = seasonPhotos.findIndex((p) => p.src === src);
+		if (index === -1) return;
+
+		const slides = seasonPhotos.map((p) => ({
+			html: `<div class="pswp-arden-slide"><img src="${p.src}" alt="${p.alt}" loading="lazy" /></div>`,
+		}));
+
+		this.lightbox.loadAndOpen(index, slides);
 	}
 
 	protected openAllPhotos(event: MouseEvent): void {
@@ -338,6 +341,7 @@ export class FourSeasonsComponent implements AfterViewInit, OnDestroy {
 		this.lightbox = new PhotoSwipeLightbox({
 			pswpModule: () => import('photoswipe'),
 			preload: [1, 2],
+			loop: false,
 		});
 		this.lightbox.init();
 	}

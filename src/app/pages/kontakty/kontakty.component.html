@@ -22,10 +22,12 @@
 							>
 								{{ button.label }}
 							</a>
-						} @else {
+						} @else if (button.href) {
 							<a
 								class="rounded-md border border-[#4f7f2b] px-5 py-3 text-sm font-semibold text-[#2f5f16]"
-								[href]="'#' + button.fragment"
+								[href]="button.href"
+								target="_blank"
+								rel="noopener"
 							>
 								{{ button.label }}
 							</a>

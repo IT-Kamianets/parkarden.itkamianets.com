@@ -19,7 +19,7 @@ export class KontaktyComponent {
 
 	protected readonly heroButtons = [
 		{ label: 'Екскурсії', path: '/ekskursii', style: 'primary' },
-		{ label: 'Показати на карті', fragment: 'map', style: 'secondary' },
+		{ label: 'Показати на карті', href: 'https://maps.app.goo.gl/pATEfZEHuJFKh31L9', style: 'secondary' },
 	];
 
 	protected readonly contactCards = [

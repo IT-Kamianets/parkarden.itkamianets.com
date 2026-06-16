@@ -335,12 +335,14 @@ html[data-mode='dark']
 	display: grid;
 	width: 100%;
 	height: 100%;
+	padding: 2rem 4rem;
 	place-items: center;
+	box-sizing: border-box;
 }
 
 .pswp-arden-slide img {
 	display: block;
-	max-width: min(100%, 1600px);
+	max-width: min(100%, 1400px);
 	max-height: 100%;
 	object-fit: contain;
 }

@@ -49,8 +49,8 @@
 		<div class="seasons-container">
 			<h2 class="seasons-heading">Пори року в «АРДЕНІ»</h2>
 			<div class="seasons-grid">
-				@for (season of seasons; track season.title) {
-					<article class="seasons-card">
+				@for (season of seasons; track season.title; let i = $index) {
+					<div class="seasons-card">
 						<img
 							class="seasons-card-image"
 							[ngSrc]="season.image"
@@ -62,14 +62,14 @@
 						/>
 						<h3 class="seasons-card-title">{{ season.title }}</h3>
 						<p class="seasons-card-text">{{ season.text }}</p>
-					</article>
+					</div>
 				}
 			</div>
 		</div>
 	</section>
 
-	@for (season of seasonDetails; track season.title; let seasonIndex = $index) {
-		<section class="seasons-section">
+	@for (season of seasonDetails; track season.title; let si = $index) {
+		<section class="seasons-section" [id]="seasonIds[si]">
 			<div class="seasons-container seasons-split">
 				<img
 					class="seasons-image"
@@ -91,7 +91,7 @@
 				</div>
 			</div>
 			<div class="seasons-container seasons-gallery">
-				@for (item of seasonGallery(seasonIndex); track item.image) {
+				@for (item of seasonGallery(si); track item.image) {
 					<a
 						class="seasons-card seasons-card--compact seasons-gallery-link"
 						[href]="item.image"
@@ -99,7 +99,7 @@
 						[attr.data-pswp-height]="item.imageHeight || 768"
 						target="_blank"
 						rel="noreferrer"
-						(click)="openPhoto(item.image, $event)"
+						(click)="openPhoto(si, item.image, $event)"
 					>
 						<img
 							class="seasons-card-image"
