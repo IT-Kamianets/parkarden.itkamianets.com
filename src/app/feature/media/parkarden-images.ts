@@ -43,6 +43,7 @@ export const parkardenImages = {
 		deer06: _image('deer_06'),
 		lionsTigers121: _image('lions_tigers_121'),
 		bears45: _image('bears_45'),
+		bears130: _image('bears_130'),
 		animalsProcessed01: _image('animals_processed_01'),
 		animalsProcessed02: _image('animals_processed_02'),
 		animalsProcessed04: _image('animals_processed_04'),

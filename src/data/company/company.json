@@ -3,7 +3,7 @@
 	"name": "Park Arden",
 	"title": "Парк диких тварин “АРДЕН”",
 	"description": "Modern informational, booking, and donation website for Park Arden, a warm family-friendly wildlife park experience.",
-	"image": "https://cdn-it.webart.work/parkarden/animals_processed_03.webp",
+	"image": "https://parkarden.itkamianets.com/logo.png",
 	"logo": "/logo.png",
 	"siteUrl": "https://parkarden.itkamianets.com",
 	"lang": "uk",
@@ -20,7 +20,7 @@
 			"сімейний відпочинок"
 		],
 		"author": "Парк диких тварин “АРДЕН”",
-		"image": "https://cdn-it.webart.work/parkarden/animals_processed_03.webp"
+		"image": "https://parkarden.itkamianets.com/logo.png"
 	},
 	"structuredData": {
 		"type": "TouristAttraction",

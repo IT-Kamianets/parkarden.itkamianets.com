@@ -11,7 +11,7 @@ import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KontaktyComponent {
-	protected readonly heroImage = parkardenImageForKey('src/app/pages/kontakty/kontakty.component.ts-1');
+	protected readonly heroImage = 'https://cdn-it.webart.work/parkarden/deer_27.webp';
 	protected readonly mapImage = parkardenImageForKey('src/app/pages/kontakty/kontakty.component.ts-2');
 	protected readonly parkingImage = parkardenImageForKey('src/app/pages/kontakty/kontakty.component.ts-3');
 	protected readonly phoneCtaImage = parkardenImageForKey('src/app/pages/kontakty/kontakty.component.ts-4');
@@ -72,7 +72,11 @@ export class KontaktyComponent {
 		{ label: 'Тема звернення', name: 'subject', type: 'text', required: false },
 	];
 
-	protected readonly socialButtons = ['Instagram', 'Facebook', 'YouTube'];
+	protected readonly socialButtons = [
+		{ label: 'Instagram', href: 'https://www.instagram.com/park_arden_sataniv/' },
+		{ label: 'Facebook', href: 'https://www.facebook.com/park.arden.2025/' },
+		{ label: 'YouTube', href: 'https://www.youtube.com/channel/UCiIecihp7fyo5mnSISFrV1A' },
+	];
 
 	protected readonly finalCtaButtons = [
 		{ label: 'Екскурсії', path: '/ekskursii', style: 'primary' },

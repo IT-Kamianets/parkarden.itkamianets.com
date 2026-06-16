@@ -1,7 +1,7 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { parkardenImageForKey } from '../../feature/media/parkarden-images';
+import { parkardenImageForKey, parkardenImages } from '../../feature/media/parkarden-images';
 
 
 @Component({
@@ -11,10 +11,9 @@ import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 })
 export class PidtrymatyComponent {
 	protected readonly heroImage = parkardenImageForKey('src/app/pages/pidtrymaty/pidtrymaty.component.ts-1');
-	protected readonly missionImage = parkardenImageForKey('src/app/pages/pidtrymaty/pidtrymaty.component.ts-2');
+	protected readonly missionImage = 'https://cdn-it.webart.work/parkarden/wolves_28.webp';
 	protected readonly rescueStoriesImage = parkardenImageForKey('src/app/pages/pidtrymaty/pidtrymaty.component.ts-3');
 	protected readonly contactImage = parkardenImageForKey('src/app/pages/pidtrymaty/pidtrymaty.component.ts-4');
-	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/pidtrymaty/pidtrymaty.component.ts-5');
 
 	protected readonly heroButtons = [
 		{ label: 'Зробити внесок', href: '#donation', variant: 'primary' },
@@ -24,19 +23,20 @@ export class PidtrymatyComponent {
 	protected readonly supportOptions = [
 		{
 			title: 'Благодійний внесок',
-			image: parkardenImageForKey('src/app/pages/pidtrymaty/pidtrymaty.component.ts-6'),
+			image: parkardenImages.specific.bears130,
 			text: 'Допоможіть фінансово, щоб парк міг забезпечувати тварин кормом, лікуванням і доглядом.',
 			button: 'Зробити внесок',
+			href: '#donation',
 		},
 		{
 			title: 'Допомога кормом',
-			image: parkardenImageForKey('src/app/pages/pidtrymaty/pidtrymaty.component.ts-7'),
+			image: parkardenImages.specific.lionsTigers121,
 			text: 'Ви можете підтримати парк кормом або допомогти із закупівлею харчування для тварин.',
 			button: 'Уточнити потреби',
 		},
 		{
 			title: 'Купівля сувенірів',
-			image: parkardenImageForKey('src/app/pages/pidtrymaty/pidtrymaty.component.ts-8'),
+			image: parkardenImages.specific.eagle01,
 			text: 'Купуючи сувеніри у лавці парку, ви також підтримуєте його роботу.',
 			button: 'Дізнатись більше',
 		},
@@ -89,17 +89,17 @@ export class PidtrymatyComponent {
 	protected readonly rescueStoryCards = [
 		{
 			title: 'Ведмеді',
-			image: parkardenImageForKey('src/app/pages/pidtrymaty/pidtrymaty.component.ts-11'),
+			image: 'https://cdn-it.webart.work/parkarden/bears_147.webp',
 			text: 'Багато ведмедів потрапили до парку після життя в неналежних умовах і тепер мають простір для відновлення.',
 		},
 		{
 			title: 'Великі коти',
-			image: parkardenImageForKey('src/app/pages/pidtrymaty/pidtrymaty.component.ts-12'),
+			image: 'https://cdn-it.webart.work/parkarden/lions_tigers_121.webp',
 			text: 'Леви, тигри та інші хижаки потребують постійного догляду, правильного харчування й безпечного середовища.',
 		},
 		{
 			title: 'Хижі птахи',
-			image: parkardenImageForKey('src/app/pages/pidtrymaty/pidtrymaty.component.ts-13'),
+			image: 'https://cdn-it.webart.work/parkarden/eagle_01.webp',
 			text: 'У реабілітаційному центрі створюються умови для птахів, які потребують захисту та догляду.',
 		},
 	];
@@ -119,10 +119,5 @@ export class PidtrymatyComponent {
 	protected readonly contactButtons = [
 		{ label: 'Зателефонувати', href: 'tel:+380673134400', variant: 'primary' },
 		{ label: 'Написати нам', href: 'mailto:info@parkarden.com.ua', variant: 'secondary' },
-	];
-
-	protected readonly finalCtaButtons = [
-		{ label: 'Зробити внесок', href: '#donation', variant: 'primary' },
-		{ label: 'Екскурсії', routerLink: '/ekskursii', variant: 'secondary' },
 	];
 }

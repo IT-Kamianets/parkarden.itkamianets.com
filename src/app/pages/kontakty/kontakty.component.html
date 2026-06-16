@@ -36,7 +36,7 @@
 				</div>
 			</div>
 			<img
-				class="aspect-[4/3] w-full rounded-lg bg-white object-contain p-8 shadow-sm"
+				class="aspect-[4/3] w-full rounded-lg bg-white object-cover shadow-sm"
 				[ngSrc]="heroImage"
 				width="1024"
 				height="768"
@@ -60,6 +60,30 @@
 					</article>
 				}
 			</div>
+		</div>
+	</section>
+
+	<section class="px-4 py-10 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-6xl">
+			<div class="max-w-3xl">
+				<h2 class="text-3xl font-bold">Ми у соціальних мережах</h2>
+				<p class="mt-4 text-base leading-8 text-[#425344]">
+					Слідкуйте за новинами парку, фото тварин, сезонними оновленнями та важливими оголошеннями.
+				</p>
+			</div>
+			<div class="mt-6 flex flex-wrap gap-3">
+				@for (button of socialButtons; track button.label) {
+					<a
+						class="rounded-md border border-[#4f7f2b] px-5 py-3 text-sm font-semibold text-[#2f5f16] inline-flex items-center"
+						[href]="button.href"
+						target="_blank"
+						rel="noopener"
+					>
+						{{ button.label }}
+					</a>
+				}
+			</div>
+			<!-- TODO: Add real social media links from client materials. -->
 		</div>
 	</section>
 
@@ -216,22 +240,4 @@
 		</div>
 	</section>
 
-	<section class="px-4 py-10 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-6xl">
-			<div class="max-w-3xl">
-				<h2 class="text-3xl font-bold">Ми у соціальних мережах</h2>
-				<p class="mt-4 text-base leading-8 text-[#425344]">
-					Слідкуйте за новинами парку, фото тварин, сезонними оновленнями та важливими оголошеннями.
-				</p>
-			</div>
-			<div class="mt-6 flex flex-wrap gap-3">
-				@for (button of socialButtons; track button) {
-					<button class="rounded-md border border-[#4f7f2b] px-5 py-3 text-sm font-semibold text-[#2f5f16]" type="button">
-						{{ button }}
-					</button>
-				}
-			</div>
-			<!-- TODO: Add real social media links from client materials. -->
-		</div>
-	</section>
 </main>
