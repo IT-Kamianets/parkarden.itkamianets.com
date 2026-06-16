@@ -1,25 +1,22 @@
-@if (animal) {
+@if (animal(); as a) {
 	<main class="animal-page">
 		<section class="animal-section animal-hero">
 			<div
 				class="animal-container grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.82fr)] lg:items-center"
 			>
 				<div>
-					<p class="animal-eyebrow">{{ animal.category }}</p>
-					<h1 class="animal-title">{{ animal.name }}</h1>
-					<p class="animal-lead">{{ animal.shortText }}</p>
+					<p class="animal-eyebrow">{{ a.category }}</p>
+					<h1 class="animal-title">{{ a.name }}</h1>
+					<p class="animal-lead">{{ a.shortText }}</p>
 					<div class="animal-actions">
-						<a class="animal-button animal-button--primary" routerLink="/ekskursii">
-							Записатись на екскурсію
-						</a>
-						<a class="animal-button animal-button--secondary" routerLink="/pidtrymaty">
-							Підтримати тварин
+						<a class="animal-button animal-button--primary" routerLink="/tvaryny" fragment="kataloh">
+							← Назад до тварин
 						</a>
 					</div>
 				</div>
 				<img
 					class="animal-image animal-image--hero"
-					[ngSrc]="animal.image"
+					[ngSrc]="a.image"
 					width="1024"
 					height="1024"
 					alt=""
@@ -32,7 +29,7 @@
 			<div class="animal-container">
 				<h2 class="animal-heading">Коротко про тварину</h2>
 				<div class="animal-info-grid">
-					@for (item of basicInfo; track item.label) {
+					@for (item of basicInfo(); track item.label) {
 						<div class="animal-info-card">
 							<p class="animal-info-label">{{ item.label }}</p>
 							<p class="animal-info-value">{{ item.value }}</p>
@@ -45,14 +42,14 @@
 		<section class="animal-section">
 			<div class="animal-container">
 				<h2 class="animal-heading">Історія</h2>
-				<p class="animal-text">{{ animal.story }}</p>
+				<p class="animal-text">{{ a.story }}</p>
 			</div>
 		</section>
 
 		<section class="animal-section">
 			<div class="animal-container">
 				<h2 class="animal-heading">Історія порятунку</h2>
-				<p class="animal-text">{{ animal.rescueStory }}</p>
+				<p class="animal-text">{{ a.rescueStory }}</p>
 			</div>
 		</section>
 
@@ -60,7 +57,7 @@
 			<div class="animal-container">
 				<h2 class="animal-heading">Цікаві особливості</h2>
 				<ul class="animal-list">
-					@for (fact of facts; track fact) {
+					@for (fact of facts(); track fact) {
 						<li>{{ fact }}</li>
 					}
 				</ul>
@@ -71,7 +68,7 @@
 			<div class="animal-container">
 				<h2 class="animal-heading">Інші мешканці парку</h2>
 				<div class="animal-grid">
-					@for (otherAnimal of otherAnimals; track otherAnimal.slug) {
+					@for (otherAnimal of otherAnimals(); track otherAnimal.slug) {
 						<a
 							class="animal-card animal-card--media animal-link-card"
 							[routerLink]="['/tvaryny', otherAnimal.slug]"

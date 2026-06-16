@@ -18,7 +18,7 @@ export class KontaktyComponent {
 	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/kontakty/kontakty.component.ts-5');
 
 	protected readonly heroButtons = [
-		{ label: 'Записатись на екскурсію', path: '/ekskursii', style: 'primary' },
+		{ label: 'Екскурсії', path: '/ekskursii', style: 'primary' },
 		{ label: 'Показати на карті', fragment: 'map', style: 'secondary' },
 	];
 
@@ -75,7 +75,7 @@ export class KontaktyComponent {
 	protected readonly socialButtons = ['Instagram', 'Facebook', 'YouTube'];
 
 	protected readonly finalCtaButtons = [
-		{ label: 'Записатись на екскурсію', path: '/ekskursii', style: 'primary' },
+		{ label: 'Екскурсії', path: '/ekskursii', style: 'primary' },
 		{ label: 'Інформація для гостей', path: '/gostiam', style: 'secondary' },
 	];
 

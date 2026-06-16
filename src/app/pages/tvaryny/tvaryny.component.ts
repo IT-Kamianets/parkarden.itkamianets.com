@@ -1,8 +1,7 @@
 import { NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { parkardenImageForAnimal, parkardenImageForKey, parkardenImages } from '../../feature/media/parkarden-images';
-
 
 @Component({
 	imports: [NgOptimizedImage, RouterLink],
@@ -20,10 +19,13 @@ export class TvarynyComponent {
 		'Вовки',
 		'Олені та копитні',
 		'Птахи',
-		'Інші',
 	];
 
 	protected readonly sortOptions = ['За назвою', 'За категорією', 'Новіші спочатку'];
+
+	protected readonly selectedFilter = signal('Усі тварини');
+	protected readonly searchQuery = signal('');
+	protected readonly sortOption = signal('За назвою');
 
 	protected readonly groupCards = [
 		{
@@ -58,11 +60,8 @@ export class TvarynyComponent {
 		},
 	];
 
-	protected readonly animalCards = (() => {
-		const c = parkardenImages.animals.bigCats;
+	protected readonly allAnimalCards = (() => {
 		const p = parkardenImages.animals.primates;
-		const w = parkardenImages.animals.wolves;
-		const h = parkardenImages.animals.hoofed;
 		const bi = parkardenImages.animals.birds;
 		const pick = (arr: readonly string[], i: number) => arr[i % arr.length]!;
 
@@ -116,9 +115,46 @@ export class TvarynyComponent {
 		];
 	})();
 
+	private readonly knownCategories = ['Ведмеді', 'Великі коти', 'Примати', 'Вовки', 'Олені та копитні', 'Птахи'];
+
+	protected readonly filteredAnimals = computed(() => {
+		const filter = this.selectedFilter();
+		const query = this.searchQuery().toLowerCase().trim();
+		const sort = this.sortOption();
+
+		let result = this.allAnimalCards.filter(a => {
+			const matchesFilter =
+				filter === 'Усі тварини' ? true :
+				filter === 'Інші' ? !this.knownCategories.includes(a.category) :
+				a.category === filter;
+			const matchesSearch = !query || a.name.toLowerCase().includes(query);
+			return matchesFilter && matchesSearch;
+		});
+
+		if (sort === 'За назвою') {
+			result = [...result].sort((a, b) => a.name.localeCompare(b.name, 'uk'));
+		} else if (sort === 'За категорією') {
+			result = [...result].sort((a, b) => a.category.localeCompare(b.category, 'uk'));
+		}
+
+		return result;
+	});
+
+	protected setFilter(filter: string): void {
+		this.selectedFilter.set(filter);
+	}
+
+	protected setSearch(query: string): void {
+		this.searchQuery.set(query);
+	}
+
+	protected setSort(option: string): void {
+		this.sortOption.set(option);
+	}
+
 	protected readonly finalCtaButtons = [
 		{
-			label: 'Записатись на екскурсію',
+			label: 'Екскурсії',
 			path: '/ekskursii',
 			style: 'primary',
 		},

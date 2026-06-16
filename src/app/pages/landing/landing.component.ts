@@ -18,7 +18,7 @@ export class LandingComponent {
 	protected readonly excursionsImage = parkardenImageForAnimal('олені копитні');
 	protected readonly rescueStoriesImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-6');
 	protected readonly supportImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-7');
-	protected readonly contactsImage = parkardenImageForAnimal('вовки');
+	protected readonly contactsImage = 'https://cdn-it.webart.work/parkarden/bears_83.webp';
 
 	protected readonly facts = [
 		'Найбільший в Україні — сучасний парк для диких тварин',

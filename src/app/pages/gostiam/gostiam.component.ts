@@ -10,10 +10,10 @@ import { parkardenImageForKey } from '../../feature/media/parkarden-images';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GostiamComponent {
-	protected readonly heroImage = parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-1');
-	protected readonly rulesImage = parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-2');
+	protected readonly heroImage = 'https://cdn-it.webart.work/parkarden/bears_83.webp';
+	protected readonly rulesImage = 'https://cdn-it.webart.work/parkarden/lions_tigers_120.webp';
 	protected readonly mapImage = parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-3');
-	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/gostiam/gostiam.component.ts-4');
+	protected readonly finalCtaImage = 'https://cdn-it.webart.work/parkarden/bears_83.webp';
 
 	protected readonly quickInfoCards = [
 		{
@@ -142,12 +142,12 @@ export class GostiamComponent {
 	];
 
 	protected readonly heroButtons = [
-		{ label: 'Записатись на екскурсію', path: '/ekskursii', fragment: undefined, style: 'primary' },
+		{ label: 'Екскурсії', path: '/ekskursii', fragment: undefined, style: 'primary' },
 		{ label: 'Як дістатись', path: '/gostiam', fragment: 'how-to-get-there', style: 'secondary' },
 	];
 
 	protected readonly finalButtons = [
-		{ label: 'Записатись на екскурсію', path: '/ekskursii', style: 'primary' },
+		{ label: 'Екскурсії', path: '/ekskursii', style: 'primary' },
 		{ label: 'Переглянути тварин', path: '/tvaryny', style: 'secondary' },
 	];
 }

@@ -13,7 +13,7 @@
 				</p>
 				<div class="animals-actions">
 					<a class="animals-button animals-button--primary" routerLink="/ekskursii">
-						Записатись на екскурсію
+						Екскурсії
 					</a>
 					<a class="animals-button animals-button--secondary" routerLink="/pidtrymaty">
 						Підтримати тварин
@@ -48,33 +48,6 @@
 
 	<section class="animals-section">
 		<div class="animals-container">
-			<h2 class="animals-heading">Обрати категорію</h2>
-			<div class="animals-filter-panel">
-				<div class="animals-filter-buttons" aria-label="Обрати категорію">
-					@for (filter of filters; track filter) {
-						<button class="animals-filter" type="button">{{ filter }}</button>
-					}
-				</div>
-				<div class="animals-controls">
-					<label class="animals-control">
-						<span class="animals-control-label">Пошук тварини</span>
-						<input class="animals-input" type="search" placeholder="Пошук тварини" />
-					</label>
-					<label class="animals-control">
-						<span class="animals-control-label">За назвою</span>
-						<select class="animals-input">
-							@for (option of sortOptions; track option) {
-								<option>{{ option }}</option>
-							}
-						</select>
-					</label>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="animals-section">
-		<div class="animals-container">
 			<h2 class="animals-heading">Основні групи тварин</h2>
 			<div class="animals-grid">
 				@for (group of groupCards; track group.title) {
@@ -98,13 +71,51 @@
 
 	<section class="animals-section">
 		<div class="animals-container">
+			<h2 class="animals-heading">Обрати категорію</h2>
+			<div class="animals-filter-panel">
+				<div class="animals-filter-buttons" aria-label="Обрати категорію">
+					@for (filter of filters; track filter) {
+						<button
+							class="animals-filter"
+							[class.animals-filter--active]="selectedFilter() === filter"
+							type="button"
+							(click)="setFilter(filter)"
+						>{{ filter }}</button>
+					}
+				</div>
+				<div class="animals-controls">
+					<label class="animals-control">
+						<span class="animals-control-label">Пошук тварини</span>
+						<input
+							#searchInput
+							class="animals-input"
+							type="search"
+							placeholder="Пошук тварини"
+							(input)="setSearch(searchInput.value)"
+						/>
+					</label>
+					<label class="animals-control">
+						<span class="animals-control-label">За назвою</span>
+						<select #sortSelect class="animals-input" (change)="setSort(sortSelect.value)">
+							@for (option of sortOptions; track option) {
+								<option>{{ option }}</option>
+							}
+						</select>
+					</label>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="kataloh" class="animals-section">
+		<div class="animals-container">
 			<h2 class="animals-heading">Каталог тварин</h2>
 			<p class="animals-text animals-text--intro">
 				Нижче − попередній каталог мешканців парку. Фото та детальні історії потрібно буде
 				оновити після отримання матеріалів від замовника.
 			</p>
 			<div class="animals-grid">
-				@for (animal of animalCards; track animal.slug) {
+				@for (animal of filteredAnimals(); track animal.slug) {
 					<a
 						class="animals-card animals-card--media animals-link-card"
 						[routerLink]="['/tvaryny', animal.slug]"
@@ -130,7 +141,7 @@
 	<section class="animals-section">
 		<div class="animals-container">
 			<h2 class="animals-heading">Побачте мешканців парку наживо</h2>
-			<p class="animals-text">
+			<p class="animals-text animals-text--wide">
 				Найкращий спосіб познайомитись із тваринами − приїхати на екскурсію, пройти
 				маршрутом парку та почути історії від екскурсовода.
 			</p>

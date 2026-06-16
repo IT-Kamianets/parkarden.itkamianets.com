@@ -154,7 +154,7 @@
 								class="rounded-md border border-[#c9d9b7] bg-[#fbfdf8] px-4 py-3 text-sm outline-none transition focus:border-[#5f7f35]"
 								[type]="field.type"
 								[name]="field.name"
-								[ngModel]="formData()[field.name] ?? ''"
+								[ngModel]="formData()[field.name]"
 								(ngModelChange)="updateFormValue(field.name, $event)"
 								[required]="field.required"
 							/>
@@ -166,7 +166,7 @@
 					<textarea
 						class="min-h-36 rounded-md border border-[#c9d9b7] bg-[#fbfdf8] px-4 py-3 text-sm outline-none transition focus:border-[#5f7f35]"
 						name="message"
-						[ngModel]="formData()['message'] ?? ''"
+						[ngModel]="formData()['message']"
 						(ngModelChange)="updateFormValue('message', $event)"
 					></textarea>
 				</label>

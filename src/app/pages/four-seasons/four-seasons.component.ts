@@ -66,12 +66,12 @@ export class FourSeasonsComponent implements AfterViewInit, OnDestroy {
 	];
 
 	protected readonly heroButtons = [
-		{ label: 'Записатись на екскурсію', link: '/ekskursii', variant: 'primary' },
+		{ label: 'Екскурсії', link: '/ekskursii', variant: 'primary' },
 		{ label: 'Дивитись галерею', link: '/galereya', variant: 'secondary' },
 	];
 
 	protected readonly visitButtons = [
-		{ label: 'Записатись на екскурсію', link: '/ekskursii', variant: 'primary' },
+		{ label: 'Екскурсії', link: '/ekskursii', variant: 'primary' },
 		{ label: 'Інформація для гостей', link: '/gostiam', variant: 'secondary' },
 	];
 

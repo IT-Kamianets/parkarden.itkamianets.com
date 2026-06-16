@@ -36,9 +36,9 @@
 	margin-top: 1rem;
 	max-width: 58rem;
 	color: var(--c-text-strong);
-	font-size: clamp(2.5rem, 7vw, 5.8rem);
+	font-size: clamp(2rem, 4vw, 3.5rem);
 	font-weight: 600;
-	line-height: 0.95;
+	line-height: 1.1;
 }
 
 .animals-heading {
@@ -70,6 +70,10 @@
 
 .animals-text--intro {
 	margin-bottom: 2rem;
+}
+
+.animals-text--wide {
+	max-width: none;
 }
 
 .animals-actions {
@@ -138,6 +142,18 @@
 	padding: 0.55rem 0.9rem;
 	color: var(--c-text-strong);
 	font-weight: 600;
+	cursor: pointer;
+	transition: border-color 0.15s, background 0.15s, color 0.15s;
+
+	&:hover {
+		border-color: var(--c-primary);
+	}
+}
+
+.animals-filter--active {
+	border-color: var(--c-primary);
+	background: var(--c-primary);
+	color: var(--c-on-primary);
 }
 
 .animals-controls {

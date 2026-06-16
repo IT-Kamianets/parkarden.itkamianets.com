@@ -1,7 +1,9 @@
 ﻿import { NgOptimizedImage } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { map } from 'rxjs';
 import { parkardenImageForAnimal, parkardenImageForKey } from '../../feature/media/parkarden-images';
 
 interface AnimalDetail {
@@ -499,33 +501,45 @@ const ANIMALS = [...FULL_ANIMAL_DETAILS, ...CATALOG_FALLBACK_ANIMALS.map(_create
 	styleUrl: './tvaryny-detail.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TvarynyDetailComponent implements AfterViewInit {
+export class TvarynyDetailComponent {
 	private readonly _route = inject(ActivatedRoute);
 	private readonly _title = inject(Title);
 	private readonly _meta = inject(Meta);
 
-	protected readonly animal = ANIMALS.find(
-		(animal) => animal.slug === this._route.snapshot.paramMap.get('slug'),
+	private readonly _slug = toSignal(
+		this._route.paramMap.pipe(map(params => params.get('slug'))),
 	);
-	protected readonly basicInfo = this.animal
-		? [
-				{ label: 'Імʼя', value: this.animal.name },
-				{ label: 'Категорія', value: this.animal.category },
-				{ label: 'Вид', value: this.animal.species },
-				{ label: 'Вік', value: this.animal.age },
-				{ label: 'Стать', value: this.animal.gender },
-				{ label: 'Статус', value: this.animal.status },
-			]
-		: [];
-	protected readonly facts = this.animal?.facts ?? [];
-	protected readonly otherAnimals = this.animal ? this._otherAnimals(this.animal) : [];
 
-	ngAfterViewInit(): void {
-		this._setSeo();
+	protected readonly animal = computed(() =>
+		ANIMALS.find(a => a.slug === this._slug()),
+	);
+
+	protected readonly basicInfo = computed(() => {
+		const a = this.animal();
+		return a ? [
+			{ label: 'Імʼя', value: a.name },
+			{ label: 'Категорія', value: a.category },
+			{ label: 'Вид', value: a.species },
+			{ label: 'Вік', value: a.age },
+			{ label: 'Стать', value: a.gender },
+			{ label: 'Статус', value: a.status },
+		] : [];
+	});
+
+	protected readonly facts = computed(() => this.animal()?.facts ?? []);
+
+	protected readonly otherAnimals = computed(() => {
+		const a = this.animal();
+		return a ? this._otherAnimals(a) : [];
+	});
+
+	constructor() {
+		effect(() => { this._setSeo(); });
 	}
 
 	private _setSeo(): void {
-		if (!this.animal) {
+		const a = this.animal();
+		if (!a) {
 			this._title.setTitle('Тварину не знайдено');
 			this._meta.updateTag({
 				name: 'description',
@@ -534,18 +548,17 @@ export class TvarynyDetailComponent implements AfterViewInit {
 			return;
 		}
 
-		const title = `${this.animal.name} − ${this.animal.category} парку «АРДЕН»`;
-		const description = `Познайомтесь із ${this.animal.name}. ${this.animal.shortText} Дізнайтесь історію, особливості та як підтримати тварин Парку диких тварин «АРДЕН».`;
-		const image = this.animal.image;
+		const title = `${a.name} − ${a.category} парку «АРДЕН»`;
+		const description = `Познайомтесь із ${a.name}. ${a.shortText} Дізнайтесь історію, особливості та як підтримати тварин Парку диких тварин «АРДЕН».`;
 
 		this._title.setTitle(title);
 		this._meta.updateTag({ name: 'description', content: description });
 		this._meta.updateTag({ property: 'og:title', content: title });
 		this._meta.updateTag({ property: 'og:description', content: description });
-		this._meta.updateTag({ property: 'og:image', content: image });
+		this._meta.updateTag({ property: 'og:image', content: a.image });
 		this._meta.updateTag({ name: 'twitter:title', content: title });
 		this._meta.updateTag({ name: 'twitter:description', content: description });
-		this._meta.updateTag({ name: 'twitter:image', content: image });
+		this._meta.updateTag({ name: 'twitter:image', content: a.image });
 	}
 
 	private _otherAnimals(currentAnimal: AnimalDetail): AnimalDetail[] {

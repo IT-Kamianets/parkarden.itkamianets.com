@@ -123,6 +123,6 @@ export class PidtrymatyComponent {
 
 	protected readonly finalCtaButtons = [
 		{ label: 'Зробити внесок', href: '#donation', variant: 'primary' },
-		{ label: 'Записатись на екскурсію', routerLink: '/ekskursii', variant: 'secondary' },
+		{ label: 'Екскурсії', routerLink: '/ekskursii', variant: 'secondary' },
 	];
 }

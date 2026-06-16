@@ -25,7 +25,7 @@ export class NovynyComponent {
 	private readonly _meta = inject(Meta);
 	protected readonly heroImage = parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-1');
 	protected readonly followImage = parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-2');
-	protected readonly finalCtaImage = parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-3');
+	protected readonly finalCtaImage = 'https://cdn-it.webart.work/parkarden/deer_01.webp';
 
 	protected readonly filters = [
 		'Усі новини',
@@ -138,11 +138,15 @@ export class NovynyComponent {
 		},
 	];
 
-	protected readonly socialButtons = ['Instagram', 'Facebook', 'YouTube'];
+	protected readonly socialButtons = [
+		{ label: 'Instagram', url: 'https://www.instagram.com/park_arden_sataniv/' },
+		{ label: 'Facebook', url: 'https://www.facebook.com/park.arden.2025/' },
+		{ label: 'YouTube', url: 'https://www.youtube.com/channel/UCiIecihp7fyo5mnSISFrV1A' },
+	];
 
 	protected readonly ctaButtons = [
 		{
-			label: 'Записатись на екскурсію',
+			label: 'Екскурсії',
 			link: '/ekskursii',
 			className: 'bg-[#5f7f35] text-white hover:bg-[#4c692b]',
 		},
