@@ -19,7 +19,7 @@
 				</div>
 			</div>
 			<img
-				class="aspect-[4/3] w-full rounded-lg bg-white object-contain p-6 shadow-sm"
+				class="aspect-[4/3] w-full rounded-lg object-cover shadow-sm"
 				[ngSrc]="heroImage"
 				width="760"
 				height="570"
@@ -93,7 +93,7 @@
 			<div class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
 				@for (card of newsCards; track card.slug) {
 					<a class="group overflow-hidden rounded-lg border border-[#d9e5ca] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" [routerLink]="['/novyny', card.slug]">
-						<img class="aspect-[4/3] w-full bg-[#f7fbf3] object-contain p-5" [ngSrc]="card.image" width="560" height="420" alt="" />
+						<img class="aspect-[4/3] w-full object-cover" [ngSrc]="card.image" width="560" height="420" alt="" />
 						<div class="p-5">
 							<div class="mb-3 flex flex-wrap gap-2 text-xs font-semibold">
 								<span class="rounded bg-[#edf5e5] px-2.5 py-1 text-[#3d5f20]">{{ card.category }}</span>
@@ -124,7 +124,7 @@
 
 	<section class="px-4 py-12 sm:px-6 lg:px-8">
 		<div class="mx-auto grid max-w-6xl gap-8 rounded-lg border border-[#d9e5ca] bg-white p-5 shadow-sm lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-center lg:p-8">
-			<img class="aspect-[4/3] w-full rounded-lg bg-[#f7fbf3] object-contain p-6" [ngSrc]="followImage" width="640" height="480" alt="" />
+			<img class="aspect-[4/3] w-full rounded-lg object-cover" [ngSrc]="followImage" width="640" height="480" alt="" />
 			<div>
 				<h2 class="text-3xl font-bold text-[#172315]">Слідкуйте за життям парку</h2>
 				<p class="mt-4 text-lg leading-8 text-[#42513d]">

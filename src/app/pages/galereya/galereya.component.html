@@ -115,7 +115,7 @@
 		</div>
 	</section>
 
-	@for (album of visibleAlbums(); track album.id; let albumIndex = $index) {
+	@for (album of visibleAlbums(); track album.id) {
 		<section class="px-4 py-12 sm:px-6 lg:px-8">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(18rem,0.82fr)_minmax(0,1fr)] lg:items-center">
 				<div>
@@ -123,19 +123,21 @@
 					<h2 class="mt-3 text-3xl font-bold">{{ album.title }}</h2>
 					<p class="mt-4 text-base leading-8 text-[#425344]">{{ album.description }}</p>
 				</div>
-				<figure class="gallery-image-shell aspect-[16/10]">
+				<button
+					class="gallery-image-shell gallery-thumb group aspect-[16/10]"
+					type="button"
+					[attr.aria-label]="album.feature.alt"
+					(click)="openPhoto(album, album.feature, $event)"
+				>
 					<img
-						appParallaxImage
-						class="h-full w-full object-cover"
-						[appParallaxOrientation]="albumIndex % 2 === 0 ? 'up' : 'down'"
-						[appParallaxScale]="1.12"
+						class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
 						[ngSrc]="album.feature.src"
 						[width]="album.feature.width"
 						[height]="album.feature.height"
 						[alt]="album.feature.alt"
 						loading="lazy"
 					/>
-				</figure>
+				</button>
 			</div>
 			<div class="mx-auto mt-6 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
 				@for (photo of album.photos; track photo.src) {
@@ -143,7 +145,7 @@
 						class="gallery-thumb group"
 						type="button"
 						[attr.aria-label]="photo.alt"
-						(click)="openPhoto(photo, $event)"
+						(click)="openPhoto(album, photo, $event)"
 					>
 						<img
 							class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"

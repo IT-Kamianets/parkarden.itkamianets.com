@@ -1,31 +1,34 @@
 @if (article) {
 	<main class="bg-[#f6fbf1] text-[#17351f]">
 		<section class="px-5 py-12 sm:py-16 lg:py-20">
-			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.82fr)] lg:items-center">
-				<div>
-					<p class="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-[#5b8d3d]">
-						{{ article.category }} · {{ article.dateLabel }}
-					</p>
-					<h1 class="max-w-3xl text-4xl font-bold leading-tight sm:text-5xl">
-						{{ article.title }}
-					</h1>
-					<p class="mt-5 max-w-2xl text-lg leading-8 text-[#36543c]">
-						{{ article.excerpt }}
-					</p>
-					<a
-						class="mt-8 inline-flex rounded-full bg-[#2f6f3e] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#245832]"
-						routerLink="/novyny"
-					>
-						До всіх новин
-					</a>
-				</div>
+			<div class="mx-auto max-w-3xl">
+				<p class="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-[#5b8d3d]">
+					{{ article.category }} · {{ article.dateLabel }}
+				</p>
+				<h1 class="text-4xl font-bold leading-tight sm:text-5xl">
+					{{ article.title }}
+				</h1>
+				<p class="mt-5 text-lg leading-8 text-[#36543c]">
+					{{ article.excerpt }}
+				</p>
+				<a
+					class="mt-8 inline-flex rounded-md bg-[#5f7f35] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#4c692b]"
+					routerLink="/novyny"
+				>
+					До всіх новин
+				</a>
+			</div>
+		</section>
+
+		<section class="px-5 pb-2 sm:pb-4">
+			<div class="mx-auto max-w-3xl">
 				<img
-					class="aspect-[4/3] w-full rounded-lg object-contain bg-white p-6 shadow-sm"
+					class="w-full rounded-lg object-cover shadow-sm"
 					[ngSrc]="article.image"
-					width="960"
-					height="720"
-					alt=""
-					priority
+					width="1200"
+					height="800"
+					[alt]="article.title"
+					loading="lazy"
 				/>
 			</div>
 		</section>
@@ -51,56 +54,22 @@
 			</div>
 		</section>
 
-		<section class="px-5 py-12 sm:py-16">
-			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.8fr)] lg:items-center">
-				<div>
-					<h2 class="text-3xl font-bold leading-tight">Підтримайте парк</h2>
-					<p class="mt-4 max-w-2xl text-lg leading-8 text-[#36543c]">
-						Ви можете підтримати «АРДЕН» матеріально, купуючи їжу для звірів або сувеніри у нашій лавці. Кожен внесок допомагає тваринам отримувати догляд, харчування та безпечні умови.
-					</p>
-					<a
-						class="mt-7 inline-flex rounded-full bg-[#2f6f3e] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#245832]"
-						routerLink="/pidtrymaty"
-					>
-						Підтримати проєкт
-					</a>
-				</div>
-				<img
-					class="aspect-[4/3] w-full rounded-lg object-contain bg-white p-6 shadow-sm"
-					[ngSrc]="supportImage"
-					width="960"
-					height="720"
-					alt=""
-				/>
-			</div>
-		</section>
-
 		<section class="bg-white px-5 py-12 sm:py-16">
 			<div class="mx-auto max-w-6xl">
 				<h2 class="text-3xl font-bold leading-tight">Інші новини</h2>
 				<div class="mt-8 grid gap-6 md:grid-cols-3">
 					@for (news of relatedNews; track news.slug) {
-						<a
-							class="group block rounded-lg border border-[#dcebd3] bg-[#fbfdf8] p-4 transition hover:-translate-y-1 hover:shadow-md"
-							[routerLink]="['/novyny', news.slug]"
-						>
-							<img
-								class="aspect-[4/3] w-full rounded-md object-contain bg-white p-5"
-								[ngSrc]="news.image"
-								width="640"
-								height="480"
-								alt=""
-							/>
-							<p class="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-[#5b8d3d]">
+						<div class="rounded-lg border border-[#dcebd3] bg-[#fbfdf8] p-4">
+							<p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#5b8d3d]">
 								{{ news.category }}
 							</p>
-							<h3 class="mt-2 text-xl font-bold leading-snug group-hover:text-[#2f6f3e]">
+							<h3 class="mt-2 text-xl font-bold leading-snug">
 								{{ news.title }}
 							</h3>
 							<p class="mt-3 text-sm leading-6 text-[#4f6654]">
 								{{ news.excerpt }}
 							</p>
-						</a>
+						</div>
 					}
 				</div>
 			</div>
@@ -114,7 +83,7 @@
 				Можливо, сторінку було переміщено або ця новина ще готується.
 			</p>
 			<a
-				class="mt-8 inline-flex rounded-full bg-[#2f6f3e] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#245832]"
+				class="mt-8 inline-flex rounded-md bg-[#5f7f35] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#4c692b]"
 				routerLink="/novyny"
 			>
 				Повернутись до новин

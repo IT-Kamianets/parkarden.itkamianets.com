@@ -42,6 +42,16 @@ main .text-stone-900 {
 	color: var(--c-text-strong) !important;
 }
 
+main #donation h2,
+main #donation [class*='border-green'] {
+	color: var(--c-bg-primary) !important;
+}
+
+main [class*='-eyebrow'],
+main p[class*='uppercase'] {
+	color: var(--c-eyebrow) !important;
+}
+
 main p,
 main li,
 main summary,

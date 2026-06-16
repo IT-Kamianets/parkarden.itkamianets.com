@@ -25,7 +25,7 @@
 .animal-eyebrow,
 .animal-category,
 .animal-info-label {
-	color: var(--c-primary);
+	color: var(--c-eyebrow);
 	font-size: 0.82rem;
 	font-weight: 600;
 	letter-spacing: 0.08em;
@@ -82,8 +82,12 @@
 	justify-content: center;
 	margin-top: 1.5rem;
 	border-radius: var(--radius-btn);
-	padding: 0.75rem 1.1rem;
+	padding: 0.75rem 1.25rem;
+	font-family: var(--ff-base);
+	font-size: 0.9375rem;
 	font-weight: 600;
+	font-style: normal;
+	letter-spacing: 0.04em;
 	text-decoration: none;
 }
 
@@ -99,7 +103,7 @@
 .animal-button--secondary {
 	border: 1px solid var(--c-border);
 	background: color-mix(in srgb, var(--c-bg-secondary) 72%, transparent);
-	color: var(--c-text-strong);
+	color: var(--c-eyebrow);
 }
 
 .animal-image,

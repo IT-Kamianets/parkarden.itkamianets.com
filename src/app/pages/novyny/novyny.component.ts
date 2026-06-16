@@ -23,7 +23,7 @@ const SEO_IMAGE = 'https://cdn-it.webart.work/parkarden/animals_processed_03.web
 export class NovynyComponent {
 	private readonly _title = inject(Title);
 	private readonly _meta = inject(Meta);
-	protected readonly heroImage = parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-1');
+	protected readonly heroImage = 'https://cdn-it.webart.work/parkarden/deer_31.webp';
 	protected readonly followImage = parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-2');
 	protected readonly finalCtaImage = 'https://cdn-it.webart.work/parkarden/deer_01.webp';
 
@@ -70,7 +70,7 @@ export class NovynyComponent {
 			slug: 'nablyzhayetsya-zyma',
 			category: '4 сезони',
 			date: 'Архівна новина',
-			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-7'),
+			image: 'https://cdn-it.webart.work/parkarden/winter_2024_01_08_123.webp',
 			text: 'Зима змінює настрій парку: тварини поводяться інакше, ліс стає тихішим, а маршрути відкривають зовсім іншу атмосферу.',
 		},
 		{
@@ -78,7 +78,7 @@ export class NovynyComponent {
 			slug: 'motrya-z-vedmezhatamy',
 			category: 'Тварини',
 			date: 'Архівна історія',
-			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-8'),
+			image: 'https://cdn-it.webart.work/parkarden/bears_113.webp',
 			text: 'Історія з життя ведмежої родини, яка показує турботу, характер і особливі моменти мешканців парку.',
 		},
 		{
@@ -86,7 +86,7 @@ export class NovynyComponent {
 			slug: 'vesnyani-rozvagy-vedmezhat',
 			category: '4 сезони',
 			date: 'Архівна історія',
-			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-9'),
+			image: 'https://cdn-it.webart.work/parkarden/bears_54.webp',
 			text: 'Весна приносить більше руху, гри та активності. Ведмежата відкривають світ навколо себе по-новому.',
 		},
 		{
@@ -94,7 +94,7 @@ export class NovynyComponent {
 			slug: 'himalayski-vedmedi',
 			category: 'Тварини',
 			date: 'Архівна історія',
-			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-10'),
+			image: 'https://cdn-it.webart.work/parkarden/bears_03.webp',
 			text: 'Гімалайські ведмеді вирізняються темним хутром, світлим комірцем і спритністю, яка особливо помітна серед дерев.',
 		},
 		{
@@ -102,7 +102,7 @@ export class NovynyComponent {
 			slug: 'osinnye-popovnennya-velykyh-kotyachyh',
 			category: 'Тварини',
 			date: 'Архівна новина',
-			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-11'),
+			image: 'https://cdn-it.webart.work/parkarden/lions_tigers_57.webp',
 			text: 'Поповнення секції великих котячих стало яскравою подією для парку та відвідувачів.',
 		},
 		{
@@ -110,7 +110,7 @@ export class NovynyComponent {
 			slug: 'hyzhi-ptahy-u-parku',
 			category: 'Тварини',
 			date: 'Матеріал про мешканців',
-			image: parkardenImageForKey('src/app/pages/novyny/novyny.component.ts-12'),
+			image: 'https://cdn-it.webart.work/parkarden/eagle_06.webp',
 			text: 'У парку мешкають не лише хижаки на землі, а й хижі птахи, серед яких орлан-білохвіст, канюк, яструб та інші представники дикої природи.',
 		},
 	];

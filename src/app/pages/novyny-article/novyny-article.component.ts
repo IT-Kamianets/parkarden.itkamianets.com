@@ -90,7 +90,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		title: 'Наближається зима',
 		category: '4 сезони',
 		dateLabel: 'Сезонна новина',
-		image: parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-4'),
+		image: 'https://cdn-it.webart.work/parkarden/winter_2024_01_08_123.webp',
 		excerpt:
 			'Більшість ведмедів у парку вже дрімають у барлогах, але іноді відвідувачам щастить побачити їх і взимку.',
 		paragraphs: [
@@ -109,7 +109,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		title: 'Мотря з ведмежатами',
 		category: 'Тварини',
 		dateLabel: 'Історія з життя парку',
-		image: parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-5'),
+		image: 'https://cdn-it.webart.work/parkarden/bears_113.webp',
 		excerpt:
 			'Чотиримісячні ведмежата з мамою Мотрею досліджують територію вольєра.',
 		paragraphs: [
@@ -128,7 +128,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		title: 'Весняні розваги ведмежат',
 		category: '4 сезони',
 		dateLabel: 'Весняна історія',
-		image: parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-6'),
+		image: 'https://cdn-it.webart.work/parkarden/bears_54.webp',
 		excerpt:
 			'Навесні молоді ведмежата можуть вилізти на дерево та поласувати першими зеленими листочками.',
 		paragraphs: [
@@ -148,7 +148,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		title: 'Гімалайські ведмеді вже потроху виходять з берлоги',
 		category: 'Тварини',
 		dateLabel: 'Сезонна історія',
-		image: parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-7'),
+		image: 'https://cdn-it.webart.work/parkarden/bears_03.webp',
 		excerpt:
 			'Гімалайський ведмідь Гоша вийшов з барлоги раніше та навіть спробував вилізти на дерево.',
 		paragraphs: [
@@ -180,7 +180,6 @@ export class NovynyArticleComponent {
 	protected readonly article = NEWS_ARTICLES.find(
 		(article) => article.slug === this._route.snapshot.paramMap.get('slug'),
 	);
-	protected readonly supportImage = parkardenImageForKey('src/app/pages/novyny-article/novyny-article.component.ts-8');
 	protected readonly relatedNews = this.article
 		? NEWS_ARTICLES.filter((article) => article.slug !== this.article?.slug).slice(0, 3)
 		: NEWS_ARTICLES.slice(0, 3);
