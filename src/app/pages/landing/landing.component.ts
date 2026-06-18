@@ -20,6 +20,22 @@ export class LandingComponent {
 	protected readonly supportImage = parkardenImageForKey('src/app/pages/landing/landing.component.ts-7');
 	protected readonly contactsImage = 'https://cdn-it.webart.work/parkarden/lions_tigers_36.webp';
 
+	protected readonly weeklySchedule = [
+		{ day: 'Понеділок', hours: '10:00–17:00', highlight: false },
+		{ day: 'Вівторок', hours: '10:00–17:00', highlight: false },
+		{ day: 'Середа', hours: '10:00–17:00', highlight: false },
+		{ day: 'Четвер', hours: '10:00–17:00', highlight: false },
+		{ day: 'П\'ятниця', hours: '10:00–17:00', highlight: false },
+		{ day: 'Субота', hours: '10:00–18:00', highlight: true },
+		{ day: 'Неділя', hours: '10:00–18:00', highlight: true },
+	];
+
+	protected readonly pricing = [
+		{ price: '400 грн.', label: 'Дорослий', note: '' },
+		{ price: '300 грн.', label: 'Діти від 6 до 14 років', note: 'виключно в супроводі дорослих' },
+		{ price: 'Безкоштовно', label: 'Діти до 6 років', note: '' },
+	];
+
 	protected readonly facts = [
 		'Найбільший в Україні — сучасний парк для диких тварин',
 		'32 га — природної території серед лісу',
