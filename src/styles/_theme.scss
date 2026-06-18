@@ -27,8 +27,8 @@
   --shadow-md: 0 12px 26px rgba(45, 74, 58, 0.10);
 
   /* typography */
-  --ff-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --ff-base: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --ff-display: 'Montserrat', 'Fraunces', Georgia, sans-serif;
+  --ff-base: 'Montserrat', 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --fs: 16px;
   --letter-spacing: 0;
 
@@ -71,35 +71,35 @@ html[data-mode='dark'] {
   color-scheme: dark;
 
   /* brand / actions */
-  --c-primary: #e8b86c;
-  --c-primary-hover: #f0c985;
-  --c-eyebrow: #e8b86c;
-  --c-secondary: #6b2c3a;
-  --c-secondary-hover: #7d3647;
-  --c-on-primary: #1a0d14;
+  --c-primary: #f07820;
+  --c-primary-hover: #f5913e;
+  --c-eyebrow: #f5a830;
+  --c-secondary: #0d4500;
+  --c-secondary-hover: #134f00;
+  --c-on-primary: #ffffff;
 
   /* surfaces */
-  --c-bg-primary: #1a0d14;
-  --c-bg-secondary: #2b1620;
-  --c-bg-tertiary: #3a1e2a;
+  --c-bg-primary: #0a3c00;
+  --c-bg-secondary: #114a00;
+  --c-bg-tertiary: #175700;
 
   /* borders & elevation */
-  --c-border: #3a2530;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.55);
+  --c-border: rgba(255, 255, 255, 0.12);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.50);
 
   /* content */
-  --c-text: #d4c5ab;
-  --c-text-strong: #f4e8d2;
-  --c-text-muted: #8a7c6a;
-  --c-placeholder: #8a7c6a;
+  --c-text: #c8e8b8;
+  --c-text-strong: #ffffff;
+  --c-text-muted: rgba(200, 232, 184, 0.60);
+  --c-placeholder: rgba(200, 232, 184, 0.45);
 
   /* typography */
-  --ff-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --ff-base: 'Crimson Text', Georgia, 'Times New Roman', serif;
+  --ff-display: 'Montserrat', sans-serif;
+  --ff-base: 'Montserrat', sans-serif;
 
-  /* focus (keeps using primary) */
-  --focus-ring: 0 0 0 3px rgba(232, 184, 108, 0.40);
+  /* focus */
+  --focus-ring: 0 0 0 3px rgba(240, 120, 32, 0.45);
 }
 
 /* ========= density ========= */

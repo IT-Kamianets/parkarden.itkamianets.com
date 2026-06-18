@@ -139,14 +139,9 @@ main select {
 
 html[data-mode='dark'] main {
 	background:
-		radial-gradient(circle at 18% 0%, rgba(232, 184, 108, 0.11), transparent 24rem),
+		radial-gradient(circle at 80% 0%, rgba(240, 120, 32, 0.10), transparent 22rem),
 		linear-gradient(180deg, color-mix(in srgb, var(--c-bg-secondary) 72%, transparent), transparent 34rem),
 		var(--c-bg-primary) !important;
-}
-
-html[data-mode='dark'] main h1,
-html[data-mode='dark'] main h2 {
-	font-style: italic;
 }
 
 :is(
@@ -296,7 +291,7 @@ html[data-mode='dark']
 		.seasons-hero
 	) {
 	background:
-		radial-gradient(circle at 20% 20%, rgba(232, 184, 108, 0.12), transparent 22rem),
+		radial-gradient(circle at 78% 12%, rgba(240, 120, 32, 0.13), transparent 22rem),
 		linear-gradient(135deg, color-mix(in srgb, var(--c-bg-secondary) 82%, transparent), transparent 62%),
 		var(--c-bg-primary);
 }

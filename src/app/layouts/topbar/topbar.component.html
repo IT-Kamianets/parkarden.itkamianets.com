@@ -27,7 +27,7 @@
 		<nav class="hidden xl:flex items-center gap-1" [translate]="{ ariaLabel: 'Main navigation' }">
 			@for (link of navLinks; track link.path) {
 				<a
-					class="theme-focus rounded-md px-3 py-2 text-sm font-medium text-[var(--c-text)] transition-colors duration-150 hover:text-[var(--c-primary)]"
+					class="theme-focus rounded-md px-2 py-2 text-sm font-medium whitespace-nowrap text-[var(--c-text)] transition-colors duration-150 hover:text-[var(--c-primary)]"
 					[routerLink]="link.path"
 					[translate]="link.label"
 				>
