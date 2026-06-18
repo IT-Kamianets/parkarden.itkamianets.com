@@ -12,6 +12,29 @@
 					живуть ведмеді, великі коти, вовки, примати, олені, птахи та інші мешканці
 					дикого лісу.
 				</p>
+				<div class="home-hero-info">
+					<div class="home-hero-info-block">
+						<p class="home-hero-info-label">Вартість</p>
+						@for (item of pricing; track item.label) {
+							<div class="home-hero-pricing-row">
+								<strong class="home-hero-pricing-price">{{ item.price }}</strong>
+								<span> – {{ item.label }}</span>
+								@if (item.note) {
+									<span class="home-hero-pricing-note">({{ item.note }})</span>
+								}
+							</div>
+						}
+					</div>
+					<div class="home-hero-info-block">
+						<p class="home-hero-info-label">Графік роботи</p>
+						<div class="home-hero-schedule">
+							@for (row of weeklySchedule; track row.day) {
+								<span [class.home-hero-schedule-highlight]="row.highlight">{{ row.day }}</span>
+								<span>{{ row.hours }}</span>
+							}
+						</div>
+					</div>
+				</div>
 				<div class="home-actions">
 					<a class="home-button home-button--primary" routerLink="/ekskursii">
 						Екскурсії
@@ -31,37 +54,6 @@
 				alt=""
 				priority
 			/>
-		</div>
-	</section>
-
-	<section class="home-section home-section--info">
-		<div class="home-container">
-			<div class="home-infobar">
-				<div class="home-infobar-block">
-					<p class="home-eyebrow">Вартість</p>
-					<div class="home-pricing-list">
-						@for (item of pricing; track item.label) {
-							<div class="home-pricing-item">
-								<strong class="home-pricing-price">{{ item.price }}</strong>
-								<span class="home-pricing-label"> – {{ item.label }}</span>
-								@if (item.note) {
-									<span class="home-pricing-note">({{ item.note }})</span>
-								}
-							</div>
-						}
-					</div>
-				</div>
-				<div class="home-infobar-divider"></div>
-				<div class="home-infobar-block">
-					<p class="home-eyebrow">Графік роботи</p>
-					<div class="home-schedule-grid">
-						@for (row of weeklySchedule; track row.day) {
-							<span [class.home-schedule-highlight]="row.highlight">{{ row.day }}</span>
-							<span>{{ row.hours }}</span>
-						}
-					</div>
-				</div>
-			</div>
 		</div>
 	</section>
 
